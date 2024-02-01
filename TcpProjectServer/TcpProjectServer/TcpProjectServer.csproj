@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MessagePack" Version="2.5.140" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Include="..\..\Protocol\Disconnected.cs">
+        <Link>Protocol\Disconnected.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Protocol\Enter.cs">
+        <Link>Protocol\Enter.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Protocol\Exit.cs">
+        <Link>Protocol\Exit.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Protocol\GameEnd.cs">
+        <Link>Protocol\GameEnd.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Protocol\GameStart.cs">
+        <Link>Protocol\GameStart.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Protocol\Protocol.cs">
+        <Link>Protocol\Protocol.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Protocol\ReMatch.cs">
+        <Link>Protocol\ReMatch.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Protocol\SendAnswer.cs">
+        <Link>Protocol\SendAnswer.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Protocol\SendQuestion.cs">
+        <Link>Protocol\SendQuestion.cs</Link>
+      </Compile>
+    </ItemGroup>
+
+</Project>
