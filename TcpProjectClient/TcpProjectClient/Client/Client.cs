@@ -14,7 +14,6 @@ public partial class Client
     private int stage = 0;
 
     private bool canWrite = false;
-    // private Thread answerThread;
 
     public Client(string serverIp, int serverPort)
     {
@@ -54,7 +53,7 @@ public partial class Client
                 {
                     byte[] buffer = new byte[4096];
                     int bytesRead = await tcpClient.GetStream().ReadAsync(buffer, 0, buffer.Length);
-    
+                    
                     if (bytesRead <= 0)
                     {
                         break;
@@ -79,40 +78,37 @@ public partial class Client
         }
     }
     
-    public async Task ProcessDisconnectionAsync()
+    /*public async Task ProcessDisconnectionAsync(MemoryStream stream)
     {
         try
         {
-            using (MemoryStream stream = new MemoryStream())
-            {
-                while (true)
-                {
-                    byte[] buffer = new byte[4096];
-                    int bytesRead = await tcpClient.GetStream().ReadAsync(buffer, 0, buffer.Length);
-    
-                    if (bytesRead <= 0)
-                    {
-                        break;
-                    }
-    
-                    await stream.WriteAsync(buffer, 0, bytesRead);
-                    stream.Position = 0;
-                    string jsonData = Encoding.UTF8.GetString(stream.ToArray());
-    
-                    if (TryDeserialize(jsonData, out Protocol.Protocol? protocol))
-                    {
-                        await ProcessDisconnectionProtocol(protocol, jsonData);
-                    }
-                    
-                    stream.SetLength(0);
-                }
-            }
+             while (true)
+             {
+                 byte[] buffer = new byte[4096];
+                 int bytesRead = await tcpClient.GetStream().ReadAsync(buffer, 0, buffer.Length);streamLock.Release();
+                 
+                 if (bytesRead <= 0)
+                 {
+                     break;
+                 }
+ 
+                 await stream.WriteAsync(buffer, 0, bytesRead);
+                 stream.Position = 0;
+                 string jsonData = Encoding.UTF8.GetString(stream.ToArray());
+ 
+                 if (TryDeserialize(jsonData, out Protocol.Protocol? protocol))
+                 {
+                     await ProcessDisconnectionProtocol(protocol, jsonData);
+                 }
+                 
+                 stream.SetLength(0);
+             }
         }
         catch (Exception ex)
         {
             Console.WriteLine($"Error in Receive method: {ex.Message}");
         }
-    }
+    }*/
 
     private bool TryDeserialize(string jsonData, out Protocol.Protocol? protocol)
     {
