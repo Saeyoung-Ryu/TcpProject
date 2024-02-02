@@ -4,7 +4,7 @@ namespace TcpProjectClient;
 
 public partial class Client
 {
-    public async Task Process(GameStartA gameStartA)
+    public async Task ProcessAsync(GameStartA gameStartA)
     {
         myClientNumber = gameStartA.ClientNum;
         var loadingTime = gameStartA.LoadingTime;

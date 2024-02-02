@@ -5,7 +5,7 @@ namespace TcpProjectClient;
 
 public partial class Client
 {
-    public async Task Process(GameEndA gameEndA)
+    public void Process(GameEndA gameEndA)
     {
         if(gameEndA.IsWinner)
             Console.WriteLine("You Win!");

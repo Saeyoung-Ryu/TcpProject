@@ -8,16 +8,14 @@ public partial class Remote
     public async Task ProcessAsync(SendAnswerQ sendAnswerQ)
     {
         Console.WriteLine("SendAnswerQ Called");
-        Console.WriteLine($"{firstNumber}, {secondNumber}, {sendAnswerQ.Answer}");
-        Console.WriteLine($"{sendAnswerQ.Stage}, {stage}");
         
         int clientNum = sendAnswerQ.ClientNum;
         
         if (firstNumber + secondNumber == sendAnswerQ.Answer)
         {
-            if (stage == sendAnswerQ.Stage)
+            if (round == sendAnswerQ.Round)
             {
-                stage++;
+                round++;
                 
                 if (clientNum == 1)
                     client2Life--;
@@ -51,9 +49,9 @@ public partial class Remote
         }
         else
         {
-            if (stage == sendAnswerQ.Stage)
+            if (round == sendAnswerQ.Round)
             {
-                stage++;
+                round++;
             
                 if (clientNum == 1)
                     client1Life--;

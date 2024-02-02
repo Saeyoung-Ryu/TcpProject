@@ -11,7 +11,7 @@ namespace TcpProjectServer;
         
         public int client1Life = 5;
         public int client2Life = 5;
-        public int stage = 1;
+        public int round = 1;
         public int firstNumber;
         public int secondNumber;
         
@@ -43,12 +43,12 @@ namespace TcpProjectServer;
                         break;
                     }
                     
-                    if (tcpClient.Client.Poll(0, SelectMode.SelectRead))
-                    {
-                        Console.WriteLine("Connection closed by the remote endpoint");
-                        Process(new DisconnectedQ());
-                        break;
-                    }
+                    //if (tcpClient.Client.Poll(0, SelectMode.SelectRead))
+                    //{
+                    //    Console.WriteLine("Connection closed by the remote endpoint");
+                    //    Process(new DisconnectedQ());
+                    //    break;
+                    //}
                     
                     stream.Position = 0;
                     
@@ -71,7 +71,7 @@ namespace TcpProjectServer;
                     switch (protocol?.ProtocolId)
                     {
                         case ProtocolId.SendAnswerQ:
-                            ProcessAsync(MessagePackSerializer.Deserialize<SendAnswerQ>(new MemoryStream(stream.ToArray())));
+                            await ProcessAsync(MessagePackSerializer.Deserialize<SendAnswerQ>(new MemoryStream(stream.ToArray())));
                             break;
                         case ProtocolId.ExitQ:
                             Process(MessagePackSerializer.Deserialize<ExitQ>(new MemoryStream(stream.ToArray())));
@@ -110,6 +110,6 @@ namespace TcpProjectServer;
         {
             client1Life = 5;
             client2Life = 5;
-            stage = 1;
+            round = 1;
         }
     }

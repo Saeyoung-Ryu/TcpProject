@@ -62,7 +62,7 @@ public partial class Client
                                 Process(MessagePackSerializer.Deserialize<EnterA>(new MemoryStream(stream.ToArray())));
                                 break;
                             case ProtocolId.GameStartA:
-                                Process(MessagePackSerializer.Deserialize<GameStartA>(new MemoryStream(stream.ToArray())));
+                                await ProcessAsync(MessagePackSerializer.Deserialize<GameStartA>(new MemoryStream(stream.ToArray())));
                                 break;
                             case ProtocolId.SendQuestionA:
                                 await ProcessAsync(MessagePackSerializer.Deserialize<SendQuestionA>(new MemoryStream(stream.ToArray())));
@@ -103,7 +103,7 @@ public partial class Client
                 {
                     var sendAnswerQ = new SendAnswerQ
                     {
-                        Stage = stage,
+                        Round = stage,
                         ClientNum = myClientNumber,
                         Answer = answer
                     };

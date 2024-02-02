@@ -13,7 +13,7 @@ public class SendQuestionQ : Protocol
 [MessagePackObject]
 public class SendQuestionA : Protocol
 {
-    [Key(1)] public int Stage { get; set; }
+    [Key(1)] public int Round { get; set; }
     [Key(2)] public int Client1Life { get; set; }
     [Key(3)] public int Client2Life { get; set; }
     [Key(4)] public int FirstNumber { get; set; }

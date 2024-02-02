@@ -1,0 +1,15 @@
+/Users/saeyoungryu/Projects/TcpProject/HttpProjectServer/HttpProjectServer/bin/Debug/net7.0/HttpProjectServer
+/Users/saeyoungryu/Projects/TcpProject/HttpProjectServer/HttpProjectServer/bin/Debug/net7.0/HttpProjectServer.deps.json
+/Users/saeyoungryu/Projects/TcpProject/HttpProjectServer/HttpProjectServer/bin/Debug/net7.0/HttpProjectServer.runtimeconfig.json
+/Users/saeyoungryu/Projects/TcpProject/HttpProjectServer/HttpProjectServer/bin/Debug/net7.0/HttpProjectServer.dll
+/Users/saeyoungryu/Projects/TcpProject/HttpProjectServer/HttpProjectServer/bin/Debug/net7.0/HttpProjectServer.pdb
+/Users/saeyoungryu/Projects/TcpProject/HttpProjectServer/HttpProjectServer/obj/Debug/net7.0/HttpProjectServer.csproj.AssemblyReference.cache
+/Users/saeyoungryu/Projects/TcpProject/HttpProjectServer/HttpProjectServer/obj/Debug/net7.0/HttpProjectServer.GeneratedMSBuildEditorConfig.editorconfig
+/Users/saeyoungryu/Projects/TcpProject/HttpProjectServer/HttpProjectServer/obj/Debug/net7.0/HttpProjectServer.AssemblyInfoInputs.cache
+/Users/saeyoungryu/Projects/TcpProject/HttpProjectServer/HttpProjectServer/obj/Debug/net7.0/HttpProjectServer.AssemblyInfo.cs
+/Users/saeyoungryu/Projects/TcpProject/HttpProjectServer/HttpProjectServer/obj/Debug/net7.0/HttpProjectServer.csproj.CoreCompileInputs.cache
+/Users/saeyoungryu/Projects/TcpProject/HttpProjectServer/HttpProjectServer/obj/Debug/net7.0/HttpProjectServer.dll
+/Users/saeyoungryu/Projects/TcpProject/HttpProjectServer/HttpProjectServer/obj/Debug/net7.0/refint/HttpProjectServer.dll
+/Users/saeyoungryu/Projects/TcpProject/HttpProjectServer/HttpProjectServer/obj/Debug/net7.0/HttpProjectServer.pdb
+/Users/saeyoungryu/Projects/TcpProject/HttpProjectServer/HttpProjectServer/obj/Debug/net7.0/HttpProjectServer.genruntimeconfig.cache
+/Users/saeyoungryu/Projects/TcpProject/HttpProjectServer/HttpProjectServer/obj/Debug/net7.0/ref/HttpProjectServer.dll

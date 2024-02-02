@@ -5,7 +5,7 @@ namespace Protocol;
 [MessagePackObject]
 public class SendAnswerQ : Protocol // client -> server
 {
-    [Key(1)] public int Stage { get; set; }
+    [Key(1)] public int Round { get; set; }
     [Key(2)] public int ClientNum { get; set; }
     [Key(3)] public int Answer { get; set; }
     

@@ -15,7 +15,7 @@ public partial class Remote
         
         SendQuestionA sendQuestionA = new SendQuestionA()
         {
-            Stage = stage,
+            Round = round,
             Client1Life = client1Life,
             Client2Life = client2Life,
             FirstNumber = twoNumbers.Num1,
