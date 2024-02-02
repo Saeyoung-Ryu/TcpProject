@@ -13,24 +13,9 @@ public partial class Client
             return;
 
         Console.WriteLine("------------------------------------------");
+        Console.ForegroundColor = ConsoleColor.Blue; // Set color to red
         Console.WriteLine($"Other Client Has Answered : {sendAnswerA.SentAnswer}");
+        Console.ResetColor();
         Console.WriteLine("------------------------------------------");
     }
-    
-    /*
-    static Task<string?> ReadInputAsync1()
-    {
-        Console.WriteLine("");
-        Console.Write("Enter Answer: ");
-        Console.WriteLine("");
-        return Console.In.ReadLineAsync();
-    }
-    
-    static async Task<string?> ReadInputAsync2()
-    {
-        Console.WriteLine("");
-        Console.Write("Enter Answer: ");
-        Console.WriteLine("");
-        return await Console.In.ReadLineAsync();
-    }*/
 }

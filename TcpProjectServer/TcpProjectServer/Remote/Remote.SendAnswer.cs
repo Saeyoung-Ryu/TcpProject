@@ -5,7 +5,7 @@ namespace TcpProjectServer;
 
 public partial class Remote
 {
-    private async Task ProcessAsync(SendAnswerQ sendAnswerQ)
+    public async Task ProcessAsync(SendAnswerQ sendAnswerQ)
     {
         Console.WriteLine("SendAnswerQ Called");
         Console.WriteLine($"{firstNumber}, {secondNumber}, {sendAnswerQ.Answer}");

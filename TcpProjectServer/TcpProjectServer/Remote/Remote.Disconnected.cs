@@ -7,6 +7,7 @@ public partial class Remote
     private void Process(DisconnectedQ disconnectedQ)
     {
         Console.WriteLine("DisconnectedQ called");
+        
         SendAll(new DisconnectedA());
     }
 }

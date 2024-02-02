@@ -1,8 +1,12 @@
+using MessagePack;
+
+
 namespace Protocol
 {
+    [MessagePackObject]
     public class Protocol
     {
-        public ProtocolId ProtocolId { get; set; }
+        [Key(0)] public ProtocolId ProtocolId { get; set; }
 
         public Protocol()
         {

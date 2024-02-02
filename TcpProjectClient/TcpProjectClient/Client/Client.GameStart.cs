@@ -4,13 +4,17 @@ namespace TcpProjectClient;
 
 public partial class Client
 {
-    public void Process(GameStartA gameStartA)
+    public async Task Process(GameStartA gameStartA)
     {
         myClientNumber = gameStartA.ClientNum;
         var loadingTime = gameStartA.LoadingTime;
 
         Console.WriteLine($"You are Client {myClientNumber}");
-        Console.WriteLine($"Game Starting in {loadingTime} seconds...");
-        Console.WriteLine("Loading...");
+        int count = loadingTime;
+        for (int i = 0; i < count; i++)
+        {
+            Console.WriteLine($"Game Starting in {loadingTime--} seconds...");
+            await Task.Delay(1000);
+        }
     }
 }

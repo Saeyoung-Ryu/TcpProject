@@ -2,6 +2,7 @@ using System;
 using System.Net.Http.Headers;
 using System.Net.Sockets;
 using System.Text;
+using MessagePack;
 using Newtonsoft.Json;
 using Protocol;
 
@@ -20,30 +21,18 @@ public partial class Client
         tcpClient = new TcpClient(serverIp, serverPort);
         Console.WriteLine($"Connected to server: {serverIp}:{serverPort}");
 
-        Thread receiveThread = new Thread(() => Task.Run(ProcessAsync));
-        Thread answerThread = new Thread(() => Task.Run(() => ProcessSendAsync()));
-        // Thread disconnectionThread = new Thread(() => Task.Run(ProcessDisconnectionAsync));
-        receiveThread.Start();
-        answerThread.Start();
-        // disconnectionThread.Start();
-    }
-
-    public void Send<T>(T data)
-    {
-        try
-        {
-            string jsonData = JsonConvert.SerializeObject(data);
-            Console.WriteLine(jsonData);
-            byte[] buffer = Encoding.UTF8.GetBytes(jsonData);
-            tcpClient.GetStream().Write(buffer, 0, buffer.Length);
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error in SendToServer method: {ex.Message}");
-        }
+        Task.Run(ProcessReceiveAsync);
+        Task.Run(() => ProcessSendAsync());
     }
     
-    public async Task ProcessAsync()
+    private void Send<T>(T data)
+    {
+        // MessagePack 사용
+        byte[] buffer = MessagePackSerializer.Serialize(data);
+        tcpClient.GetStream().Write(buffer, 0, buffer.Length);
+    }
+
+    public async Task ProcessReceiveAsync()
     {
         try
         {
@@ -53,7 +42,7 @@ public partial class Client
                 {
                     byte[] buffer = new byte[4096];
                     int bytesRead = await tcpClient.GetStream().ReadAsync(buffer, 0, buffer.Length);
-                    
+    
                     if (bytesRead <= 0)
                     {
                         break;
@@ -61,13 +50,36 @@ public partial class Client
     
                     await stream.WriteAsync(buffer, 0, bytesRead);
                     stream.Position = 0;
-                    string jsonData = Encoding.UTF8.GetString(stream.ToArray());
     
-                    if (TryDeserialize(jsonData, out Protocol.Protocol? protocol))
+                    // Use MessagePack for deserialization
+                    try
                     {
-                        await ProcessProtocol(protocol, jsonData);
+                        Protocol.Protocol? protocol = MessagePackSerializer.Deserialize<Protocol.Protocol>(stream);
+    
+                        switch (protocol?.ProtocolId)
+                        {
+                            case ProtocolId.EnterA:
+                                Process(MessagePackSerializer.Deserialize<EnterA>(new MemoryStream(stream.ToArray())));
+                                break;
+                            case ProtocolId.GameStartA:
+                                Process(MessagePackSerializer.Deserialize<GameStartA>(new MemoryStream(stream.ToArray())));
+                                break;
+                            case ProtocolId.SendQuestionA:
+                                await ProcessAsync(MessagePackSerializer.Deserialize<SendQuestionA>(new MemoryStream(stream.ToArray())));
+                                break;
+                            case ProtocolId.SendAnswerA:
+                                Process(MessagePackSerializer.Deserialize<SendAnswerA>(new MemoryStream(stream.ToArray())));
+                                break;
+                            case ProtocolId.GameEndA:
+                                Process(MessagePackSerializer.Deserialize<GameEndA>(new MemoryStream(stream.ToArray())));
+                                break;
+                        }
                     }
-                    
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error deserializing MessagePack data: {ex.Message}");
+                    }
+    
                     stream.SetLength(0);
                 }
             }
@@ -76,86 +88,7 @@ public partial class Client
         {
             Console.WriteLine($"Error in Receive method: {ex.Message}");
         }
-    }
-    
-    /*public async Task ProcessDisconnectionAsync(MemoryStream stream)
-    {
-        try
-        {
-             while (true)
-             {
-                 byte[] buffer = new byte[4096];
-                 int bytesRead = await tcpClient.GetStream().ReadAsync(buffer, 0, buffer.Length);streamLock.Release();
-                 
-                 if (bytesRead <= 0)
-                 {
-                     break;
-                 }
- 
-                 await stream.WriteAsync(buffer, 0, bytesRead);
-                 stream.Position = 0;
-                 string jsonData = Encoding.UTF8.GetString(stream.ToArray());
- 
-                 if (TryDeserialize(jsonData, out Protocol.Protocol? protocol))
-                 {
-                     await ProcessDisconnectionProtocol(protocol, jsonData);
-                 }
-                 
-                 stream.SetLength(0);
-             }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error in Receive method: {ex.Message}");
-        }
-    }*/
-
-    private bool TryDeserialize(string jsonData, out Protocol.Protocol? protocol)
-    {
-        try
-        {
-            protocol = JsonConvert.DeserializeObject<Protocol.Protocol>(jsonData) ?? null;
-            return protocol != null;
-        }
-        catch (JsonException)
-        {
-            protocol = null;
-            return false;
-        }
-    }
-
-    private async Task ProcessDisconnectionProtocol(Protocol.Protocol? protocol, string jsonData)
-    {
-        switch (protocol?.ProtocolId)
-        {
-            case ProtocolId.DisconnectedA:
-                Process(JsonConvert.DeserializeObject<DisconnectedA>(jsonData) as DisconnectedA);
-                break;
-        }
-    }
-    private async Task ProcessProtocol(Protocol.Protocol? protocol, string jsonData)
-    {
-        switch (protocol?.ProtocolId)
-        {
-            case ProtocolId.EnterA:
-                Process(JsonConvert.DeserializeObject<EnterA>(jsonData) as EnterA);
-                break;
-            case ProtocolId.GameStartA:
-                Process(JsonConvert.DeserializeObject<GameStartA>(jsonData) as GameStartA);
-                break;
-            case ProtocolId.SendQuestionA:
-                await ProcessAsync(JsonConvert.DeserializeObject<SendQuestionA>(jsonData) as SendQuestionA);
-                break;
-            case ProtocolId.SendAnswerA:
-                Process(JsonConvert.DeserializeObject<SendAnswerA>(jsonData) as SendAnswerA);
-                break;
-            case ProtocolId.GameEndA:
-                Process(JsonConvert.DeserializeObject<GameEndA>(jsonData) as GameEndA);
-                break;
-            case ProtocolId.ReMatchA:
-                Process(JsonConvert.DeserializeObject<ReMatchA>(jsonData) as ReMatchA);
-                break;
-        }
+        
     }
     
     public async Task ProcessSendAsync()

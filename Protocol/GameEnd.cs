@@ -1,5 +1,8 @@
+using MessagePack;
+
 namespace Protocol;
 
+[MessagePackObject]
 public class GameEndQ : Protocol
 {
     
@@ -7,9 +10,10 @@ public class GameEndQ : Protocol
     public GameEndQ() : base(ProtocolId.GameEndQ) { }
 }
 
+[MessagePackObject]
 public class GameEndA : Protocol
 {
-    public bool IsWinner { get; set; }
+    [Key(1)] public bool IsWinner { get; set; }
     
     public GameEndA() : base(ProtocolId.GameEndA) { }
 }

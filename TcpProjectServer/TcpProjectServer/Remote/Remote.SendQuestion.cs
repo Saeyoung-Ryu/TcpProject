@@ -23,7 +23,5 @@ public partial class Remote
         };
         
         SendAll(sendQuestionA);
-        
-        // 여기다가 답 받는 함수 넣기?
     }
 }

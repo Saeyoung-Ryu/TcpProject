@@ -31,9 +31,6 @@
       <Compile Include="..\..\Protocol\Protocol.cs">
         <Link>Protocol\Protocol.cs</Link>
       </Compile>
-      <Compile Include="..\..\Protocol\ReMatch.cs">
-        <Link>Protocol\ReMatch.cs</Link>
-      </Compile>
       <Compile Include="..\..\Protocol\SendAnswer.cs">
         <Link>Protocol\SendAnswer.cs</Link>
       </Compile>
