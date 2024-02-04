@@ -7,4 +7,21 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.28" />
+    <PackageReference Include="MessagePack" Version="2.6.100-alpha" />
+    <PackageReference Include="MessagePack.AspNetCoreMvcFormatter" Version="2.6.100-alpha" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\Protocol2\GetUserInfo.cs">
+      <Link>Protocol2\GetUserInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Protocol2\Protocol.cs">
+      <Link>Protocol2\Protocol.cs</Link>
+    </Compile>
+  </ItemGroup>
+
 </Project>

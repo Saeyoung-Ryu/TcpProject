@@ -1,19 +1,17 @@
 ﻿<Properties StartupConfiguration="{613E0A9D-C07E-421E-BEF8-DF13BD746146}|Default">
-  <MonoDevelop.Ide.ItemProperties.TcpProjectClient PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.TcpProjectClient PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="TcpProjectClient/Client/Client.cs">
     <Files>
       <File FileName="TcpProjectClient/Client/Client.cs" Line="70" Column="57" />
-      <File FileName="TcpProjectClient/Client/Client.GameStart.cs" Line="7" Column="35" />
+      <File FileName="TcpProjectClient/Client/Client.GameStart.cs" />
       <File FileName="TcpProjectClient/Client/Client.GameEnd.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="TcpProjectClient">
+          <Node name="TcpProjectClient" expanded="True">
             <Node name="TcpProjectClient" expanded="True">
               <Node name="Client" expanded="True">
                 <Node name="Client.cs" selected="True" />
@@ -25,6 +23,8 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

@@ -1,20 +1,15 @@
 ﻿<Properties StartupConfiguration="{AAD4CD53-EBCE-4799-96C6-656CD97964C8}|Default">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workbench ActiveDocument="HttpProjectServer/Program.cs">
     <Files>
-      <File FileName="HttpProjectServer/Program.cs" Line="26" Column="2" />
+      <File FileName="HttpProjectServer/Program.cs" Line="25" Column="6" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="HttpProjectServer" expanded="True">
-            <Node name="HttpProjectServer">
-              <Node name="Dependencies" expanded="True">
-                <Node name="FrameworkReferences" expanded="True" />
-              </Node>
+            <Node name="HttpProjectServer" expanded="True">
               <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
@@ -22,7 +17,9 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.HttpProjectServer PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

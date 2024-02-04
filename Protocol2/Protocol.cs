@@ -1,7 +1,7 @@
 using MessagePack;
 
 
-namespace Protocol
+namespace Protocol2
 {
     [MessagePackObject]
     public class Protocol
