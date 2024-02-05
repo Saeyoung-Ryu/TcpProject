@@ -72,7 +72,7 @@ public partial class Client
                                 break;
                             case ProtocolId.GameEndA:
                                 Process(MessagePackSerializer.Deserialize<GameEndA>(new MemoryStream(stream.ToArray())));
-                                break;
+                                return;
                         }
                     }
                     catch (Exception ex)

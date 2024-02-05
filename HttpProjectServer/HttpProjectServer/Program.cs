@@ -3,16 +3,15 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
 
-namespace YourNamespace
+namespace HttpProjectServer
 {
     public class Program
     {
 
         public static async Task Main(string[] args)
         {
-            {
-                
-            }
+            Service.Service.Initialize();
+            
             CreateHostBuilder(args).Build().Run();
         }
 
@@ -21,7 +20,7 @@ namespace YourNamespace
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                    // webBuilder.UseUrls($"{MyProjectInfoConfig.Instance.ServerAddress}"); // this server url 내가세팅가능
+                    webBuilder.UseUrls("http://localhost:8080"); // server url 내가세팅가능
                 });
     }
 }

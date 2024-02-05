@@ -16,8 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\..\Protocol2\GetUserInfo.cs">
-      <Link>Protocol2\GetUserInfo.cs</Link>
+    <Compile Include="..\..\Protocol2\LoadData.cs">
+      <Link>Protocol2\LoadData.cs</Link>
     </Compile>
     <Compile Include="..\..\Protocol2\Protocol.cs">
       <Link>Protocol2\Protocol.cs</Link>

@@ -3,13 +3,13 @@ using MessagePack;
 namespace Protocol2
 {
     [MessagePackObject]
-    public class GetUserInfoQ : Protocol
+    public class LoadDataReq : Protocol
     {
         [Key(1)] public int UserId { get; set; }
     }
 
     [MessagePackObject]
-    public class GetUserInfoA : Protocol
+    public class LoadDataRes : ProtocolRes
     {
         [Key(1)] public int UserId { get; set; }
 

@@ -1,3 +1,4 @@
+using System.Net.Sockets;
 using Protocol;
 
 namespace TcpProjectServer;
@@ -32,5 +33,8 @@ public partial class Remote
                 IsWinner = false
             });
         }
+        
+        client1.Close();
+        client2.Close();
     }
 }
