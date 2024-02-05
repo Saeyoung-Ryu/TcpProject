@@ -38,6 +38,7 @@ namespace Service
         {
             if (dicHandler.TryGetValue(req.ProtocolId, out var handler) == false)
             {
+                Console.WriteLine("Unknown Protocol : {0}", req.ProtocolId);
                 if (handler == null)
                     return new ProtocolRes();
             }

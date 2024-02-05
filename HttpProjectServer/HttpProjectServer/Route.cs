@@ -20,6 +20,7 @@ namespace HttpProjectServer
         {
             if (context.Request.HasFormContentType && context.Request.Form.ContainsKey("messagePackData"))
             {
+                Console.WriteLine("InvokeAsync");
                 var messagePackData = context.Request.Form["messagePackData"];
                 byte[] requestData = Convert.FromBase64String(messagePackData);
 
