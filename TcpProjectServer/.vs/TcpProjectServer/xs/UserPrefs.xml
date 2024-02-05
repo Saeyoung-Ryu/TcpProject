@@ -1,14 +1,17 @@
 ﻿<Properties StartupConfiguration="{70EC01AA-09AE-4C7C-B490-BABAD08D4E90}|Default">
-  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.TcpProjectServer PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="TcpProjectServer/Remote/Remote.cs">
     <Files>
-      <File FileName="TcpProjectServer/Program.cs" Line="11" Column="40" />
-      <File FileName="TcpProjectServer/Remote/Remote.cs" />
+      <File FileName="TcpProjectServer/Program.cs" Line="11" Column="39" />
+      <File FileName="TcpProjectServer/Remote/Remote.cs" Line="18" Column="21" />
       <File FileName="TcpProjectServer/Remote/Remote.GameStart.cs" />
-      <File FileName="TcpProjectServer/TcpServerManager.cs" Line="57" Column="19" />
+      <File FileName="TcpProjectServer/TcpServerManager.cs" Line="55" Column="22" />
       <File FileName="TcpProjectServer/Remote/Remote.SendAnswer.cs" />
       <File FileName="TcpProjectServer/Remote/Remote.Disconnected.cs" />
       <File FileName="TcpProjectServer/Remote/Remote.Enter.cs" />
@@ -21,16 +24,15 @@
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="TcpProjectServer" expanded="True">
-            <Node name="TcpProjectServer" expanded="True">
-              <Node name="Remote" expanded="True" />
+          <Node name="TcpProjectServer">
+            <Node name="TcpProjectServer">
+              <Node name="Remote" expanded="True">
+                <Node name="Remote.cs" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.TcpProjectServer PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

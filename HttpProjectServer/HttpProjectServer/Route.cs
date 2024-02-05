@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 using MessagePack;
+using MessagePack.Resolvers;
 using Protocol2;
 
 namespace HttpProjectServer
@@ -43,25 +44,30 @@ namespace HttpProjectServer
         }*/
         public async Task InvokeAsync(HttpContext context)
         {
+            Console.WriteLine("Invoked!!!");
             if (context.Request.ContentType == "application/octet-stream")
             {
                 // Read raw bytes from the request body
                 using (MemoryStream ms = new MemoryStream())
                 {
+                    Console.WriteLine("Here1");
                     await context.Request.Body.CopyToAsync(ms);
                     byte[] requestData = ms.ToArray();
 
                     // Deserialize the MessagePack data
                     var protocol = MessagePackSerializer.Deserialize<Protocol>(requestData);
-
+                    Console.WriteLine("Here2");
+                    Console.WriteLine(protocol.ProtocolId);
                     // Process the request and prepare the response
                     var protocolRes = await Service.Service.ProcessAsync(context, protocol);
                     byte[] responseData = MessagePackSerializer.Serialize(protocolRes);
-
+                    
+                    Console.WriteLine("Here3");
                     // Send the response to the client
                     context.Response.ContentType = "application/octet-stream";
                     context.Response.ContentLength = responseData.Length;
                     await context.Response.Body.WriteAsync(responseData);
+                    Console.WriteLine("Here4");
                 }
             }
             else

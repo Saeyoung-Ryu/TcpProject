@@ -1,25 +1,37 @@
 ﻿<Properties StartupConfiguration="{AAD4CD53-EBCE-4799-96C6-656CD97964C8}|Default">
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="HttpProjectServer/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="HttpProjectServer/Route.cs">
     <Files>
-      <File FileName="HttpProjectServer/Program.cs" Line="25" Column="6" />
+      <File FileName="HttpProjectServer/Program.cs" Line="22" Column="48" />
+      <File FileName="../TcpProjectClient/TcpProjectClient/Program.cs" Line="63" Column="39" />
+      <File FileName="HttpProjectServer/Startup.cs" Line="61" Column="29" />
+      <File FileName="HttpProjectServer/Route.cs" Line="40" Column="19" />
+      <File FileName="../Protocol2/Protocol.cs" Line="7" Column="18" />
+      <File FileName="../Protocol2/LoadData.cs" Line="6" Column="18" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="HttpProjectServer" expanded="True">
-            <Node name="HttpProjectServer" expanded="True">
-              <Node name="Program.cs" selected="True" />
+            <Node name="HttpProjectServer">
+              <Node name="Protocol2" expanded="True" />
+              <Node name="Route.cs" selected="True" />
+            </Node>
+          </Node>
+          <Node name="TcpProjectClient" expanded="True">
+            <Node name="TcpProjectClient">
+              <Node name="Protocol" expanded="True" />
+              <Node name="Protocol2" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.HttpProjectServer PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.HttpProjectServer PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

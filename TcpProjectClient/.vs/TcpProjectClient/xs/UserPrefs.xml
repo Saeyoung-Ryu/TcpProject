@@ -1,30 +1,26 @@
 ﻿<Properties StartupConfiguration="{613E0A9D-C07E-421E-BEF8-DF13BD746146}|Default">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.TcpProjectClient PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="TcpProjectClient/Client/Client.cs">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="../HttpProjectServer/HttpProjectServer/Route.cs">
     <Files>
-      <File FileName="TcpProjectClient/Client/Client.cs" Line="70" Column="57" />
-      <File FileName="TcpProjectClient/Client/Client.GameStart.cs" />
-      <File FileName="TcpProjectClient/Client/Client.GameEnd.cs" />
+      <File FileName="../HttpProjectServer/HttpProjectServer/Program.cs" />
+      <File FileName="TcpProjectClient/Program.cs" />
+      <File FileName="../HttpProjectServer/HttpProjectServer/Startup.cs" />
+      <File FileName="../HttpProjectServer/HttpProjectServer/Route.cs" Line="51" Column="38" />
+      <File FileName="../Protocol2/Protocol.cs" />
+      <File FileName="../Protocol2/LoadData.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="TcpProjectClient" expanded="True">
-            <Node name="TcpProjectClient" expanded="True">
-              <Node name="Client" expanded="True">
-                <Node name="Client.cs" selected="True" />
-              </Node>
-              <Node name="Protocol" expanded="True" />
-            </Node>
-          </Node>
+          <Node name="TcpProjectClient" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>
