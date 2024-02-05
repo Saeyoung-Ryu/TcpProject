@@ -16,7 +16,7 @@ namespace HttpProjectServer
             _next = next;
         }
 
-        public async Task InvokeAsync(HttpContext context)
+        /*public async Task InvokeAsync(HttpContext context)
         {
             if (context.Request.HasFormContentType && context.Request.Form.ContainsKey("messagePackData"))
             {
@@ -40,6 +40,36 @@ namespace HttpProjectServer
                 context.Response.StatusCode = 400;
                 await context.Response.WriteAsync("Invalid request");
             }
+        }*/
+        public async Task InvokeAsync(HttpContext context)
+        {
+            if (context.Request.ContentType == "application/octet-stream")
+            {
+                // Read raw bytes from the request body
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    await context.Request.Body.CopyToAsync(ms);
+                    byte[] requestData = ms.ToArray();
+
+                    // Deserialize the MessagePack data
+                    var protocol = MessagePackSerializer.Deserialize<Protocol>(requestData);
+
+                    // Process the request and prepare the response
+                    var protocolRes = await Service.Service.ProcessAsync(context, protocol);
+                    byte[] responseData = MessagePackSerializer.Serialize(protocolRes);
+
+                    // Send the response to the client
+                    context.Response.ContentType = "application/octet-stream";
+                    context.Response.ContentLength = responseData.Length;
+                    await context.Response.Body.WriteAsync(responseData);
+                }
+            }
+            else
+            {
+                context.Response.StatusCode = 400;
+                await context.Response.WriteAsync("Invalid request");
+            }
         }
+
     }
 }
