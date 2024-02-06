@@ -40,6 +40,20 @@ public class TcpServerManager
 
             if (clients.Count == 2)
             {
+                bool isAllConnected = true;
+                
+                // 매칭중 튕겼을때 큐에서 빼내주기
+                foreach (var tcpClient in new[] {clients.Dequeue(), clients.Dequeue()})
+                {
+                    if (tcpClient.Client.Poll(0, SelectMode.SelectRead))
+                        isAllConnected = false;
+                    else
+                        clients.Enqueue(tcpClient);
+                }
+                
+                if (!isAllConnected)
+                    continue;
+                
                 Console.WriteLine("2 clients connected");
                 await Task.Run(() => HandleClients(clients.Dequeue(), clients.Dequeue()));
             }
