@@ -22,6 +22,9 @@
     <Compile Include="..\..\Protocol2\Protocol.cs">
       <Link>Protocol2\Protocol.cs</Link>
     </Compile>
+    <Compile Include="..\..\Protocol2\ProtocolReq.cs">
+      <Link>Protocol2\ProtocolReq.cs</Link>
+    </Compile>
   </ItemGroup>
 
 </Project>

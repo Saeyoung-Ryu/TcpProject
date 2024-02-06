@@ -1,39 +1,30 @@
 using MessagePack;
 
-
 namespace Protocol2
 {
-    [MessagePackObject]
-    public class Protocol
-    {
-        [Key(0)] public ProtocolId ProtocolId { get; set; }
+	public enum ProtocolId
+	{
+		None = 0,
+		LoadData = 1,
+	}
+	
+	[MessagePackObject]
+	[Union(0, typeof(LoadDataReq))]
+	public abstract class Protocol
+	{
+		[Key(0)] public ProtocolId ProtocolId { get; set; }
 
-        public Protocol()
-        {
-        }
+		public Protocol() {}
+		public Protocol(ProtocolId protocolId) { ProtocolId = protocolId; }
+	}
+	
+	[MessagePackObject]
+	[Union(0, typeof(LoadDataRes))]
+	public abstract class ProtocolRes
+	{
+		[Key(0)] public ProtocolId ProtocolId { get; set; }
 
-        public Protocol(ProtocolId protocolId)
-        {
-            ProtocolId = protocolId;
-        }
-    }
-
-    public class ProtocolRes
-    {
-        [Key(0)] public ProtocolId ProtocolId { get; set; }
-
-        public ProtocolRes()
-        {
-        }
-
-        public ProtocolRes(ProtocolId protocolId)
-        {
-            ProtocolId = protocolId;
-        }
-    }
-
-    public enum ProtocolId
-    {
-        LoadData = 1,
-    }
+		public ProtocolRes() {}
+		public ProtocolRes(ProtocolId protocolId) { ProtocolId = protocolId; }
+	}
 }

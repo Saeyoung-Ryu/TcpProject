@@ -40,10 +40,15 @@ namespace HttpClientExample
         {
             Console.WriteLine("Here");
             // Create an instance of LoadDataReq with sample data
-            var requestData = new LoadDataReq
+            var loadDataReq = new LoadDataReq
             {
                 ProtocolId = ProtocolId.LoadData,
-                UserId = 123
+                UserId = 347374
+            };
+            
+            ProtocolReq requestData = new ProtocolReq
+            {
+                Protocol = loadDataReq
             };
 
             // Serialize the request data to MessagePack format
@@ -79,7 +84,9 @@ namespace HttpClientExample
 
 
                     // Process the response data
-                    
+                    var a = (LoadDataRes) responseData;
+                    Console.WriteLine(a.UserId);
+                    Console.WriteLine(a.UserName);
                 }
                 else
                 {

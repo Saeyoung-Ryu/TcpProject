@@ -19,6 +19,9 @@
       <Compile Include="..\..\Protocol2\Protocol.cs">
         <Link>Protocol2\Protocol.cs</Link>
       </Compile>
+      <Compile Include="..\..\Protocol2\ProtocolReq.cs">
+        <Link>Protocol2\ProtocolReq.cs</Link>
+      </Compile>
       <Compile Include="..\..\Protocol\Disconnected.cs">
         <Link>Protocol\Disconnected.cs</Link>
       </Compile>

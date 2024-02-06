@@ -13,7 +13,9 @@ public class ServiceLoadData : IService
     {
         var req = (LoadDataReq)request;
         var res = new LoadDataRes();
-        
+
+        res.UserId = 88899;
+        res.UserName = "TestUser123";
         Console.WriteLine("ServiceLoadData.ProcessAsync");
 
         return res;
