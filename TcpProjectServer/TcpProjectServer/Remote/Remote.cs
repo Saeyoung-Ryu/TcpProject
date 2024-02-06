@@ -8,6 +8,9 @@ namespace TcpProjectServer;
     {
         private TcpClient client1;
         private TcpClient client2;
+
+        private string client1Nickname = "";
+        private string client2Nickname = "";
         
         public int client1Life = 5;
         public int client2Life = 5;
@@ -60,16 +63,14 @@ namespace TcpProjectServer;
                     catch (Exception ex)
                     {
                         Console.WriteLine($"Error deserializing MessagePack data: {ex.Message}");
-                    }
-                    
-                    if (protocol == null)
-                    {
-                        Console.WriteLine("It is null");
                         return;
                     }
 
                     switch (protocol?.ProtocolId)
                     {
+                        case ProtocolId.EnterQ:
+                            Process(MessagePackSerializer.Deserialize<EnterQ>(new MemoryStream(stream.ToArray())));
+                            break;
                         case ProtocolId.SendAnswerQ:
                             await ProcessAsync(MessagePackSerializer.Deserialize<SendAnswerQ>(new MemoryStream(stream.ToArray())));
                             break;
@@ -84,8 +85,7 @@ namespace TcpProjectServer;
                 }
             }
         }
-
-
+        
         private void SendAll<T>(T data)
         {
             SendToClient1(data);
@@ -94,14 +94,24 @@ namespace TcpProjectServer;
 
         private void SendToClient1<T>(T data)
         {
-            // MessagePack 사용
+            if (CheckIfDisconnected(client1))
+            {
+                Console.WriteLine("client1 disconnected");
+                return;
+            }
+            
             byte[] buffer = MessagePackSerializer.Serialize(data);
             client1.GetStream().Write(buffer, 0, buffer.Length);
         }
         
         private void SendToClient2<T>(T data)
         {
-            // MessagePack 사용
+            if(CheckIfDisconnected(client2))
+            {
+                Console.WriteLine("client2 disconnected");
+                return;
+            }
+            
             byte[] buffer = MessagePackSerializer.Serialize(data);
             client2.GetStream().Write(buffer, 0, buffer.Length);
         }
@@ -111,5 +121,13 @@ namespace TcpProjectServer;
             client1Life = 5;
             client2Life = 5;
             round = 1;
+        }
+
+        private bool CheckIfDisconnected(TcpClient tcpClient)
+        {
+            if (tcpClient.Client.Poll(0, SelectMode.SelectRead))
+                return true;
+            
+            return false;
         }
     }
