@@ -8,9 +8,6 @@ namespace TcpProjectServer;
     {
         private TcpClient client1;
         private TcpClient client2;
-
-        private string client1Nickname = "";
-        private string client2Nickname = "";
         
         public int client1Life = 5;
         public int client2Life = 5;
@@ -46,13 +43,6 @@ namespace TcpProjectServer;
                         break;
                     }
                     
-                    //if (tcpClient.Client.Poll(0, SelectMode.SelectRead))
-                    //{
-                    //    Console.WriteLine("Connection closed by the remote endpoint");
-                    //    Process(new DisconnectedQ());
-                    //    break;
-                    //}
-                    
                     stream.Position = 0;
                     
                     Protocol.Protocol? protocol = null;
@@ -77,7 +67,6 @@ namespace TcpProjectServer;
                         case ProtocolId.ExitQ:
                             Process(MessagePackSerializer.Deserialize<ExitQ>(new MemoryStream(stream.ToArray())));
                             break;
-                        // Add more cases for other protocols if needed
                     }
         
                     // Reset the stream for the next iteration

@@ -8,8 +8,6 @@ public partial class Remote
     private void Process(GameEndQ gameEndQ)
     {
         Console.WriteLine("GameEndQ Called");
-        Console.WriteLine($"client1Life: {client1Life}");
-        Console.WriteLine($"client2Life: {client2Life}");
         
         if (client1Life == 0)
         {
@@ -36,5 +34,6 @@ public partial class Remote
         
         client1.Close();
         client2.Close();
+        TcpServerManager.remoteQueue.Enqueue(this);
     }
 }

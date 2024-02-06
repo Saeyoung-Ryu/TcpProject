@@ -22,7 +22,11 @@ public partial class Client
         Console.WriteLine($"Connected to server: {serverIp}:{serverPort}");
 
         Task.Run(ProcessReceiveAsync);
-        Task.Run(() => ProcessSendAsync());
+        Task.Run(ProcessSendAsync);
+        while (true)
+        {
+
+        }
     }
     
     private void Send<T>(T data)

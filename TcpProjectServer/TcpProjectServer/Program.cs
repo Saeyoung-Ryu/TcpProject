@@ -6,9 +6,7 @@ namespace TcpProjectServer
     {
         static async Task Main(string[] args)
         {
-
-
-            await TcpServerManager.Start(3360);
+            await TcpServerManager.StartServer(3360);
         }
     }
 }

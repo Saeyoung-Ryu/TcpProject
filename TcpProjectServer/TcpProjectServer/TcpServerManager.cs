@@ -14,7 +14,7 @@ public class TcpServerManager
     
     public static Queue<Remote> remoteQueue = new Queue<Remote>();
 
-    public static async Task Start(int port)
+    public static async Task StartServer(int port)
     {
         tcpListener = new TcpListener(IPAddress.Any, port);
         tcpListener.Start();
