@@ -10,23 +10,12 @@ namespace HttpServer
         public static void Main(string[] args)
         {
             Service.Service.Initialize();
-
-            // var blazorHost = CreateHostBuilder(args).Build();
-            // blazorHost.RunAsync();
             
-            var httpServerHost = CreateHttpServerHostBuilder(args).Build();
-            httpServerHost.Run();
+            CreateHttpServerHostBuilder(args).Build().Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<BlazorStartup>();
-                    webBuilder.UseUrls("http://localhost:9090");
-                });
 
-        public static IHostBuilder CreateHttpServerHostBuilder(string[] args) =>
+        private static IHostBuilder CreateHttpServerHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {

@@ -18,15 +18,12 @@ namespace HttpServer
         }
         public async Task InvokeAsync(HttpContext context)
         {
-            var pathEnd = context.Request.Path.Value;
-            Console.WriteLine(pathEnd);
-            if (pathEnd != null && (pathEnd.Contains("Tool") || pathEnd.Contains("blazor")))
+            if (context.Request.Path.Value != "/")
             {
-                context.Response.StatusCode = StatusCodes.Status404NotFound;
-                await context.Response.WriteAsync("Resource not found.");
+                await _next(context);
                 return;
             }
-            Console.WriteLine("Invoked!!");
+            
             using (MemoryStream ms = new MemoryStream())
             {
                 await context.Request.Body.CopyToAsync(ms);
@@ -36,9 +33,7 @@ namespace HttpServer
                 var protocolReq = MessagePackSerializer.Deserialize<ProtocolReq>(requestData);
                 var protocolRes = await Service.Service.ProcessAsync(context, protocolReq.Protocol);
                 byte[] responseData = MessagePackSerializer.Serialize(protocolRes);
-                    
-                context.Response.ContentType = "application/octet-stream";
-                context.Response.ContentLength = responseData.Length;
+                
                 await context.Response.Body.WriteAsync(responseData);
             }
         }

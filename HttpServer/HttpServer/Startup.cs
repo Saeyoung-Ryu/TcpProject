@@ -8,16 +8,6 @@ namespace HttpServer
 {
     public class Startup
     {
-        // public void ConfigureServices(IServiceCollection services)
-        // {
-        //     
-        // }
-        //
-        // public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        // {
-        //     Console.WriteLine("Startup");
-        //     app.UseMiddleware<Route>();
-        // }
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
@@ -27,6 +17,8 @@ namespace HttpServer
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseMiddleware<Route>();
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -36,15 +28,9 @@ namespace HttpServer
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
-
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
-
-            // Ensure that the UseMiddleware<Route>() call is before the UseEndpoints middleware
-            app.UseMiddleware<Route>();
-
             app.UseEndpoints(endpoints =>
             {
                 // Map Blazor hub
@@ -54,9 +40,5 @@ namespace HttpServer
                 endpoints.MapFallbackToPage("/_Host");
             });
         }
-
-
-
-
     }
 }
