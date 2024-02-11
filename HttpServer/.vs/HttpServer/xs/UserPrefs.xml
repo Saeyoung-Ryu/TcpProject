@@ -1,0 +1,10 @@
+﻿<Properties StartupConfiguration="{A3B0524A-50D9-454F-B5AB-180CD64491CE}|https">
+  <MonoDevelop.Ide.ItemProperties.HttpServer PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+</Properties>

@@ -18,6 +18,7 @@ namespace HttpServer
         }
         public async Task InvokeAsync(HttpContext context)
         {
+            // blazor 요청 /Tool/~ 로 들어오는거 예외처리
             if (context.Request.Path.Value != "/")
             {
                 await _next(context);

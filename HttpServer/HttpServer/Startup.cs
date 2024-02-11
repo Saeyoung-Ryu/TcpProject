@@ -12,7 +12,6 @@ namespace HttpServer
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
