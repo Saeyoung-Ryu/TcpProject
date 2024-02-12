@@ -73,3 +73,6 @@
 /Users/saeyoungryu/Projects/TcpProject/HttpServer/HttpServer/obj/Debug/net7.0/HttpServer.pdb
 /Users/saeyoungryu/Projects/TcpProject/HttpServer/HttpServer/obj/Debug/net7.0/HttpServer.genruntimeconfig.cache
 /Users/saeyoungryu/Projects/TcpProject/HttpServer/HttpServer/obj/Debug/net7.0/ref/HttpServer.dll
+/Users/saeyoungryu/Projects/TcpProject/HttpServer/HttpServer/bin/Debug/net7.0/ServerInfo.config
+/Users/saeyoungryu/Projects/TcpProject/HttpServer/HttpServer/bin/Debug/net7.0/MySqlConnector.dll
+/Users/saeyoungryu/Projects/TcpProject/HttpServer/HttpServer/bin/Debug/net7.0/Newtonsoft.Json.dll

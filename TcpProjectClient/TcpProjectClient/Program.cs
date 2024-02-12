@@ -40,7 +40,7 @@ namespace HttpClientExample
             var loadDataReq = new LoadDataReq
             {
                 ProtocolId = ProtocolId.LoadData,
-                UserId = 347374
+                NickName = "Sy1234"
             };
             
             ProtocolReq requestData = new ProtocolReq
@@ -82,8 +82,8 @@ namespace HttpClientExample
 
                     // Process the response data
                     var a = (LoadDataRes) responseData;
-                    Console.WriteLine(a.UserId);
-                    Console.WriteLine(a.UserName);
+                    Console.WriteLine(a.NickName);
+                    Console.WriteLine(a.CreateTime);
                 }
                 else
                 {

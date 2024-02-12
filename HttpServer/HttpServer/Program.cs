@@ -9,6 +9,7 @@ namespace HttpServer
     {
         public static void Main(string[] args)
         {
+            ServerInfoConfig.Refresh();
             Service.Service.Initialize();
             
             CreateHttpServerHostBuilder(args).Build().Run();
@@ -20,7 +21,7 @@ namespace HttpServer
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                    webBuilder.UseUrls("http://localhost:8080");
+                    webBuilder.UseUrls(ServerInfoConfig.Instance.ServerUrl);
                 });
     }
 }

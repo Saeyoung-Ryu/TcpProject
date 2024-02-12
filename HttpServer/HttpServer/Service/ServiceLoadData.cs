@@ -1,5 +1,5 @@
+using Common;
 using HttpServer;
-using Microsoft.AspNetCore.Http;
 using Protocol2;
 
 namespace Service;
@@ -14,10 +14,31 @@ public class ServiceLoadData : IService
         var req = (LoadDataReq)request;
         var res = new LoadDataRes();
 
-        res.UserId = 88899;
-        res.UserName = "TestUser123";
-        Console.WriteLine("ServiceLoadData.ProcessAsync");
+        try
+        {
+            LoadDataRes loadDataRes = new LoadDataRes();
+            var player = await AccountDB.GetPlayerAsync(req.NickName);
 
+            if (player == null)
+            {
+                await AccountDB.SetPlayerAsync(req.NickName);
+                loadDataRes.NickName = req.NickName;
+                loadDataRes.CreateTime = DateTime.UtcNow;
+            }
+            else
+            {
+                loadDataRes.NickName = player.Nickname;
+                loadDataRes.CreateTime = player.CreateTime;
+            }
+
+            res = loadDataRes;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+        
         return res;
     }
 }

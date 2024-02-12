@@ -12,6 +12,8 @@
       <PackageReference Include="MessagePack.AspNetCoreMvcFormatter" Version="2.6.100-alpha" />
       <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.0" />
       <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+      <PackageReference Include="MySqlConnector" Version="2.3.5" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     </ItemGroup>
 
     <ItemGroup>
