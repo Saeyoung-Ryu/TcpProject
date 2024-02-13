@@ -11,7 +11,7 @@ public class TcpServerManager
 {
     private static TcpListener tcpListener;
     
-    private static SemaphoreSlim semaphore = new SemaphoreSlim(2); // Limit to 2 simultaneous connections
+    private static SemaphoreSlim semaphore = new SemaphoreSlim(2); // Limit to 2 simultaneous connections. Semaphore 는 raceCondition 방지
     public static SemaphoreSlim semaphore1 = new SemaphoreSlim(0); // Semaphore to signal availability of Remote objects
     
     // Use ConcurrentQueue for thread-safe access
@@ -42,20 +42,47 @@ public class TcpServerManager
         {
             // Wait for semaphore to allow new connection
             await semaphore.WaitAsync();
-
+    
             TcpClient client = await tcpListener.AcceptTcpClientAsync();
             Console.WriteLine($"Client connected: {((IPEndPoint)client.Client.RemoteEndPoint).Address}");
-
+    
             clients.Enqueue(client);
-
+    
             // Start handling clients if there are at least two in the queue
-            if (clients.Count >= 2)
+            if (clients.Count == 2)
             {
+                bool isAllConnected = true;
+    
+                TcpClient client1 = null;
+                TcpClient client2 = null;
+                
+                var tryDequeueResult= clients.TryDequeue(out client1) && clients.TryDequeue(out client2);
+                if (!tryDequeueResult)
+                    continue;
+    
+                // 매칭중 튕겼을때 큐에서 빼내주기
+                foreach (var tcpClient in new[] {client1, client2})
+                {
+                    if (tcpClient.Client.Poll(0, SelectMode.SelectRead))
+                        isAllConnected = false;
+                    else
+                    {
+                        clients.Enqueue(tcpClient);
+                        semaphore.Release(1);
+                    }
+                }
+                
+                if (!isAllConnected)
+                    continue;
+                
+                Console.WriteLine("2 clients connected");
+                // await Task.Run(() => HandleClients(clients.Dequeue(), clients.Dequeue()));
+    
                 await Task.Run(HandleNextClients);
             }
         }
     }
-
+    
     private static async Task HandleNextClients()
     {
         try
