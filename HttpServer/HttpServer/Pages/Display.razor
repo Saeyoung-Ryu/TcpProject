@@ -1,0 +1,45 @@
+﻿@using HttpServer.Data
+@inject PlayerService PlayerService
+
+<br>
+<br>
+<div>
+    <table id="Border-Solid" class="table table-border table-hover w-auto">
+        <tbody>
+        <tr>
+            <td>Nickname</td>
+            <td><input type="text" size="15" @bind="@searchInfo.Nickname"></td>
+            <td><button type="submit" class="btn btn-outline-secondary" @onclick="SearchWithNickNameBtnAsync">Search</button></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<br>
+
+@code {
+    
+    SearchInfo searchInfo = new SearchInfo();
+
+    [Parameter]
+    public Player? Player { get; set; } = null;
+    
+    private async Task SearchWithNickNameBtnAsync()
+    {
+        Player = await AccountDB.GetPlayerAsync(searchInfo.Nickname);
+        
+        if(Player != null)
+            PlayerService.CurrentPlayer = Player;
+    }
+
+}
+
+@code
+{
+    class SearchInfo
+    {
+        public string Nickname { get; set; }
+        public long Seq { get; set; }    
+    }
+
+}

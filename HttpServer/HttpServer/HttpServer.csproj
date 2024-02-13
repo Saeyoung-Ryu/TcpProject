@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <PackageReference Include="Dapper" Version="2.1.28" />
+      <PackageReference Include="MatBlazor" Version="2.10.0" />
       <PackageReference Include="MessagePack" Version="2.6.100-alpha" />
       <PackageReference Include="MessagePack.AspNetCoreMvcFormatter" Version="2.6.100-alpha" />
       <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.0" />
@@ -17,6 +18,24 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Compile Include="..\..\Common\AccountDB\GetPlayer.cs">
+        <Link>Common\AccountDB\GetPlayer.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\AccountDB\SetPlayer.cs">
+        <Link>Common\AccountDB\SetPlayer.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\Manager\PlayerManager.cs">
+        <Link>Common\Manager\PlayerManager.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\ServerInfoConfig.cs">
+        <Link>Common\ServerInfoConfig.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\Type\Player.cs">
+        <Link>Common\Type\Player.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\Type\ServerVariable.cs">
+        <Link>Common\Type\ServerVariable.cs</Link>
+      </Compile>
       <Compile Include="..\..\Protocol2\LoadData.cs">
         <Link>Protocol2\LoadData.cs</Link>
       </Compile>

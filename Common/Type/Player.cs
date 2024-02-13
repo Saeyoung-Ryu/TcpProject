@@ -1,4 +1,4 @@
-namespace HttpServer.Type;
+namespace Common;
 
 public class Player
 {

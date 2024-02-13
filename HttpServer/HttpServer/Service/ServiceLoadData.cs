@@ -16,22 +16,10 @@ public class ServiceLoadData : IService
 
         try
         {
-            LoadDataRes loadDataRes = new LoadDataRes();
-            var player = await AccountDB.GetPlayerAsync(req.NickName);
+            var playerInfo = await PlayerManager.GetPlayerAsync(req.NickName);
 
-            if (player == null)
-            {
-                await AccountDB.SetPlayerAsync(req.NickName);
-                loadDataRes.NickName = req.NickName;
-                loadDataRes.CreateTime = DateTime.UtcNow;
-            }
-            else
-            {
-                loadDataRes.NickName = player.Nickname;
-                loadDataRes.CreateTime = player.CreateTime;
-            }
-
-            res = loadDataRes;
+            res.NickName = playerInfo.Nickname;
+            res.CreateTime = playerInfo.CreateTime;
         }
         catch (Exception e)
         {

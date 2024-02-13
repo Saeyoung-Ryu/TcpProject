@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using HttpServer.Data;
+using MatBlazor;
 
 namespace HttpServer
 {
@@ -12,6 +13,9 @@ namespace HttpServer
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
+            services.AddMatBlazor();
+
+            services.AddScoped<PlayerService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

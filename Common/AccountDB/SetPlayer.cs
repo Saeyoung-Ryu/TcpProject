@@ -1,7 +1,5 @@
 using System.Data;
-using HttpServer.Type;
 using Dapper;
-using HttpServer;
 using MySqlConnector;
 
 namespace Common

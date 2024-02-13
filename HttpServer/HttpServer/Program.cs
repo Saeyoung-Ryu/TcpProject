@@ -1,7 +1,4 @@
-using Microsoft.AspNetCore.Components.Web;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
-using HttpServer.Data;
+using Common;
 
 namespace HttpServer
 {
@@ -10,6 +7,7 @@ namespace HttpServer
         public static void Main(string[] args)
         {
             ServerInfoConfig.Refresh();
+            ServerVariable.Refresh();
             Service.Service.Initialize();
             
             CreateHttpServerHostBuilder(args).Build().Run();

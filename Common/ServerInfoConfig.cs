@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace HttpServer;
+namespace Common;
 
 public class ServerInfoConfig
 {
