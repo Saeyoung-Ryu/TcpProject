@@ -1,24 +1,22 @@
-﻿// using System;
-// using System.Globalization;
-//
-// namespace TcpProjectClient
-// {
-//     internal class Program
-//     {
-//         static async Task Main(string[] args)
-//         {
-//             StartTcp();
-//         }
-//
-//         static void StartTcp()
-//         {
-//             Client client = new Client("127.0.0.1", 3360);
-//             
-//         }
-//     }
-// }
+﻿using System;
+using System.Globalization;
+namespace TcpProjectClient
+{
+    internal class Program
+    {
+        static async Task Main(string[] args)
+        {
+            StartTcp();
+        }
+        static void StartTcp()
+        {
+            Client client = new Client("127.0.0.1", 3360);
+            
+        }
+    }
+}
 
-using System;
+/*using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using MessagePack;
@@ -92,4 +90,4 @@ namespace HttpClientExample
             }
         }
     }
-}
+}*/

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Concurrent;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -10,7 +11,11 @@ public class TcpServerManager
 {
     private static TcpListener tcpListener;
     
-    public static Queue<TcpClient> clients = new Queue<TcpClient>();
+    private static SemaphoreSlim semaphore = new SemaphoreSlim(2); // Limit to 2 simultaneous connections
+    public static SemaphoreSlim semaphore1 = new SemaphoreSlim(0); // Semaphore to signal availability of Remote objects
+    
+    // Use ConcurrentQueue for thread-safe access
+    public static ConcurrentQueue<TcpClient> clients = new ConcurrentQueue<TcpClient>();
     
     public static Queue<Remote> remoteQueue = new Queue<Remote>();
 
@@ -26,6 +31,8 @@ public class TcpServerManager
             remoteQueue.Enqueue(remote);
         }
         
+        semaphore1.Release(remoteQueue.Count);
+        
         await Task.Run(AcceptClients);
     }
 
@@ -33,41 +40,56 @@ public class TcpServerManager
     {
         while (true)
         {
+            // Wait for semaphore to allow new connection
+            await semaphore.WaitAsync();
+
             TcpClient client = await tcpListener.AcceptTcpClientAsync();
             Console.WriteLine($"Client connected: {((IPEndPoint)client.Client.RemoteEndPoint).Address}");
 
             clients.Enqueue(client);
 
-            if (clients.Count == 2)
+            // Start handling clients if there are at least two in the queue
+            if (clients.Count >= 2)
             {
-                bool isAllConnected = true;
-                
-                // 매칭중 튕겼을때 큐에서 빼내주기
-                foreach (var tcpClient in new[] {clients.Dequeue(), clients.Dequeue()})
-                {
-                    if (tcpClient.Client.Poll(0, SelectMode.SelectRead))
-                        isAllConnected = false;
-                    else
-                        clients.Enqueue(tcpClient);
-                }
-                
-                if (!isAllConnected)
-                    continue;
-                
-                Console.WriteLine("2 clients connected");
-                await Task.Run(() => HandleClients(clients.Dequeue(), clients.Dequeue()));
+                await Task.Run(HandleNextClients);
             }
         }
     }
 
+    private static async Task HandleNextClients()
+    {
+        try
+        {
+            // Dequeue two clients and release semaphore
+            semaphore.Release(2);
+
+            // Dequeue the clients and handle them
+            if (clients.TryDequeue(out TcpClient client1) && clients.TryDequeue(out TcpClient client2))
+            {
+                Console.WriteLine("2 clients connected");
+                await Task.Run(() => HandleClients(client1, client2));
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error handling clients: {ex.Message}");
+        }
+    }
+    
     private static void HandleClients(TcpClient client1, TcpClient client2)
     {
-        Remote remote;
-        Thread thread = new Thread(() =>
+        // Wait for the semaphore to indicate availability of Remote object
+        semaphore1.Wait();
+
+        Console.WriteLine(semaphore1.CurrentCount);
+        // Dequeue a Remote object safely
+        if (remoteQueue.TryDequeue(out Remote remote))
         {
-            remote = remoteQueue.Dequeue();
             remote.Run(client1, client2);
-        });
-        thread.Start();
+        }
+        else
+        {
+            Console.WriteLine("Failed to dequeue Remote object.");
+        }
     }
 }

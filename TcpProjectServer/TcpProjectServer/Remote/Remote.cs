@@ -43,6 +43,12 @@ namespace TcpProjectServer;
                         break;
                     }
                     
+                    if (bytesRead == 0)
+                    {
+                        Console.WriteLine("Client disconnected");
+                        return;
+                    }
+                    
                     stream.Position = 0;
                     
                     Protocol.Protocol? protocol = null;
@@ -69,7 +75,7 @@ namespace TcpProjectServer;
                             break;
                     }
         
-                    // Reset the stream for the next iteration
+                    // Reset the stream
                     stream.SetLength(0);
                 }
             }
@@ -84,10 +90,7 @@ namespace TcpProjectServer;
         private void SendToClient1<T>(T data)
         {
             if (CheckIfDisconnected(client1))
-            {
-                Console.WriteLine("client1 disconnected");
                 return;
-            }
             
             byte[] buffer = MessagePackSerializer.Serialize(data);
             client1.GetStream().Write(buffer, 0, buffer.Length);
@@ -96,10 +99,7 @@ namespace TcpProjectServer;
         private void SendToClient2<T>(T data)
         {
             if(CheckIfDisconnected(client2))
-            {
-                Console.WriteLine("client2 disconnected");
                 return;
-            }
             
             byte[] buffer = MessagePackSerializer.Serialize(data);
             client2.GetStream().Write(buffer, 0, buffer.Length);

@@ -35,5 +35,7 @@ public partial class Remote
         client1.Close();
         client2.Close();
         TcpServerManager.remoteQueue.Enqueue(this);
+        TcpServerManager.semaphore1.Release();
+        Console.WriteLine(TcpServerManager.semaphore1.CurrentCount);
     }
 }
