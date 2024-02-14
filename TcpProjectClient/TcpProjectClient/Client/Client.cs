@@ -62,9 +62,6 @@ public partial class Client
     
                         switch (protocol?.ProtocolId)
                         {
-                            case ProtocolId.EnterA:
-                                Process(MessagePackSerializer.Deserialize<EnterA>(new MemoryStream(stream.ToArray())));
-                                break;
                             case ProtocolId.GameStartA:
                                 await ProcessAsync(MessagePackSerializer.Deserialize<GameStartA>(new MemoryStream(stream.ToArray())));
                                 break;
@@ -72,10 +69,10 @@ public partial class Client
                                 await ProcessAsync(MessagePackSerializer.Deserialize<SendQuestionA>(new MemoryStream(stream.ToArray())));
                                 break;
                             case ProtocolId.SendAnswerA:
-                                Process(MessagePackSerializer.Deserialize<SendAnswerA>(new MemoryStream(stream.ToArray())));
+                                await ProcessAsync(MessagePackSerializer.Deserialize<SendAnswerA>(new MemoryStream(stream.ToArray())));
                                 break;
                             case ProtocolId.GameEndA:
-                                Process(MessagePackSerializer.Deserialize<GameEndA>(new MemoryStream(stream.ToArray())));
+                                await ProcessAsync(MessagePackSerializer.Deserialize<GameEndA>(new MemoryStream(stream.ToArray())));
                                 return;
                         }
                     }

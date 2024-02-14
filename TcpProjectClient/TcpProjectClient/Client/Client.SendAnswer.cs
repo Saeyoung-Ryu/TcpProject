@@ -4,7 +4,7 @@ namespace TcpProjectClient;
 
 public partial class Client
 {
-    public void Process(SendAnswerA sendAnswerA, int firstNumber = 0, int secondNumber = 0)
+    public async Task ProcessAsync(SendAnswerA sendAnswerA, int firstNumber = 0, int secondNumber = 0)
     {
         // Console.WriteLine("SendAnswerA Called");
         canWrite = false;

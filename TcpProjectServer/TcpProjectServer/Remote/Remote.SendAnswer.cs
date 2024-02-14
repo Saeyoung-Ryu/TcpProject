@@ -39,7 +39,7 @@ public partial class Remote
             if (client1Life == 0 || client2Life == 0)
             {
                 await Task.Delay(2000);
-                Process(new GameEndQ());
+                ProcessAsync(new GameEndQ());
             }
             else
             {
@@ -73,7 +73,7 @@ public partial class Remote
             });
             
             if(client1Life == 0 || client2Life == 0)
-                Process(new GameEndQ());
+                ProcessAsync(new GameEndQ());
             else
             {
                 await Task.Delay(2000);

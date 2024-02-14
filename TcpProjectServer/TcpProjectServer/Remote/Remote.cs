@@ -64,15 +64,10 @@ namespace TcpProjectServer;
 
                     switch (protocol?.ProtocolId)
                     {
-                        case ProtocolId.EnterQ:
-                            Process(MessagePackSerializer.Deserialize<EnterQ>(new MemoryStream(stream.ToArray())));
-                            break;
                         case ProtocolId.SendAnswerQ:
                             await ProcessAsync(MessagePackSerializer.Deserialize<SendAnswerQ>(new MemoryStream(stream.ToArray())));
                             break;
-                        case ProtocolId.ExitQ:
-                            Process(MessagePackSerializer.Deserialize<ExitQ>(new MemoryStream(stream.ToArray())));
-                            break;
+                        // Protocol 여기다 추가
                     }
         
                     // Reset the stream
@@ -87,22 +82,29 @@ namespace TcpProjectServer;
             SendToClient2(data);
         }
 
-        private void SendToClient1<T>(T data)
+        private async Task SendToClient1<T>(T data)
         {
             if (CheckIfDisconnected(client1))
+            {
+                Console.WriteLine("Client 1 disconnected");
                 return;
+            }
+                
             
             byte[] buffer = MessagePackSerializer.Serialize(data);
-            client1.GetStream().Write(buffer, 0, buffer.Length);
+            await client1.GetStream().WriteAsync(buffer, 0, buffer.Length);
         }
         
-        private void SendToClient2<T>(T data)
+        private async Task SendToClient2<T>(T data)
         {
             if(CheckIfDisconnected(client2))
+            {
+                Console.WriteLine("Client 2 disconnected");
                 return;
+            }
             
             byte[] buffer = MessagePackSerializer.Serialize(data);
-            client2.GetStream().Write(buffer, 0, buffer.Length);
+            await client2.GetStream().WriteAsync(buffer, 0, buffer.Length);
         }
 
         private void Reset()

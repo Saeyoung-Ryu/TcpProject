@@ -5,28 +5,28 @@ namespace TcpProjectServer;
 
 public partial class Remote
 {
-    private void Process(GameEndQ gameEndQ)
+    private async Task ProcessAsync(GameEndQ gameEndQ)
     {
         Console.WriteLine("GameEndQ Called");
         
         if (client1Life == 0)
         {
-            SendToClient1(new GameEndA()
+            await SendToClient1(new GameEndA()
             {
                 IsWinner = false
             });
-            SendToClient2(new GameEndA()
+            await SendToClient2(new GameEndA()
             {
                 IsWinner = true
             });
         }
         else if (client2Life == 0)
         {
-            SendToClient1(new GameEndA()
+            await SendToClient1(new GameEndA()
             {
                 IsWinner = true
             });
-            SendToClient2(new GameEndA()
+            await SendToClient2(new GameEndA()
             {
                 IsWinner = false
             });
@@ -35,7 +35,6 @@ public partial class Remote
         client1.Close();
         client2.Close();
         TcpServerManager.remoteQueue.Enqueue(this);
-        TcpServerManager.semaphore1.Release();
-        Console.WriteLine(TcpServerManager.semaphore1.CurrentCount);
+        TcpServerManager.remoteSemaphore.Release();
     }
 }

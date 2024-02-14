@@ -11,8 +11,8 @@ public class TcpServerManager
 {
     private static TcpListener tcpListener;
     
-    private static SemaphoreSlim semaphore = new SemaphoreSlim(2); // Limit to 2 simultaneous connections. Semaphore 는 raceCondition 방지
-    public static SemaphoreSlim semaphore1 = new SemaphoreSlim(0); // Semaphore to signal availability of Remote objects
+    // private static SemaphoreSlim semaphore = new SemaphoreSlim(2); // Limit to 2 simultaneous connections. Semaphore 는 raceCondition 방지
+    public static SemaphoreSlim remoteSemaphore = new SemaphoreSlim(0); // Semaphore to signal availability of Remote objects
     
     // Use ConcurrentQueue for thread-safe access
     public static ConcurrentQueue<TcpClient> clients = new ConcurrentQueue<TcpClient>();
@@ -31,92 +31,84 @@ public class TcpServerManager
             remoteQueue.Enqueue(remote);
         }
         
-        semaphore1.Release(remoteQueue.Count);
+        remoteSemaphore.Release(remoteQueue.Count);
         
-        await Task.Run(AcceptClients);
+        Task.Run(AcceptClientsAsync);
+        await Task.Run(HandleClientsAsync);
+
+        // 쓰레드풀 사용해서 관리
+        /*const int threadPoolSize = 3;
+        Task[] handleClientsTasks = new Task[threadPoolSize];
+        for (int i = 0; i < threadPoolSize; i++)
+        {
+            handleClientsTasks[i] = Task.Run(HandleClientsAsync);
+        }
+
+        // Wait for all tasks to complete
+        await Task.WhenAll(handleClientsTasks);*/
     }
 
-    private static async Task AcceptClients()
+    private static void HandleClientsAsync()
+    {
+        TcpClient? client1 = null;
+        TcpClient? client2 = null;
+        
+        while (true)
+        {
+            try
+            {
+                if (clients.Count + (client1 == null ? 0 : 1 ) + (client2 == null ? 0 : 1 ) >= 2)
+                {
+                    if (client1 == null)
+                        clients.TryDequeue(out client1);
+                    
+                    if (client2 == null)
+                        clients.TryDequeue(out client2);
+                
+                    if (client1 == null || client1.Client.Poll(0, SelectMode.SelectRead))
+                        client1 = null;
+                    if (client2 == null || client2.Client.Poll(0, SelectMode.SelectRead))
+                        client2 = null;
+
+                    if (client1 != null && client2 != null)
+                    {
+                        Run(client1, client2);
+                        client1 = null;
+                        client2 = null;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+    }
+    private static async Task AcceptClientsAsync()
     {
         while (true)
         {
-            // Wait for semaphore to allow new connection
-            await semaphore.WaitAsync();
-    
-            TcpClient client = await tcpListener.AcceptTcpClientAsync();
-            Console.WriteLine($"Client connected: {((IPEndPoint)client.Client.RemoteEndPoint).Address}");
-    
-            clients.Enqueue(client);
-    
-            // Start handling clients if there are at least two in the queue
-            if (clients.Count == 2)
-            {
-                bool isAllConnected = true;
-    
-                TcpClient client1 = null;
-                TcpClient client2 = null;
-                
-                var tryDequeueResult= clients.TryDequeue(out client1) && clients.TryDequeue(out client2);
-                if (!tryDequeueResult)
-                    continue;
-    
-                // 매칭중 튕겼을때 큐에서 빼내주기
-                foreach (var tcpClient in new[] {client1, client2})
-                {
-                    if (tcpClient.Client.Poll(0, SelectMode.SelectRead))
-                        isAllConnected = false;
-                    else
-                    {
-                        clients.Enqueue(tcpClient);
-                        semaphore.Release(1);
-                    }
-                }
-                
-                if (!isAllConnected)
-                    continue;
-                
-                Console.WriteLine("2 clients connected");
-                // await Task.Run(() => HandleClients(clients.Dequeue(), clients.Dequeue()));
-    
-                await Task.Run(HandleNextClients);
-            }
+            var tcpClient = await tcpListener.AcceptTcpClientAsync();
+            clients.Enqueue(tcpClient);
+            Console.WriteLine(clients.Count);
         }
     }
     
-    private static async Task HandleNextClients()
+    private static void Run(TcpClient client1, TcpClient client2)
     {
-        try
+        Task.Run(async () =>
         {
-            // Dequeue two clients and release semaphore
-            semaphore.Release(2);
-
-            // Dequeue the clients and handle them
-            if (clients.TryDequeue(out TcpClient client1) && clients.TryDequeue(out TcpClient client2))
+            await remoteSemaphore.WaitAsync();
+            
+            if (remoteQueue.TryDequeue(out Remote remote))
             {
-                Console.WriteLine("2 clients connected");
-                await Task.Run(() => HandleClients(client1, client2));
+                remote.Run(client1, client2);
             }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error handling clients: {ex.Message}");
-        }
-    }
-    
-    private static void HandleClients(TcpClient client1, TcpClient client2)
-    {
-        // Wait for the semaphore to indicate availability of Remote object
-        semaphore1.Wait();
-
-        Console.WriteLine(semaphore1.CurrentCount);
-        // Dequeue a Remote object safely
-        if (remoteQueue.TryDequeue(out Remote remote))
-        {
-            remote.Run(client1, client2);
-        }
-        else
-        {
-            Console.WriteLine("Failed to dequeue Remote object.");
-        }
+            else
+            {
+                Console.WriteLine("Failed to dequeue Remote object.");
+            }
+        });
     }
 }

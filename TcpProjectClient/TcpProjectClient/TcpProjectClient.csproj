@@ -22,15 +22,6 @@
       <Compile Include="..\..\Protocol2\ProtocolReq.cs">
         <Link>Protocol2\ProtocolReq.cs</Link>
       </Compile>
-      <Compile Include="..\..\Protocol\Disconnected.cs">
-        <Link>Protocol\Disconnected.cs</Link>
-      </Compile>
-      <Compile Include="..\..\Protocol\Enter.cs">
-        <Link>Protocol\Enter.cs</Link>
-      </Compile>
-      <Compile Include="..\..\Protocol\Exit.cs">
-        <Link>Protocol\Exit.cs</Link>
-      </Compile>
       <Compile Include="..\..\Protocol\GameEnd.cs">
         <Link>Protocol\GameEnd.cs</Link>
       </Compile>
