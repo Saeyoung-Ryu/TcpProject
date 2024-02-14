@@ -6,6 +6,8 @@ namespace TcpProjectServer;
 
     public partial class Remote
     {
+        public static SemaphoreSlim roundSemaphore = new SemaphoreSlim(1);
+        
         private TcpClient client1;
         private TcpClient client2;
         
@@ -109,6 +111,7 @@ namespace TcpProjectServer;
 
         private void Reset()
         {
+            roundSemaphore = new SemaphoreSlim(1);
             client1Life = 5;
             client2Life = 5;
             round = 1;

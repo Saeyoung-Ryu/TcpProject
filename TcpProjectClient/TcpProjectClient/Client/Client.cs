@@ -49,8 +49,11 @@ public partial class Client
     
                     if (bytesRead <= 0)
                     {
+                        Console.WriteLine($"Byte Read Zero : {bytesRead}");
                         break;
                     }
+
+                    Console.WriteLine($"Byte Read Not Zero : {bytesRead}");
     
                     await stream.WriteAsync(buffer, 0, bytesRead);
                     stream.Position = 0;

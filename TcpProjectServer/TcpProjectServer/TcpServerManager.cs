@@ -108,6 +108,7 @@ public class TcpServerManager
             else
             {
                 Console.WriteLine("Failed to dequeue Remote object.");
+                remoteSemaphore.Release(1);
             }
         });
     }

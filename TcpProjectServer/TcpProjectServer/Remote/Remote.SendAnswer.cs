@@ -13,9 +13,12 @@ public partial class Remote
         
         if (firstNumber + secondNumber == sendAnswerQ.Answer)
         {
+            await roundSemaphore.WaitAsync();
+            
             if (round == sendAnswerQ.Round)
             {
                 round++;
+                roundSemaphore.Release(1);
                 
                 if (clientNum == 1)
                     client2Life--;
@@ -23,14 +26,17 @@ public partial class Remote
                     client1Life--;
             }
             else
+            {
+                roundSemaphore.Release(1);
                 return;
+            }
             
-            SendToClient1(new SendAnswerA()
+            await SendToClient1(new SendAnswerA()
             {
                 ClientNum = clientNum,
                 SentAnswer = sendAnswerQ.Answer,
             });
-            SendToClient2(new SendAnswerA()
+            await SendToClient2(new SendAnswerA()
             {
                 ClientNum = clientNum,
                 SentAnswer = sendAnswerQ.Answer,
@@ -39,7 +45,7 @@ public partial class Remote
             if (client1Life == 0 || client2Life == 0)
             {
                 await Task.Delay(2000);
-                ProcessAsync(new GameEndQ());
+                await ProcessAsync(new GameEndQ());
             }
             else
             {
@@ -61,19 +67,19 @@ public partial class Remote
             else
                 return;
             
-            SendToClient1(new SendAnswerA()
+            await SendToClient1(new SendAnswerA()
             {
                 ClientNum = clientNum,
                 SentAnswer = sendAnswerQ.Answer,
             });
-            SendToClient2(new SendAnswerA()
+            await SendToClient2(new SendAnswerA()
             {
                 ClientNum = clientNum,
                 SentAnswer = sendAnswerQ.Answer,
             });
             
             if(client1Life == 0 || client2Life == 0)
-                ProcessAsync(new GameEndQ());
+                await ProcessAsync(new GameEndQ());
             else
             {
                 await Task.Delay(2000);
