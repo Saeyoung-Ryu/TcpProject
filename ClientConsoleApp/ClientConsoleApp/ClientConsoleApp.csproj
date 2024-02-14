@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Include="..\..\Protocol2\LoadData.cs">
+        <Link>Protocol2\LoadData.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Protocol2\Protocol.cs">
+        <Link>Protocol2\Protocol.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Protocol2\ProtocolReq.cs">
+        <Link>Protocol2\ProtocolReq.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Protocol\GameEnd.cs">
+        <Link>Protocol\GameEnd.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Protocol\GameStart.cs">
+        <Link>Protocol\GameStart.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Protocol\Protocol.cs">
+        <Link>Protocol\Protocol.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Protocol\SendAnswer.cs">
+        <Link>Protocol\SendAnswer.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Protocol\SendQuestion.cs">
+        <Link>Protocol\SendQuestion.cs</Link>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\..\Protocol2\.DS_Store">
+        <Link>Protocol2\.DS_Store</Link>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MessagePack" Version="2.6.100-alpha" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    </ItemGroup>
+
+</Project>
