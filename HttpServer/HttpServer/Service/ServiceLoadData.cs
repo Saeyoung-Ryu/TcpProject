@@ -16,7 +16,7 @@ public class ServiceLoadData : IService
 
         try
         {
-            var playerInfo = await PlayerManager.GetPlayerWithNicknameAsync(req.NickName);
+            var playerInfo = await PlayerManager.GetPlayerWithNicknameAsync(req.NickName, true);
 
             res.NickName = playerInfo.Nickname;
             res.CreateTime = playerInfo.CreateTime;

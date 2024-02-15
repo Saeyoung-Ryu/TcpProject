@@ -18,7 +18,6 @@ namespace Service
         
         public static void Initialize()
         {
-
             Type[] types = Assembly.GetEntryAssembly().GetTypes();
             foreach (var t in types)
             {

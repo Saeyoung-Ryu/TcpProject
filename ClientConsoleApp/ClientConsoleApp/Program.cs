@@ -39,7 +39,7 @@ namespace ClientConsoleApp
             var loadDataReq = new LoadDataReq
             {
                 ProtocolId = ProtocolId.LoadData,
-                NickName = "Sy1234"
+                NickName = "SAMY"
             };
 
             ProtocolReq requestData = new ProtocolReq

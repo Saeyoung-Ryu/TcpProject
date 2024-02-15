@@ -6,22 +6,23 @@ namespace Common
 {
     public partial class RankDB
     {
-        public static async Task SetPlayerAsync(Player player)
+        public static async Task SetRankAsync(Rank rank)
         {
             await using (var conn = new MySqlConnection(ServerInfoConfig.Instance.ConnectionString))
             {
-                await SpSetPlayerAsync(conn, null, player);
+                await SpSetRankAsync(conn, null, rank);
             }
         }
 
-        private static async Task SpSetPlayerAsync(MySqlConnection conn, MySqlTransaction trxn, Player player)
+        private static async Task SpSetRankAsync(MySqlConnection conn, MySqlTransaction trxn, Rank rank)
         {
             var parameters = new DynamicParameters();
-            parameters.Add("_seq", player.Seq);
-            parameters.Add("_nickname", player.Nickname);
-            parameters.Add("_createTime", player.CreateTime);
+            parameters.Add("_playerSeq", rank.PlayerSeq);
+            parameters.Add("_winCount", rank.WinCount);
+            parameters.Add("_loseCount", rank.LoseCount);
+            parameters.Add("_point", rank.Point);
 
-            await conn.ExecuteAsync("spSetPlayer", parameters, trxn, commandType: CommandType.StoredProcedure);
+            await conn.ExecuteAsync("spSetRank", parameters, trxn, commandType: CommandType.StoredProcedure);
         }
     }
 }

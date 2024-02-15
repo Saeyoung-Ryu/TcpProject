@@ -2,16 +2,17 @@ namespace Common;
 
 public class PlayerManager
 {
-    public static async Task<(string Nickname, DateTime CreateTime)> GetPlayerWithNicknameAsync(string nickname)
+    public static async Task<Player?> GetPlayerWithNicknameAsync(string nickname, bool insert = false)
     {
         var player = await AccountDB.GetPlayerWithNicknameAsync(nickname);
 
-        if (player == null)
+        if (player == null && insert)
         {
             await AccountDB.InsertPlayerAsync(nickname);
-            return (nickname, DateTime.UtcNow);
+            player = await AccountDB.GetPlayerWithNicknameAsync(nickname);
         }
-        
-        return (player.Nickname, player.CreateTime);
+
+        return player;
     }
+
 }

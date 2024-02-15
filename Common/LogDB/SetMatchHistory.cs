@@ -6,22 +6,21 @@ namespace Common
 {
     public partial class LogDB
     {
-        public static async Task SetPlayerAsync(Player player)
+        public static async Task SetMatchHistoryAsync(MatchHistory matchHistory)
         {
             await using (var conn = new MySqlConnection(ServerInfoConfig.Instance.ConnectionString))
             {
-                await SpSetPlayerAsync(conn, null, player);
+                await SpSetMatchHistoryAsync(conn, null, matchHistory);
             }
         }
 
-        private static async Task SpSetPlayerAsync(MySqlConnection conn, MySqlTransaction trxn, Player player)
+        private static async Task SpSetMatchHistoryAsync(MySqlConnection conn, MySqlTransaction trxn, MatchHistory matchHistory)
         {
             var parameters = new DynamicParameters();
-            parameters.Add("_seq", player.Seq);
-            parameters.Add("_nickname", player.Nickname);
-            parameters.Add("_createTime", player.CreateTime);
+            parameters.Add("_playerSeq", matchHistory.PlayerSeq);
+            parameters.Add("_data", matchHistory.Data);
 
-            await conn.ExecuteAsync("spSetPlayer", parameters, trxn, commandType: CommandType.StoredProcedure);
+            await conn.ExecuteAsync("spSetMatchHistory", parameters, trxn, commandType: CommandType.StoredProcedure);
         }
     }
 }

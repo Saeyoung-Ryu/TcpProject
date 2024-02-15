@@ -26,7 +26,7 @@ public class ServerInfoConfig
             ServerInfoConfig serverInfoConfig = JsonConvert.DeserializeObject<ServerInfoConfig>(File.ReadAllText(configurationPath));
 
             _instance = serverInfoConfig;
-            Console.WriteLine($"MyProjectInfoConfig Refresh Success");
+            Console.WriteLine($"Config Refresh Success");
         }
         catch (Exception e)
         {

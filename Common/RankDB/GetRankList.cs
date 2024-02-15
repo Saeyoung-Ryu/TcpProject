@@ -6,20 +6,19 @@ namespace Common
 {
     public partial class RankDB
     {
-        public static async Task<Player?> GetPlayerWithSeq2Async(long seq)
+        public static async Task<List<Rank>> GetRankListAsync()
         {
             await using (var conn = new MySqlConnection(ServerInfoConfig.Instance.ConnectionString))
             {
-                return await SpGetPlayerWithSeqAsync(conn, null, seq);
+                return await SpGetRankListAsync(conn, null);
             }
         }
 
-        private static async Task<Player?> SpGetPlayerWithSeq2Async(MySqlConnection conn, MySqlTransaction trxn, long seq)
+        private static async Task<List<Rank>> SpGetRankListAsync(MySqlConnection conn, MySqlTransaction trxn)
         {
             var parameters = new DynamicParameters();
-            parameters.Add("_seq", seq);
 
-            return await conn.QuerySingleOrDefaultAsync<Player>("spGetPlayerWithSeq", parameters, trxn, commandType: CommandType.StoredProcedure);
+            return (await conn.QueryAsync<Rank>("spGetRankList", parameters, trxn, commandType: CommandType.StoredProcedure)).ToList();
         }
     }
 }

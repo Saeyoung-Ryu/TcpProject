@@ -4,11 +4,15 @@ namespace HttpServer
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             ServerInfoConfig.Refresh();
             ServerVariable.Refresh();
             Service.Service.Initialize();
+
+            await RankManager.RefreshRankAsync();
+
+            Console.WriteLine("Http Server Has Started....");
             
             CreateHttpServerHostBuilder(args).Build().Run();
         }

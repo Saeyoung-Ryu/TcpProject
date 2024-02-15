@@ -13,6 +13,60 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Compile Include="..\..\Common\AccountDB\GetPlayerWithNickname.cs">
+        <Link>Common\AccountDB\GetPlayerWithNickname.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\AccountDB\GetPlayerWithSeq.cs">
+        <Link>Common\AccountDB\GetPlayerWithSeq.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\AccountDB\InsertPlayer.cs">
+        <Link>Common\AccountDB\InsertPlayer.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\AccountDB\SetPlayer.cs">
+        <Link>Common\AccountDB\SetPlayer.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\Enum\WinLoseType.cs">
+        <Link>Common\Enum\WinLoseType.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\LogDB\GetMatchHistory.cs">
+        <Link>Common\LogDB\GetMatchHistory.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\LogDB\SetMatchHistory.cs">
+        <Link>Common\LogDB\SetMatchHistory.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\Manager\MatchHistoryManager.cs">
+        <Link>Common\Manager\MatchHistoryManager.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\Manager\PlayerManager.cs">
+        <Link>Common\Manager\PlayerManager.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\Manager\RankManager.cs">
+        <Link>Common\Manager\RankManager.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\RankDB\GetRank.cs">
+        <Link>Common\RankDB\GetRank.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\RankDB\GetRankList.cs">
+        <Link>Common\RankDB\GetRankList.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\RankDB\SetRank.cs">
+        <Link>Common\RankDB\SetRank.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\ServerInfoConfig.cs">
+        <Link>Common\ServerInfoConfig.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\Type\MatchHistory.cs">
+        <Link>Common\Type\MatchHistory.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\Type\Player.cs">
+        <Link>Common\Type\Player.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\Type\Rank.cs">
+        <Link>Common\Type\Rank.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\Type\ServerVariable.cs">
+        <Link>Common\Type\ServerVariable.cs</Link>
+      </Compile>
       <Compile Include="..\..\Protocol\GameEnd.cs">
         <Link>Protocol\GameEnd.cs</Link>
       </Compile>
