@@ -613,9 +613,11 @@ COMMIT;
 DROP TABLE IF EXISTS `tblServerVariable`;
 CREATE TABLE `tblServerVariable` (
   `seq` bigint NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `value` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`seq`)
+  `playerSeq` bigint NOT NULL,
+  `winCount` int NOT NULL,
+  `loseCount` int NOT NULL,
+  PRIMARY KEY (`seq`),
+  UNIQUE KEY `idxPlayerSeq` (`playerSeq`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
@@ -789,6 +791,32 @@ INSERT INTO `tblUserWinnrateHistory` VALUES (95, 3, 0, 0);
 INSERT INTO `tblUserWinnrateHistory` VALUES (95, 4, 0, 0);
 INSERT INTO `tblUserWinnrateHistory` VALUES (95, 5, 0, 0);
 COMMIT;
+
+-- ----------------------------
+-- Table structure for tblRank
+-- ----------------------------
+DROP TABLE IF EXISTS `tblRank`;
+CREATE TABLE `tblRank` (
+  `seq` bigint NOT NULL AUTO_INCREMENT,
+  `playerSeq` bigint NOT NULL,
+  `winCount` int NOT NULL,
+  `loseCount` int NOT NULL,
+  `point` int NOT NULL,
+  PRIMARY KEY (`seq`),
+  UNIQUE KEY `idxPlayerSeq` (`playerSeq`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Table structure for tblMatchHistory
+-- ----------------------------
+DROP TABLE IF EXISTS `tblMatchHistory`;
+CREATE TABLE `tblMatchHistory` (
+  `seq` bigint NOT NULL AUTO_INCREMENT,
+  `playerSeq` bigint NOT NULL,
+  `data` varchar(255) NOT NULL,
+  PRIMARY KEY (`seq`),
+  UNIQUE KEY `idxPlayerSeq` (`playerSeq`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Procedure structure for spGetLogMatchHistoryList

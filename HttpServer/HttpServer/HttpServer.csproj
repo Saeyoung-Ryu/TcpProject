@@ -30,8 +30,23 @@
       <Compile Include="..\..\Common\AccountDB\SetPlayer.cs">
         <Link>Common\AccountDB\SetPlayer.cs</Link>
       </Compile>
+      <Compile Include="..\..\Common\LogDB\GetMatchHistory.cs">
+        <Link>Common\LogDB\GetMatchHistory.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\LogDB\SetMatchHistory.cs">
+        <Link>Common\LogDB\SetMatchHistory.cs</Link>
+      </Compile>
       <Compile Include="..\..\Common\Manager\PlayerManager.cs">
         <Link>Common\Manager\PlayerManager.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\RankDB\GetRank.cs">
+        <Link>Common\RankDB\GetRank.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\RankDB\GetRankList.cs">
+        <Link>Common\RankDB\GetRankList.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\RankDB\SetRank.cs">
+        <Link>Common\RankDB\SetRank.cs</Link>
       </Compile>
       <Compile Include="..\..\Common\ServerInfoConfig.cs">
         <Link>Common\ServerInfoConfig.cs</Link>
