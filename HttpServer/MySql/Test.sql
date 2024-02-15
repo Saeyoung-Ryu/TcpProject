@@ -1046,3 +1046,76 @@ END
 delimiter ;
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+-- ----------------------------
+-- Procedure structure for spSetRank
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `spSetRank`;
+delimiter ;;
+CREATE PROCEDURE `spSetRank`(IN _playerSeq bigint, IN _winCount int, IN _loseCount int, IN _point int)
+BEGIN
+    INSERT INTO tblRank (playerSeq, winCount, loseCount, point)
+    VALUES (_playerSeq, _winCount, _loseCount, _point)
+		on duplicate key update
+		`winCount` = _winCount,
+		`loseCount` = _loseCount,
+        `point` = _point;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for spGetRank
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `spGetRank`;
+delimiter ;;
+CREATE PROCEDURE `spGetRank`(IN _seq bigint)
+BEGIN
+    SELECT *
+    FROM tblRank
+    WHERE seq = _seq limit 1;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for spGetRankList
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `spGetRankList`;
+delimiter ;;
+CREATE PROCEDURE `spGetRankList`()
+BEGIN
+    SELECT *
+    FROM tblRank;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for spSetMatchHistory
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `spSetMatchHistory`;
+delimiter ;;
+CREATE PROCEDURE `spSetMatchHistory`(IN _playerSeq bigint, IN _data varchar(255))
+BEGIN
+    INSERT INTO tblMatchHistory (playerSeq, data)
+    VALUES (_playerSeq, _data)
+		on duplicate key update
+        `data` = _data;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for spGetMatchHistory
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `spGetMatchHistory`;
+delimiter ;;
+CREATE PROCEDURE `spGetMatchHistory`(IN _seq bigint)
+BEGIN
+    SELECT *
+    FROM tblMatchHistory
+    WHERE seq = _seq limit 1;
+END
+;;
+delimiter ;
