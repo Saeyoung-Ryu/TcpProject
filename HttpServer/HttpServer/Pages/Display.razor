@@ -1,5 +1,5 @@
 ﻿@using HttpServer.Data
-@inject PlayerService PlayerService
+@inject SearchedPlayer SearchedPlayer
 
 <br>
 <br>
@@ -26,10 +26,10 @@
     
     private async Task SearchWithNickNameBtnAsync()
     {
-        Player = await AccountDB.GetPlayerAsync(searchInfo.Nickname);
+        Player = await AccountDB.GetPlayerWithNicknameAsync(searchInfo.Nickname);
         
         if(Player != null)
-            PlayerService.CurrentPlayer = Player;
+            SearchedPlayer.Player = Player;
     }
 
 }

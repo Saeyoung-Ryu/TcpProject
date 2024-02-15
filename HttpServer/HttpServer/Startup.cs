@@ -15,7 +15,7 @@ namespace HttpServer
             services.AddServerSideBlazor();
             services.AddMatBlazor();
 
-            services.AddScoped<PlayerService>();
+            services.AddScoped<SearchedPlayer>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

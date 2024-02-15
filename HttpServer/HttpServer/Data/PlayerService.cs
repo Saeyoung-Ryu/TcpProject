@@ -2,7 +2,7 @@ using Common;
 
 namespace HttpServer.Data;
 
-public class PlayerService
+public class SearchedPlayer
 {
-    public Player CurrentPlayer { get; set; }
+    public Player Player { get; set; }
 }

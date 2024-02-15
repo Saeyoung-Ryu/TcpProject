@@ -18,8 +18,14 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Include="..\..\Common\AccountDB\GetPlayer.cs">
-        <Link>Common\AccountDB\GetPlayer.cs</Link>
+      <Compile Include="..\..\Common\AccountDB\GetPlayerWithNickname.cs">
+        <Link>Common\AccountDB\GetPlayerWithNickname.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\AccountDB\GetPlayerWithSeq.cs">
+        <Link>Common\AccountDB\GetPlayerWithSeq.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\AccountDB\InsertPlayer.cs">
+        <Link>Common\AccountDB\InsertPlayer.cs</Link>
       </Compile>
       <Compile Include="..\..\Common\AccountDB\SetPlayer.cs">
         <Link>Common\AccountDB\SetPlayer.cs</Link>

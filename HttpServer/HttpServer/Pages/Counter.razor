@@ -1,4 +1,4 @@
-﻿@inject PlayerService PlayerService
+﻿@inject SearchedPlayer SearchedPlayer
 
 @page "/Tool/counter"
 @using HttpServer.Data
@@ -7,29 +7,12 @@
 <PageTitle>Counter</PageTitle>
 <Display></Display>
 
-<br><br>
-<p role="status">Current count: @currentCount</p>
-
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
 @code {
 #pragma warning disable 1998
 #pragma warning disable 0169
 #pragma warning disable 0414
     
-    private int currentCount = 0;
-
-    private void IncrementCount()
-    {
-        currentCount++;
-        if (PlayerService.CurrentPlayer != null)
-        {
-            Console.WriteLine(PlayerService.CurrentPlayer.Nickname);
-        }
-        else
-        {
-            Console.WriteLine("No player");
-        }
-    }
+    
 
 }

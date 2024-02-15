@@ -6,19 +6,20 @@ namespace Common
 {
     public partial class AccountDB
     {
-        public static async Task SetPlayerAsync(string nickName)
+        public static async Task SetPlayerAsync(Player player)
         {
             await using (var conn = new MySqlConnection(ServerInfoConfig.Instance.ConnectionString))
             {
-                await SpSetPlayerAsync(conn, null, nickName);
+                await SpSetPlayerAsync(conn, null, player);
             }
         }
 
-        private static async Task SpSetPlayerAsync(MySqlConnection conn, MySqlTransaction trxn, string nickName)
+        private static async Task SpSetPlayerAsync(MySqlConnection conn, MySqlTransaction trxn, Player player)
         {
             var parameters = new DynamicParameters();
-            parameters.Add("_nickname", nickName);
-            parameters.Add("_createTime", DateTime.UtcNow);
+            parameters.Add("_seq", player.Seq);
+            parameters.Add("_nickname", player.Nickname);
+            parameters.Add("_createTime", player.CreateTime);
 
             await conn.ExecuteAsync("spSetPlayer", parameters, trxn, commandType: CommandType.StoredProcedure);
         }
