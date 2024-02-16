@@ -39,9 +39,17 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.1.28, )"
+            },
             "MessagePack": {
               "target": "Package",
               "version": "[2.5.140, )"
+            },
+            "MySqlConnector": {
+              "target": "Package",
+              "version": "[2.3.5, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",

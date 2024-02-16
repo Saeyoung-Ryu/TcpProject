@@ -1,0 +1,92 @@
+﻿@*
+@page "/Tool/MatchHistory"
+
+<h1>MatchHistory</h1>
+<PageTitle>MatchHistory</PageTitle>
+<Display Player="player" PlayerChanged="OnPlayerChanged"></Display>
+
+@if (matchHistory != null)
+{
+    <br>
+    <button type="submit" class="btn btn-primary" @onclick="UpdatePlayerBtnAsync">Update</button>
+    <table id="Border-Solid" class="table table-border table-hover w-auto">
+        <thead>
+        <tr class="table-primary">
+            <th></th>
+            <th>승패</th>
+            <th>Data</th>
+        </tr>
+        </thead>
+        <tbody>
+        @for (int i = 0; i < WinLoseTypes.Count; i++)
+        {
+            <tr>
+                <td>@(i + 1)</td>
+                <td><MatSelectItem @bind-Value="@WinLoseTypes[i]" Items="@winLoseTypes"></MatSelectItem></td>
+                <td>@matchHistory.FromData()[i].Data</td>
+            </tr>
+        }
+        @foreach (var key in matchHistory.FromData().Keys)
+        {
+            <tr>
+                <td><MatSelectItem @bind-Value="@key" Items="@winLoseTypes"></MatSelectItem></td>
+                <td>@player.Seq</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Player not found</p>
+}
+
+@code {
+#pragma warning disable 1998
+#pragma warning disable 0169
+#pragma warning disable 0414
+
+    protected Player player = null;
+    Common.MatchHistory matchHistory = new Common.MatchHistory();
+    List<WinLoseType> WinLoseTypes = new List<WinLoseType>();
+    int order = 1;
+    
+    WinLoseType[] winLoseTypes = ((WinLoseType[])Enum.GetValues(typeof(WinLoseType))).Where(e => e != WinLoseType.None).ToArray();
+
+
+    public async Task OnPlayerChanged(Player player)
+    {
+        this.player = player;
+
+        if (player != null)
+        {
+            Reset();
+            matchHistory = await LogDB.GetMatchHistoryAsync(this.player.Seq);
+
+            if (matchHistory != null)
+            {
+                foreach (var key in matchHistory.FromData().Keys)
+                {
+                    WinLoseTypes.Add(key);
+                }
+            }
+        }
+    }
+}
+
+@code
+{
+    public async Task UpdatePlayerBtnAsync()
+    {
+        await AccountDB.SetPlayerAsync(player);
+    }
+}
+
+@code
+{
+    void Reset()
+    {
+        WinLoseTypes.Clear();
+    }
+}
+*@

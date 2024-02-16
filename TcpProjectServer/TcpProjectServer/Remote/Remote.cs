@@ -11,8 +11,8 @@ namespace TcpProjectServer;
         private TcpClient client1;
         private TcpClient client2;
         
-        public int client1Life = 5;
-        public int client2Life = 5;
+        public int client1Life = int.Parse(ServerVariable.Life);
+        public int client2Life = int.Parse(ServerVariable.Life);
         public int round = 1;
         public int firstNumber;
         public int secondNumber;

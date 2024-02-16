@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using HttpServer.Data;
 using MatBlazor;
 
 namespace HttpServer
@@ -14,8 +13,6 @@ namespace HttpServer
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddMatBlazor();
-
-            services.AddScoped<SearchedPlayer>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

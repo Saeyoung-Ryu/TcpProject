@@ -7,7 +7,8 @@ namespace TcpProjectServer
     {
         static async Task Main(string[] args)
         {
-            
+            ServerInfoConfig.Refresh();
+            ServerVariable.Refresh();
             
             await TcpServerManager.StartServer(3360);
         }

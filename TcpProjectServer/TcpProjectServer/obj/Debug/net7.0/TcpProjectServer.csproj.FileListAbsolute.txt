@@ -46,3 +46,6 @@
 /Users/saeyoungryu/Project/TcpSocketExample/TcpServer/TcpProjectServer/obj/Debug/net7.0/TcpProjectServer.dll
 /Users/saeyoungryu/Project/TcpSocketExample/TcpServer/TcpProjectServer/obj/Debug/net7.0/refint/TcpProjectServer.dll
 /Users/saeyoungryu/Project/TcpSocketExample/TcpServer/TcpProjectServer/obj/Debug/net7.0/TcpProjectServer.pdb
+/Users/saeyoungryu/Project/TcpSocketExample/TcpProjectServer/TcpProjectServer/bin/Debug/net7.0/Dapper.dll
+/Users/saeyoungryu/Project/TcpSocketExample/TcpProjectServer/TcpProjectServer/bin/Debug/net7.0/Microsoft.Extensions.Logging.Abstractions.dll
+/Users/saeyoungryu/Project/TcpSocketExample/TcpProjectServer/TcpProjectServer/bin/Debug/net7.0/MySqlConnector.dll

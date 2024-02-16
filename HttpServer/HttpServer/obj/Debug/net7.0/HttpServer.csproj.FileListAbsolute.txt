@@ -158,3 +158,6 @@
 /Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/bin/Debug/net7.0/MatBlazor.dll
 /Users/saeyoungryu/Projects/TcpProject/HttpServer/HttpServer/bin/Debug/net7.0/MatBlazor.dll
 /Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/obj/Debug/net7.0/scopedcss/Pages/PlayerData.razor.rz.scp.css
+/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/obj/Debug/net7.0/scopedcss/Pages/MatchHistory.razor.rz.scp.css
+/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/obj/Debug/net7.0/scopedcss/Pages/Rank.razor.rz.scp.css
+/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/obj/Debug/net7.0/scopedcss/Pages/ServerVariable.razor.rz.scp.css
