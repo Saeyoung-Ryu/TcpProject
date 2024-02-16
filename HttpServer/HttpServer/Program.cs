@@ -10,7 +10,7 @@ namespace HttpServer
             ServerVariable.Refresh();
             Service.Service.Initialize();
 
-            await RankManager.RefreshRankAsync();
+            // await RankManager.RefreshRankAsync();
 
             Console.WriteLine("Http Server Has Started....");
             

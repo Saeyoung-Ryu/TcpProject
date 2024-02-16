@@ -1,5 +1,7 @@
 ﻿@using HttpServer.Data
-@inject SearchedPlayer SearchedPlayer
+@using System.Text
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
+@inject ProtectedLocalStorage storage
 
 <br>
 <br>
@@ -8,8 +10,13 @@
         <tbody>
         <tr>
             <td>Nickname</td>
-            <td><input type="text" size="20" @bind="@searchInfo.Nickname"></td>
+            <td><input type="text" size="20" @bind="@Nickname"></td>
             <td><button type="submit" class="btn btn-outline-secondary" @onclick="SearchWithNickNameBtnAsync">Search</button></td>
+        </tr>
+        <tr>
+            <td>Seq</td>
+            <td><input type="text" size="20" @bind="@Seq"></td>
+            <td><button type="submit" class="btn btn-outline-secondary" @onclick="SearchWithSeqBtnAsync">Search</button></td>
         </tr>
         </tbody>
     </table>
@@ -18,28 +25,114 @@
 <br>
 
 @code {
-    
+    public string Nickname { get; set; }
+    public string Seq { get; set; }
     SearchInfo searchInfo = new SearchInfo();
 
     [Parameter]
-    public Player? Player { get; set; } = null;
+    public Player Player { get; set; }
     
-    private async Task SearchWithNickNameBtnAsync()
+    [Parameter]
+    public EventCallback<Player> PlayerChanged { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        Player = await AccountDB.GetPlayerWithNicknameAsync(searchInfo.Nickname);
+        if (firstRender)
+        {
+            try
+            {
+                ProtectedBrowserStorageResult<string> storageSeq = await storage.GetAsync<string>("seq");
+                if (storageSeq.Success)
+                {
+                    Seq = storageSeq.Value;
+                    if (Int64.TryParse(Seq, out var seq))
+                    {
+                        var player = await AccountDB.GetPlayerWithSeqAsync(seq);
+                        if (player != null)
+                        {
+                            Nickname = player.Nickname;
+                        
+                            await RefreshAsync(player);
+                        }
+                        else
+                        {
+                            await storage.DeleteAsync("seq");
+                        }
+                    }
+                }
+                else
+                {
+                    await storage.DeleteAsync("seq");
+                }
+            }
+            catch
+            {
+                await storage.DeleteAsync("seq");
+            }
+        }
+    }
+    
+    private async Task RefreshAsync(Player player)
+    {
+        if (player != null)
+        {
+            Nickname = player.Nickname;
+            Seq = player.Seq.ToString();
+            
+            searchInfo.Nickname = Nickname;
+            searchInfo.Seq = Seq;
         
-        if(Player != null)
-            SearchedPlayer.Player = Player;
+            await storage.SetAsync("seq", Seq);
+        }
+        else
+        {
+            Reset();
+        }
+        
+        await PlayerChanged.InvokeAsync(player);
+    }
+    
+    private void Reset()
+    {
+        Nickname = "";
+        Seq = "";
+        searchInfo = new();
     }
 
+    private async Task SearchWithNickNameBtnAsync()
+    {
+        Console.WriteLine(Nickname);
+        var player = await AccountDB.GetPlayerWithNicknameAsync(Nickname);
+
+        if (player != null)
+        {
+            Seq = player.Seq.ToString();
+            Nickname = player.Nickname;
+
+            await RefreshAsync(player);
+        }
+    }
+
+    private async Task SearchWithSeqBtnAsync()
+    {
+        Console.WriteLine(searchInfo.Seq);
+        var player = await AccountDB.GetPlayerWithSeqAsync(long.Parse(searchInfo.Seq));
+
+        if (player != null)
+        {
+            Seq = player.Seq.ToString();
+            Nickname = player.Nickname;
+
+            await RefreshAsync(player);
+        }
+    }
 }
 
 @code
 {
-    class SearchInfo
+    public class SearchInfo
     {
         public string Nickname { get; set; }
-        public long Seq { get; set; }    
+        public string Seq { get; set; }    
     }
-
 }

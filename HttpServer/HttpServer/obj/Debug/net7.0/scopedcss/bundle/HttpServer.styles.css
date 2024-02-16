@@ -1,3 +1,9 @@
+/* _content/HttpServer/Pages/PlayerData.razor.rz.scp.css */
+#Border-Dotted[b-3vu6r0h2ui]{border: 2px dotted}
+#Border-Solid[b-3vu6r0h2ui]{border: 1px solid}
+#Border-Solid3px[b-3vu6r0h2ui]{border: 3px solid #1a1e21}
+#Text1Style[b-3vu6r0h2ui]{font-size: 23px;color : #41464b}
+#Text2Style[b-3vu6r0h2ui]{font-size: 40px;color : #41464b}
 /* _content/HttpServer/Shared/MainLayout.razor.rz.scp.css */
 .page[b-pmno7m4zkd] {
     position: relative;

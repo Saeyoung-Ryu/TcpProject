@@ -38,3 +38,11 @@
 /Users/saeyoungryu/Projects/TcpProject/TcpProjectServer/TcpProjectServer/obj/Debug/net7.0/TcpProjectServer.pdb
 /Users/saeyoungryu/Projects/TcpProject/TcpProjectServer/TcpProjectServer/obj/Debug/net7.0/TcpProjectServer.genruntimeconfig.cache
 /Users/saeyoungryu/Projects/TcpProject/TcpProjectServer/TcpProjectServer/obj/Debug/net7.0/ref/TcpProjectServer.dll
+/Users/saeyoungryu/Project/TcpSocketExample/TcpServer/TcpProjectServer/obj/Debug/net7.0/TcpProjectServer.csproj.AssemblyReference.cache
+/Users/saeyoungryu/Project/TcpSocketExample/TcpServer/TcpProjectServer/obj/Debug/net7.0/TcpProjectServer.GeneratedMSBuildEditorConfig.editorconfig
+/Users/saeyoungryu/Project/TcpSocketExample/TcpServer/TcpProjectServer/obj/Debug/net7.0/TcpProjectServer.AssemblyInfoInputs.cache
+/Users/saeyoungryu/Project/TcpSocketExample/TcpServer/TcpProjectServer/obj/Debug/net7.0/TcpProjectServer.AssemblyInfo.cs
+/Users/saeyoungryu/Project/TcpSocketExample/TcpServer/TcpProjectServer/obj/Debug/net7.0/TcpProjectServer.csproj.CoreCompileInputs.cache
+/Users/saeyoungryu/Project/TcpSocketExample/TcpServer/TcpProjectServer/obj/Debug/net7.0/TcpProjectServer.dll
+/Users/saeyoungryu/Project/TcpSocketExample/TcpServer/TcpProjectServer/obj/Debug/net7.0/refint/TcpProjectServer.dll
+/Users/saeyoungryu/Project/TcpSocketExample/TcpServer/TcpProjectServer/obj/Debug/net7.0/TcpProjectServer.pdb

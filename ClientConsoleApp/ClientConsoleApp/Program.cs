@@ -29,22 +29,25 @@ namespace ClientConsoleApp
     {
         static async Task Main(string[] args)
         {
-            await SendHttpRequestAsync();
-        }
-
-        static async Task SendHttpRequestAsync()
-        {
-            Console.WriteLine("Here");
-            // Create an instance of LoadDataReq with sample data
             var loadDataReq = new LoadDataReq
             {
                 ProtocolId = ProtocolId.LoadData,
-                NickName = "SAMY"
+                NickName = "SAMY1234"
             };
+            
+            var res = await HttpManager.SendHttpServerRequestAsync(loadDataReq);
+            var a = (LoadDataRes) res;
+            Console.WriteLine(a.NickName);
+        }
+
+        static async Task<ProtocolRes> SendHttpServerRequestAsync<T>(T protocol)
+        {
+            Console.WriteLine("Here");
+            // Create an instance of LoadDataReq with sample data
 
             ProtocolReq requestData = new ProtocolReq
             {
-                Protocol = loadDataReq
+                Protocol = (Protocol2.Protocol)(object)protocol
             };
 
             // Serialize the request data to MessagePack format
@@ -78,15 +81,15 @@ namespace ClientConsoleApp
                     var responseDataRes = MessagePackSerializer.Deserialize<ProtocolRes>(responseBytes);
                     var responseData = responseDataRes;
 
-
+                    return responseData;
                     // Process the response data
                     var a = (LoadDataRes) responseData;
-                    Console.WriteLine(a.NickName);
-                    Console.WriteLine(a.CreateTime);
+                    return a;
                 }
                 else
                 {
                     Console.WriteLine($"Error: {response.StatusCode}");
+                    return null;
                 }
             }
         }
