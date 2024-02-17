@@ -3,7 +3,9 @@ using System.Reflection;
 using Common;
 using MySqlConnector;
 
-class ServerVariable
+namespace Common;
+
+public class ServerVariable
 {
     public static string Life { get; set; }
     public static string MinSumValue { get; set; }

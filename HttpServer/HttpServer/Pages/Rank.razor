@@ -4,36 +4,34 @@
 <PageTitle>Rank</PageTitle>
 <Display Player="player" PlayerChanged="OnPlayerChanged"></Display>
 
-@if (player != null)
+@if (playerRank != null)
 {
     <br>
-    <button type="submit" class="btn btn-primary" @onclick="UpdatePlayerBtnAsync">Update</button>
+    <button type="submit" class="btn btn-primary" @onclick="UpdatePlayerRankBtnAsync">Update</button>
     <table id="Border-Solid" class="table table-border table-hover w-auto">
         <thead>
         <tr class="table-primary">
-            <th>Value</th>
-            <th>Count</th>
+            <th>Win Count</th>
+            <th>Lose Count</th>
+            <th>Point</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td>Seq</td>
-            <td>@player.Seq</td>
-        </tr>
-        <tr>
-            <td>Nickname</td>
-            <td><input type="text" @bind="player.Nickname"></td>
-        </tr>
-        <tr>
-            <td>Create Time</td>
-            <td><input type="text" @bind="player.CreateTime" @bind:format="yyyy-MM-dd HH:mm:ss"></td>
+            <td><input type="text" @bind="playerRank.WinCount"></td>
+            <td><input type="text" @bind="playerRank.LoseCount"></td>
+            <td>@RankManager.CalculatePoint(playerRank.WinCount, playerRank.LoseCount)</td>
         </tr>
         </tbody>
     </table>
+    
+    <br><br>
+    
+    <h3>Player Ranking = @RankManager.GetMyRank(playerRank.PlayerSeq)</h3>
 }
 else
 {
-    <p>Player not found</p>
+    <p>No Rank Data</p>
 }
 
 @code {
@@ -43,16 +41,30 @@ else
 
     protected Player player = null;
 
+    private Common.Rank playerRank = null;
+    private int playerRanking = 0;
+
     public async Task OnPlayerChanged(Player player)
     {
         this.player = player;
+
+        if (player != null)
+        {
+            playerRank = await RankDB.GetRankAsync(player.Seq);
+
+            if (playerRank != null)
+                playerRanking = RankManager.GetMyRank(player.Seq);
+        }
     }
 }
 
 @code
 {
-    public async Task UpdatePlayerBtnAsync()
+    public async Task UpdatePlayerRankBtnAsync()
     {
-        await AccountDB.SetPlayerAsync(player);
+        playerRank.Point = RankManager.CalculatePoint(playerRank.WinCount, playerRank.LoseCount);
+
+        await RankDB.SetRankAsync(playerRank);
+        RankManager.UpdateRankList(playerRank);
     }
 }

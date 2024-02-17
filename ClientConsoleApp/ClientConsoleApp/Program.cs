@@ -1,21 +1,21 @@
-﻿using System;
-using System.Globalization;
-namespace ClientConsoleApp
-{
-    internal class Program
-    {
-        static async Task Main(string[] args)
-        {
-            StartTcp();
-        }
-        static void StartTcp()
-        {
-            Client client = new Client("127.0.0.1", 3360);
-        }
-    }
-}
+﻿// using System;
+// using System.Globalization;
+// namespace ClientConsoleApp
+// {
+//     internal class Program
+//     {
+//         static async Task Main(string[] args)
+//         {
+//             StartTcp();
+//         }
+//         static void StartTcp()
+//         {
+//             Client client = new Client("127.0.0.1", 3360);
+//         }
+//     }
+// }
 
-/*using System;
+using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using MessagePack;
@@ -30,7 +30,7 @@ namespace ClientConsoleApp
             var loadDataReq = new LoadDataReq
             {
                 ProtocolId = ProtocolId.LoadData,
-                NickName = "SAMY1234"
+                NickName = "SAMY123456"
             };
             
             var res = await HttpManager.SendHttpServerRequestAsync(loadDataReq);
@@ -92,4 +92,4 @@ namespace ClientConsoleApp
             }
         }
     }
-}*/
+}

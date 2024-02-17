@@ -72,6 +72,9 @@
       <Compile Include="..\..\Common\Type\ServerVariable.cs">
         <Link>Common\Type\ServerVariable.cs</Link>
       </Compile>
+      <Compile Include="..\..\Protocol2\GetRank.cs">
+        <Link>Protocol2\GetRank.cs</Link>
+      </Compile>
       <Compile Include="..\..\Protocol2\LoadData.cs">
         <Link>Protocol2\LoadData.cs</Link>
       </Compile>
@@ -80,6 +83,9 @@
       </Compile>
       <Compile Include="..\..\Protocol2\ProtocolReq.cs">
         <Link>Protocol2\ProtocolReq.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Protocol2\SetRank.cs">
+        <Link>Protocol2\SetRank.cs</Link>
       </Compile>
     </ItemGroup>
 

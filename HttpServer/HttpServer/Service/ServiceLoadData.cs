@@ -16,10 +16,18 @@ public class ServiceLoadData : IService
 
         try
         {
-            var playerInfo = await PlayerManager.GetPlayerWithNicknameAsync(req.NickName, true);
+            var playerInfo = await AccountDB.GetPlayerWithNicknameAsync(req.NickName);
 
-            res.NickName = playerInfo.Nickname;
-            res.CreateTime = playerInfo.CreateTime;
+            if (playerInfo == null)
+            {
+                res.NickName = req.NickName;
+                res.CreateTime = DateTime.UtcNow;
+            }
+            else
+            {
+                res.NickName = playerInfo.Nickname;
+                res.CreateTime = playerInfo.CreateTime;
+            }
         }
         catch (Exception e)
         {

@@ -6,10 +6,14 @@ namespace Protocol2
 	{
 		None = 0,
 		LoadData = 1,
+		GetRank = 2,
+		SetRank = 3,
 	}
 	
 	[MessagePackObject]
 	[Union(0, typeof(LoadDataReq))]
+	[Union(1, typeof(GetRankReq))]
+	[Union(2, typeof(SetRankReq))]
 	public abstract class Protocol
 	{
 		[Key(0)] public ProtocolId ProtocolId { get; set; }
@@ -20,6 +24,8 @@ namespace Protocol2
 	
 	[MessagePackObject]
 	[Union(0, typeof(LoadDataRes))]
+	[Union(1, typeof(GetRankRes))]
+	[Union(2, typeof(SetRankRes))]
 	public abstract class ProtocolRes
 	{
 		[Key(0)] public ProtocolId ProtocolId { get; set; }

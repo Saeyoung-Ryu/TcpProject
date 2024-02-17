@@ -9,7 +9,11 @@ public class PlayerManager
         if (player == null && insert)
         {
             await AccountDB.InsertPlayerAsync(nickname);
-            player = await AccountDB.GetPlayerWithNicknameAsync(nickname);
+            player = new Player()
+            {
+                Nickname = nickname,
+                
+            };
         }
 
         return player;

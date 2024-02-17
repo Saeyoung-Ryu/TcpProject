@@ -1,32 +1,31 @@
 ﻿@page "/Tool/ServerVariable"
+@using MySqlConnector
+@using System.Data
+@using System.Text
+@using Dapper
 
 <h1>ServerVariable</h1>
 <PageTitle>ServerVariable</PageTitle>
 
-@if (player != null)
+@if (serverVariableList != null && serverVariableList.Count > 0)
 {
     <br>
-    <button type="submit" class="btn btn-primary" @onclick="UpdatePlayerBtnAsync">Update</button>
+    <button type="submit" class="btn btn-primary" @onclick="UpdateServerVariableAsync">Update</button>
     <table id="Border-Solid" class="table table-border table-hover w-auto">
         <thead>
         <tr class="table-primary">
+            <th>Name</th>
             <th>Value</th>
-            <th>Count</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>Seq</td>
-            <td>@player.Seq</td>
-        </tr>
-        <tr>
-            <td>Nickname</td>
-            <td><input type="text" @bind="player.Nickname"></td>
-        </tr>
-        <tr>
-            <td>Create Time</td>
-            <td><input type="text" @bind="player.CreateTime" @bind:format="yyyy-MM-dd HH:mm:ss"></td>
-        </tr>
+        @foreach (var variable in serverVariableList)
+        {
+            <tr>
+                <td>@variable.Name</td>
+                <td><input type="text" @bind="variable.Value"></td>
+            </tr>
+        }
         </tbody>
     </table>
 }
@@ -35,23 +34,42 @@ else
     <p>Player not found</p>
 }
 
-@code {
-#pragma warning disable 1998
-#pragma warning disable 0169
-#pragma warning disable 0414
-
-    protected Player player = null;
-
-    public async Task OnPlayerChanged(Player player)
+@code
+{
+    List<ServerVariableDB> serverVariableList = new List<ServerVariableDB>();
+    
+    public class ServerVariableDB
     {
-        this.player = player;
+        public string Name { get; set; }
+        public string Value { get; set; }
+    }
+    
+    protected override async Task OnInitializedAsync()
+    {
+        await using (var conn = new MySqlConnection(ServerInfoConfig.Instance.ConnectionString))
+        {
+            serverVariableList = (await conn.QueryAsync<ServerVariableDB>("select * from tblServerVariable")).ToList();
+        }
     }
 }
 
 @code
 {
-    public async Task UpdatePlayerBtnAsync()
+    private async Task UpdateServerVariableAsync()
     {
-        await AccountDB.SetPlayerAsync(player);
+        StringBuilder sql = new StringBuilder();
+
+        foreach (var variable in serverVariableList)
+        {
+            sql.Append($"update tblServerVariable set value = '{variable.Value}' where name = '{variable.Name}';");
+        }
+
+        Console.WriteLine(sql.ToString());
+        await using (var conn = new MySqlConnection(ServerInfoConfig.Instance.ConnectionString))
+        {
+            await conn.ExecuteAsync(sql.ToString());
+        }
+        
+        Common.ServerVariable.Refresh();
     }
 }

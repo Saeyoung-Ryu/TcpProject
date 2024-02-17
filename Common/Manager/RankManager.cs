@@ -2,44 +2,37 @@ namespace Common;
 
 public class RankManager
 {
-    public static SortedList<int, Rank> sortedRankList = new SortedList<int, Rank>();
+    public static List<Rank> playerRankList = new List<Rank>();
 
     public static async Task RefreshRankAsync()
     {
         var rankList = await RankDB.GetRankListAsync();
 
-        foreach (var rank in rankList)
-        {
-            sortedRankList.Add(rank.Point, rank);
-        }
+        playerRankList = rankList.OrderByDescending(e => e.Point).ToList();
 
         Console.WriteLine("Rank Refresh Success");
     }
-
-    public static Rank GetMyRank(long playerSeq)
+    
+    public static int GetMyRank(long playerSeq)
     {
         var myRank = new Rank();
 
         int ranking = 1;
-        foreach (var rank in sortedRankList.Values)
+        foreach (var playerRank in playerRankList)
         {
-            if (rank.PlayerSeq == playerSeq)
-            {
-                myRank = rank;
-                myRank.Ranking = ranking;
+            if (playerRank.PlayerSeq == playerSeq)
                 break;
-            }
 
             ranking++;
         }
 
-        return myRank;
+        return ranking;
     }
-
+    
     public static async Task SetPlayerWinLoseAsync(long winnerPlayerSeq, long loserPlayerSeq)
     {
-        var winnerPlayerRank = await GetRankAsync(winnerPlayerSeq);
-        var loserPlayerRank = await GetRankAsync(loserPlayerSeq);
+        var winnerPlayerRank = GetRank(winnerPlayerSeq).Rank;
+        var loserPlayerRank = GetRank(loserPlayerSeq).Rank;
         
         winnerPlayerRank.WinCount++;
         winnerPlayerRank.Point = CalculatePoint(winnerPlayerRank.WinCount, winnerPlayerRank.LoseCount);
@@ -51,33 +44,48 @@ public class RankManager
         await RankDB.SetRankAsync(winnerPlayerRank);
         await RankDB.SetRankAsync(loserPlayerRank);
         
-        // SortedList Memory update
-        UpdateSortedRankList(winnerPlayerRank);
-        UpdateSortedRankList(loserPlayerRank);
+        // RankList Memory update
+        UpdateRankList(winnerPlayerRank);
+        UpdateRankList(loserPlayerRank);
+        
+        // Update MatchHistory
+        await MatchHistoryManager.SetMatchHistoryAsync(winnerPlayerSeq, loserPlayerSeq);
     }
-
-    private static async Task<Rank> GetRankAsync(long playerSeq)
+    
+    public static (Rank Rank, int Ranking) GetRank(long playerSeq)
     {
-        var rank = await RankDB.GetRankAsync(playerSeq);
+        var rank = FindRankFromList(playerSeq);
 
-        Rank initRank = new Rank()
+        if (rank.Rank == null)
         {
-            PlayerSeq = playerSeq,
-            WinCount = 0,
-            LoseCount = 0,
-            Point = 100, // default 100
-        };
-
-        if (rank == null)
-        {
-            await RankDB.SetRankAsync(initRank);
-            rank = initRank;
+            return (new Rank()
+            {
+                PlayerSeq = playerSeq,
+                WinCount = 0,
+                LoseCount = 0,
+                Point = 100, // default 100
+            }, 0);
         }
 
-        return rank;
+        return (rank.Rank, rank.Ranking);
     }
 
-    private static int CalculatePoint(int winCount, int loseCount)
+    private static (Rank? Rank, int Ranking) FindRankFromList(long playerSeq)
+    {
+        int ranking = 0;
+        
+        foreach (var playerRank in playerRankList)
+        {
+            ranking++;
+            
+            if (playerRank.PlayerSeq == playerSeq)
+                return (playerRank, ranking);
+        }
+
+        return (null, 0);
+    }
+    
+    public static int CalculatePoint(int winCount, int loseCount)
     {
         // 1승하면 +5점, 1패하면 -4점, point는 0점 이상
         int totalPoint = 100 + winCount * 5 - loseCount * 4;
@@ -88,11 +96,26 @@ public class RankManager
         return totalPoint;
     }
     
-    private static void UpdateSortedRankList(Rank playerRank)
+    public static void UpdateRankList(Rank playerRank)
     {
-        if (sortedRankList.ContainsKey(playerRank.Point))
-            sortedRankList.Remove(playerRank.Point);
+        bool isUpdated = false;
         
-        sortedRankList.Add(playerRank.Point, playerRank);
+        foreach (var item in playerRankList)
+        {
+            if (item.PlayerSeq == playerRank.PlayerSeq)
+            {
+                item.WinCount = playerRank.WinCount;
+                item.LoseCount = playerRank.LoseCount;
+                item.Point = playerRank.Point;
+
+                isUpdated = true;
+                break;
+            }
+        }
+        
+        if (!isUpdated)
+            playerRankList.Add(playerRank);
+
+        playerRankList = playerRankList.OrderByDescending(e => e.Point).ToList();
     }
 }

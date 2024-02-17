@@ -100,7 +100,6 @@
 
     private async Task SearchWithNickNameBtnAsync()
     {
-        Console.WriteLine(Nickname);
         var player = await AccountDB.GetPlayerWithNicknameAsync(Nickname);
 
         if (player != null)
@@ -114,8 +113,7 @@
 
     private async Task SearchWithSeqBtnAsync()
     {
-        Console.WriteLine(searchInfo.Seq);
-        var player = await AccountDB.GetPlayerWithSeqAsync(long.Parse(searchInfo.Seq));
+        var player = await AccountDB.GetPlayerWithSeqAsync(long.Parse(Seq));
 
         if (player != null)
         {

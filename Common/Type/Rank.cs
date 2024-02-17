@@ -6,6 +6,4 @@ public class Rank
     public int WinCount { get; set; }
     public int LoseCount { get; set; }
     public int Point { get; set; }
-    
-    public int Ranking { get; set; }
 }

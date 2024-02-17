@@ -8,6 +8,9 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Compile Include="..\..\Protocol2\GetRank.cs">
+        <Link>Protocol2\GetRank.cs</Link>
+      </Compile>
       <Compile Include="..\..\Protocol2\LoadData.cs">
         <Link>Protocol2\LoadData.cs</Link>
       </Compile>
@@ -16,6 +19,9 @@
       </Compile>
       <Compile Include="..\..\Protocol2\ProtocolReq.cs">
         <Link>Protocol2\ProtocolReq.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Protocol2\SetRank.cs">
+        <Link>Protocol2\SetRank.cs</Link>
       </Compile>
       <Compile Include="..\..\Protocol\GameEnd.cs">
         <Link>Protocol\GameEnd.cs</Link>
@@ -35,14 +41,14 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="..\..\Protocol2\.DS_Store">
-        <Link>Protocol2\.DS_Store</Link>
-      </Content>
+      <PackageReference Include="MessagePack" Version="2.6.100-alpha" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="MessagePack" Version="2.6.100-alpha" />
-      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+      <Content Include="..\..\Protocol2\.DS_Store">
+        <Link>Protocol2\.DS_Store</Link>
+      </Content>
     </ItemGroup>
 
 </Project>
