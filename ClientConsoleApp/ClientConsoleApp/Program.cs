@@ -32,10 +32,17 @@ namespace ClientConsoleApp
                 ProtocolId = ProtocolId.LoadData,
                 NickName = "SAMY123456"
             };
+
+            var editNicknameReq = new EditNicknameReq()
+            {
+                ProtocolId = ProtocolId.EditNickname,
+                ChangedNickname = "Amy19977",
+                OriginalNickname = "Amy"
+            };
             
-            var res = await HttpManager.SendHttpServerRequestAsync(loadDataReq);
-            var a = (LoadDataRes) res;
-            Console.WriteLine(a.NickName);
+            var res = await HttpManager.SendHttpServerRequestAsync(editNicknameReq);
+            var a = (EditNicknameRes) res;
+            Console.WriteLine(a.Success);
         }
 
         static async Task<ProtocolRes> SendHttpServerRequestAsync<T>(T protocol)

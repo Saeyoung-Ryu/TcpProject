@@ -8,6 +8,9 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Compile Include="..\..\Protocol2\EditNickname.cs">
+        <Link>Protocol2\EditNickname.cs</Link>
+      </Compile>
       <Compile Include="..\..\Protocol2\GetRank.cs">
         <Link>Protocol2\GetRank.cs</Link>
       </Compile>
