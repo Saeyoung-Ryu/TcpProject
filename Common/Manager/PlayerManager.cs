@@ -12,7 +12,7 @@ public class PlayerManager
             player = new Player()
             {
                 Nickname = nickname,
-                
+                CreateTime = DateTime.UtcNow
             };
         }
 

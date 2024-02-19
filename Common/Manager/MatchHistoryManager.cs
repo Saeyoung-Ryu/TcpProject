@@ -1,33 +1,58 @@
+using Enum;
+
 namespace Common;
 
 public class MatchHistoryManager
 {
-    public static async Task SetMatchHistoryAsync(long winnerSeq, long loserSeq)
+    public static async Task SetMatchHistoryAsync(Player winnerPlayer, Player loserPlayer)
     {
-        var winnerMatchHistory = await GetAsync(winnerSeq);
-        var loserMatchHistory = await GetAsync(loserSeq);
+        var (winnerMatchHistory, winnerNickname) = await GetAsync(winnerPlayer);
+        var (loserMatchHistory, loserNickname) = await GetAsync(loserPlayer);
         
+        if (winnerMatchHistory == null || loserMatchHistory == null)
+            return;
+
+        Dictionary<WinLoseType, string> dictionaryToAdd = new Dictionary<WinLoseType, string>();
         
+        dictionaryToAdd.Add(WinLoseType.Win, winnerNickname);
+        dictionaryToAdd.Add(WinLoseType.Lose, loserNickname);
+        
+        await SetWinLoseHistoryAsync(new MatchHistory[] {winnerMatchHistory, loserMatchHistory}, dictionaryToAdd);
     }
 
-    private static async Task<MatchHistory> GetAsync(long playerSeq)
+    public static async Task<(MatchHistory? MatchHistory, string Nickname)> GetAsync(Player player)
     {
-        var matchHistory = await LogDB.GetMatchHistoryAsync(playerSeq);
+        var matchHistory = await LogDB.GetMatchHistoryAsync(player.Seq);
 
         if (matchHistory == null)
         {
             matchHistory = new MatchHistory()
             {
-                PlayerSeq = playerSeq,
-                Data = String.Empty
+                PlayerSeq = player.Seq,
+                Data = string.Empty
             };
         }
 
-        return matchHistory;
+        return (matchHistory, player.Nickname);
     }
 
-    // private static string GetUpdatedData(MatchHistory matchHistory, string dataToAdd)
-    // {
-    //     
-    // }
+    private static async Task SetWinLoseHistoryAsync(MatchHistory[] matchHistories, Dictionary<WinLoseType, string> dictionaryToAdd)
+    {
+        foreach (var matchHistory in matchHistories)
+        {
+            var dataDic = matchHistory.FromData();
+            
+            if (dataDic.Count < 10)
+                dataDic.Add(dictionaryToAdd);
+            else
+            {
+                dataDic.Remove(dataDic.First());
+                dataDic.Add(dictionaryToAdd);
+            }
+
+            matchHistory.Data = matchHistory.ToData(dataDic);
+
+            await LogDB.SetMatchHistoryAsync(matchHistory);
+        }
+    }
 }

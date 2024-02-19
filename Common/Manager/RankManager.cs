@@ -29,10 +29,10 @@ public class RankManager
         return ranking;
     }
     
-    public static async Task SetPlayerWinLoseAsync(long winnerPlayerSeq, long loserPlayerSeq)
+    public static async Task SetPlayerWinLoseAsync(Player winnerPlayer, Player loserPlayer)
     {
-        var winnerPlayerRank = GetRank(winnerPlayerSeq).Rank;
-        var loserPlayerRank = GetRank(loserPlayerSeq).Rank;
+        var winnerPlayerRank = GetRank(winnerPlayer.Seq).Rank;
+        var loserPlayerRank = GetRank(loserPlayer.Seq).Rank;
         
         winnerPlayerRank.WinCount++;
         winnerPlayerRank.Point = CalculatePoint(winnerPlayerRank.WinCount, winnerPlayerRank.LoseCount);
@@ -49,7 +49,7 @@ public class RankManager
         UpdateRankList(loserPlayerRank);
         
         // Update MatchHistory
-        await MatchHistoryManager.SetMatchHistoryAsync(winnerPlayerSeq, loserPlayerSeq);
+        await MatchHistoryManager.SetMatchHistoryAsync(winnerPlayer, loserPlayer);
     }
     
     public static (Rank Rank, int Ranking) GetRank(long playerSeq)

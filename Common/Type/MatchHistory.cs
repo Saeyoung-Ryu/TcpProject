@@ -1,3 +1,4 @@
+using Enum;
 using Newtonsoft.Json;
 
 namespace Common;

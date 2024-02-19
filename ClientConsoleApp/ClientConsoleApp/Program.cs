@@ -30,19 +30,43 @@ namespace ClientConsoleApp
             var loadDataReq = new LoadDataReq
             {
                 ProtocolId = ProtocolId.LoadData,
-                NickName = "SAMY123456"
+                NickName = "Test12"
             };
 
             var editNicknameReq = new EditNicknameReq()
             {
                 ProtocolId = ProtocolId.EditNickname,
-                ChangedNickname = "Amy19977",
-                OriginalNickname = "Amy"
+                ChangedNickname = "Amy123",
+                OriginalNickname = "NoNo"
             };
             
-            var res = await HttpManager.SendHttpServerRequestAsync(editNicknameReq);
-            var a = (EditNicknameRes) res;
-            Console.WriteLine(a.Success);
+            var getMatchHistoryReq = new GetMatchHistoryReq
+            {
+                ProtocolId = ProtocolId.GetMatchHistory,
+                NickName = "Sy123444"
+            };
+
+            var setRank = new SetRankReq()
+            {
+                ProtocolId = ProtocolId.SetRank,
+                LoserNickname = "Amy123",
+                WinnerNickname = "Test12"
+            };
+
+            var getRank = new GetRankReq()
+            {
+                ProtocolId = ProtocolId.GetRank,
+                NickName = "Sy1234"
+            };
+            
+            var res = await HttpManager.SendHttpServerRequestAsync(getRank);
+            
+            var a = (GetRankRes) res;
+            
+            Console.WriteLine(a.WinCount);
+            Console.WriteLine(a.LoseCount);
+            Console.WriteLine(a.Point);
+            Console.WriteLine(a.Ranking);
         }
 
         static async Task<ProtocolRes> SendHttpServerRequestAsync<T>(T protocol)

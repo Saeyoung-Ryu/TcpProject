@@ -16,13 +16,13 @@ public class ServiceSetRank : IService
 
         try
         {
-            var winnerPlayer = await AccountDB.GetPlayerWithNicknameAsync(req.WinnerNickname);
-            var loserPlayer = await AccountDB.GetPlayerWithNicknameAsync(req.LoserNickname);
+            var winnerPlayer = await PlayerManager.GetPlayerWithNicknameAsync(req.WinnerNickname);
+            var loserPlayer = await PlayerManager.GetPlayerWithNicknameAsync(req.LoserNickname);
 
             if (winnerPlayer == null || loserPlayer == null)
                 return res;
             
-            await RankManager.SetPlayerWinLoseAsync(winnerPlayer.Seq, loserPlayer.Seq);
+            await RankManager.SetPlayerWinLoseAsync(winnerPlayer, loserPlayer);
         }
         catch (Exception e)
         {

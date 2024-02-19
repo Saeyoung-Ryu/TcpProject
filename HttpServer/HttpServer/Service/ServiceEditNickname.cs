@@ -16,8 +16,8 @@ public class ServiceEditNickname : IService
 
         try
         {
-            var originalNicknamePlayer = await AccountDB.GetPlayerWithNicknameAsync(req.OriginalNickname);
-            var changedNicknamePlayer = await AccountDB.GetPlayerWithNicknameAsync(req.ChangedNickname);
+            var originalNicknamePlayer = await PlayerManager.GetPlayerWithNicknameAsync(req.OriginalNickname);
+            var changedNicknamePlayer = await PlayerManager.GetPlayerWithNicknameAsync(req.ChangedNickname);
 
             if (changedNicknamePlayer == null && originalNicknamePlayer != null) // 중복닉네임이 없을떄
             {

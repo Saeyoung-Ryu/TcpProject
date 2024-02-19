@@ -5,14 +5,14 @@ using Protocol2;
 namespace Service;
 
 [ProtocolHandler]
-public class ServiceGetRank : IService
+public class ServiceGetMatchHistory : IService
 {
-    public ProtocolId ProtocolId { get; set; } = ProtocolId.GetRank;
+    public ProtocolId ProtocolId { get; set; } = ProtocolId.GetMatchHistory;
 
     public async Task<ProtocolRes> ProcessAsync(HttpContext context, Protocol request)
     {
-        var req = (GetRankReq)request;
-        var res = new GetRankRes();
+        var req = (GetMatchHistoryReq)request;
+        var res = new GetMatchHistoryRes();
 
         try
         {
@@ -21,12 +21,10 @@ public class ServiceGetRank : IService
             if (player == null)
                 return res;
 
-            (var PlayerRank, int Ranking) = RankManager.GetRank(player.Seq);
+            var playerMatchHistory = (await MatchHistoryManager.GetAsync(player)).MatchHistory;
 
-            res.WinCount = PlayerRank.WinCount;
-            res.LoseCount = PlayerRank.LoseCount;
-            res.Point = PlayerRank.Point;
-            res.Ranking = Ranking;
+            if (playerMatchHistory != null)
+                res.MatchHistoryListDic = playerMatchHistory.FromData();
         }
         catch (Exception e)
         {

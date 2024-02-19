@@ -8,8 +8,14 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Compile Include="..\..\Enum\WinLoseType.cs">
+        <Link>Enum\WinLoseType.cs</Link>
+      </Compile>
       <Compile Include="..\..\Protocol2\EditNickname.cs">
         <Link>Protocol2\EditNickname.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Protocol2\GetMatchHistory.cs">
+        <Link>Protocol2\GetMatchHistory.cs</Link>
       </Compile>
       <Compile Include="..\..\Protocol2\GetRank.cs">
         <Link>Protocol2\GetRank.cs</Link>
@@ -46,12 +52,6 @@
     <ItemGroup>
       <PackageReference Include="MessagePack" Version="2.6.100-alpha" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Content Include="..\..\Protocol2\.DS_Store">
-        <Link>Protocol2\.DS_Store</Link>
-      </Content>
     </ItemGroup>
 
 </Project>
