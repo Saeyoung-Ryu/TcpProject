@@ -9,6 +9,8 @@ namespace TcpProjectServer
         {
             ServerInfoConfig.Refresh();
             ServerVariable.Refresh();
+
+            Console.WriteLine("Tcp Server Has Started....");
             
             await TcpServerManager.StartServer(3360);
         }

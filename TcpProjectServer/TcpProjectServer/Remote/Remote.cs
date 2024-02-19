@@ -1,4 +1,5 @@
 using System.Net.Sockets;
+using Common;
 using MessagePack;
 using Protocol;
 
@@ -10,6 +11,8 @@ namespace TcpProjectServer;
         
         private TcpClient client1;
         private TcpClient client2;
+        public string client1Nickname;
+        public string client2Nickname;
         
         public int client1Life = int.Parse(ServerVariable.Life);
         public int client2Life = int.Parse(ServerVariable.Life);
@@ -17,7 +20,7 @@ namespace TcpProjectServer;
         public int firstNumber;
         public int secondNumber;
         
-        public void Run(TcpClient tcpClient1, TcpClient tcpClient2)
+        public async Task RunAsync(TcpClient tcpClient1, TcpClient tcpClient2)
         {
             Reset();
             
@@ -27,9 +30,19 @@ namespace TcpProjectServer;
             Task.Run(async () => await ProcessReceiveAsync(client1));
             Task.Run(async () => await ProcessReceiveAsync(client2));
 
+            await SendAuthAAsync();
+            
             ProcessAsync(new GameStartQ());
         }
 
+        public async Task SendAuthAAsync()
+        {
+            AuthA authA = new AuthA();
+            authA.ClientNum = 1;
+            await SendToClient1(authA);
+            authA.ClientNum = 2;
+            await SendToClient2(authA);
+        }
         public async Task ProcessReceiveAsync(TcpClient tcpClient)
         {
             using (MemoryStream stream = new MemoryStream())
@@ -68,6 +81,9 @@ namespace TcpProjectServer;
                     {
                         case ProtocolId.SendAnswerQ:
                             await ProcessAsync(MessagePackSerializer.Deserialize<SendAnswerQ>(new MemoryStream(stream.ToArray())));
+                            break;
+                        case ProtocolId.AuthQ:
+                            await ProcessAsync(MessagePackSerializer.Deserialize<AuthQ>(new MemoryStream(stream.ToArray())));
                             break;
                         // Protocol 여기다 추가
                     }

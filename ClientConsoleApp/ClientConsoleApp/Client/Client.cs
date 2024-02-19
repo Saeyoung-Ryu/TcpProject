@@ -10,6 +10,8 @@ namespace ClientConsoleApp;
 
 public partial class Client
 {
+    private bool gameEnd = false;
+    
     private TcpClient tcpClient;
     private int myClientNumber = 0;
     private int stage = 0;
@@ -23,10 +25,13 @@ public partial class Client
 
         Task.Run(ProcessReceiveAsync);
         Task.Run(ProcessSendAsync);
-        while (true)
+        while (!gameEnd)
         {
-
+            
         }
+
+        Console.WriteLine("Game End!!!!");
+        return;
     }
     
     private void Send<T>(T data)
@@ -62,6 +67,9 @@ public partial class Client
     
                         switch (protocol?.ProtocolId)
                         {
+                            case ProtocolId.AuthA:
+                                await ProcessAsync(MessagePackSerializer.Deserialize<AuthA>(new MemoryStream(stream.ToArray())));
+                                break;
                             case ProtocolId.GameStartA:
                                 await ProcessAsync(MessagePackSerializer.Deserialize<GameStartA>(new MemoryStream(stream.ToArray())));
                                 break;

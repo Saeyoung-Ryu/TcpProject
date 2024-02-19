@@ -20,8 +20,8 @@ namespace Protocol
 
     public enum ProtocolId
     {
-        EnterQ = 1,
-        EnterA = 2,
+        AuthQ = 1,
+        AuthA = 2,
         GameStartQ = 3,
         GameStartA = 4,
         SendQuestionQ = 5,

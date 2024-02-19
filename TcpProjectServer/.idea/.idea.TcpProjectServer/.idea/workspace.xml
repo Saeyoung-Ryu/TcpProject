@@ -8,77 +8,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="686d62c6-2437-4f52-ae6e-99a880b9ac51" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/../HttpServer/HttpServer/Pages/MatchHistory.razor" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../HttpServer/HttpServer/Pages/MatchHistory.razor.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../HttpServer/HttpServer/Pages/Rank.razor" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../HttpServer/HttpServer/Pages/Rank.razor.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../HttpServer/HttpServer/Pages/ServerVariable.razor" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../HttpServer/HttpServer/Pages/ServerVariable.razor.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.TcpProjectServer/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.TcpProjectServer/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.TcpProjectServer/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TcpProjectServer/HttpManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ClientConsoleApp/ClientConsoleApp/Client/Client.Auth.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Protocol/Auth.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TcpProjectServer/Remote/Remote.Auth.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientConsoleApp/ClientConsoleApp/Client/Client.GameEnd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientConsoleApp/ClientConsoleApp/Client/Client.GameEnd.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientConsoleApp/ClientConsoleApp/Client/Client.GameStart.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientConsoleApp/ClientConsoleApp/Client/Client.GameStart.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientConsoleApp/ClientConsoleApp/Client/Client.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientConsoleApp/ClientConsoleApp/Client/Client.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientConsoleApp/ClientConsoleApp/ClientConsoleApp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientConsoleApp/ClientConsoleApp/ClientConsoleApp.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientConsoleApp/ClientConsoleApp/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientConsoleApp/ClientConsoleApp/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientConsoleApp/ClientConsoleApp/bin/Debug/net7.0/ClientConsoleApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientConsoleApp/ClientConsoleApp/bin/Debug/net7.0/ClientConsoleApp.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientConsoleApp/ClientConsoleApp/bin/Debug/net7.0/ClientConsoleApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientConsoleApp/ClientConsoleApp/bin/Debug/net7.0/ClientConsoleApp.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientConsoleApp/ClientConsoleApp/obj/Debug/net7.0/ClientConsoleApp.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientConsoleApp/ClientConsoleApp/obj/Debug/net7.0/ClientConsoleApp.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientConsoleApp/ClientConsoleApp/obj/Debug/net7.0/ClientConsoleApp.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientConsoleApp/ClientConsoleApp/obj/Debug/net7.0/ClientConsoleApp.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientConsoleApp/ClientConsoleApp/obj/Debug/net7.0/ClientConsoleApp.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientConsoleApp/ClientConsoleApp/obj/Debug/net7.0/ClientConsoleApp.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientConsoleApp/ClientConsoleApp/obj/Debug/net7.0/ClientConsoleApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientConsoleApp/ClientConsoleApp/obj/Debug/net7.0/ClientConsoleApp.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientConsoleApp/ClientConsoleApp/obj/Debug/net7.0/ClientConsoleApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientConsoleApp/ClientConsoleApp/obj/Debug/net7.0/ClientConsoleApp.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientConsoleApp/ClientConsoleApp/obj/Debug/net7.0/ClientConsoleApp.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientConsoleApp/ClientConsoleApp/obj/Debug/net7.0/ClientConsoleApp.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientConsoleApp/ClientConsoleApp/obj/Debug/net7.0/ref/ClientConsoleApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientConsoleApp/ClientConsoleApp/obj/Debug/net7.0/ref/ClientConsoleApp.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ClientConsoleApp/ClientConsoleApp/obj/Debug/net7.0/refint/ClientConsoleApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientConsoleApp/ClientConsoleApp/obj/Debug/net7.0/refint/ClientConsoleApp.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Common/Type/MatchHistory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Common/Type/MatchHistory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HttpServer/HttpServer/Data/SearchedPlayer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HttpServer/HttpServer/Data/WeatherForecast.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HttpServer/HttpServer/Data/WeatherForecastService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HttpServer/HttpServer/Pages/Display.razor" beforeDir="false" afterPath="$PROJECT_DIR$/../HttpServer/HttpServer/Pages/Display.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HttpServer/HttpServer/Pages/PlayerData.razor" beforeDir="false" afterPath="$PROJECT_DIR$/../HttpServer/HttpServer/Pages/PlayerData.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HttpServer/HttpServer/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HttpServer/HttpServer/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HttpServer/HttpServer/Shared/MainLayout.razor" beforeDir="false" afterPath="$PROJECT_DIR$/../HttpServer/HttpServer/Shared/MainLayout.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HttpServer/HttpServer/Shared/NavMenu.razor" beforeDir="false" afterPath="$PROJECT_DIR$/../HttpServer/HttpServer/Shared/NavMenu.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HttpServer/HttpServer/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HttpServer/HttpServer/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientConsoleApp/ClientConsoleApp/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientConsoleApp/ClientConsoleApp/obj/rider.project.model.nuget.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../HttpServer/HttpServer/bin/Debug/net7.0/HttpServer.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../HttpServer/HttpServer/bin/Debug/net7.0/HttpServer.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../HttpServer/HttpServer/bin/Debug/net7.0/HttpServer.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../HttpServer/HttpServer/bin/Debug/net7.0/HttpServer.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../HttpServer/HttpServer/obj/Debug/net7.0/HttpServer.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HttpServer/HttpServer/obj/Debug/net7.0/HttpServer.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../HttpServer/HttpServer/obj/Debug/net7.0/HttpServer.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../HttpServer/HttpServer/obj/Debug/net7.0/HttpServer.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HttpServer/HttpServer/obj/Debug/net7.0/HttpServer.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/../HttpServer/HttpServer/obj/Debug/net7.0/HttpServer.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HttpServer/HttpServer/obj/Debug/net7.0/HttpServer.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../HttpServer/HttpServer/obj/Debug/net7.0/HttpServer.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HttpServer/HttpServer/obj/Debug/net7.0/HttpServer.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../HttpServer/HttpServer/obj/Debug/net7.0/HttpServer.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../HttpServer/HttpServer/obj/Debug/net7.0/HttpServer.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../HttpServer/HttpServer/obj/Debug/net7.0/HttpServer.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../HttpServer/HttpServer/obj/Debug/net7.0/HttpServer.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../HttpServer/HttpServer/obj/Debug/net7.0/HttpServer.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../HttpServer/HttpServer/obj/Debug/net7.0/HttpServer.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/../HttpServer/HttpServer/obj/Debug/net7.0/HttpServer.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../HttpServer/HttpServer/obj/Debug/net7.0/ref/HttpServer.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../HttpServer/HttpServer/obj/Debug/net7.0/ref/HttpServer.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../HttpServer/HttpServer/obj/Debug/net7.0/refint/HttpServer.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../HttpServer/HttpServer/obj/Debug/net7.0/refint/HttpServer.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HttpServer/HttpServer/obj/Debug/net7.0/scopedcss/bundle/HttpServer.styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../HttpServer/HttpServer/obj/Debug/net7.0/scopedcss/bundle/HttpServer.styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HttpServer/HttpServer/obj/Debug/net7.0/scopedcss/projectbundle/HttpServer.bundle.scp.css" beforeDir="false" afterPath="$PROJECT_DIR$/../HttpServer/HttpServer/obj/Debug/net7.0/scopedcss/projectbundle/HttpServer.bundle.scp.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HttpServer/MySql/ProjectDB.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../HttpServer/MySql/ProjectDB.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HttpServer/HttpServer/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/../HttpServer/HttpServer/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Protocol/Protocol.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Protocol/Protocol.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TcpProjectServer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TcpProjectServer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TcpProjectServer/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TcpProjectServer/GameManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TcpProjectServer/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TcpProjectServer/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TcpProjectServer/Remote/Remote.GameEnd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TcpProjectServer/Remote/Remote.GameEnd.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TcpProjectServer/Remote/Remote.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TcpProjectServer/Remote/Remote.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TcpProjectServer/TcpProjectServer.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/TcpProjectServer/TcpProjectServer.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TcpProjectServer/bin/Debug/net7.0/TcpProjectServer" beforeDir="false" afterPath="$PROJECT_DIR$/TcpProjectServer/bin/Debug/net7.0/TcpProjectServer" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TcpProjectServer/bin/Debug/net7.0/TcpProjectServer.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/TcpProjectServer/bin/Debug/net7.0/TcpProjectServer.deps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TcpProjectServer/TcpServerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TcpProjectServer/TcpServerManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TcpProjectServer/bin/Debug/net7.0/TcpProjectServer.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TcpProjectServer/bin/Debug/net7.0/TcpProjectServer.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TcpProjectServer/bin/Debug/net7.0/TcpProjectServer.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TcpProjectServer/bin/Debug/net7.0/TcpProjectServer.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TcpProjectServer/obj/Debug/net7.0/TcpProjectServer.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TcpProjectServer/obj/Debug/net7.0/TcpProjectServer.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TcpProjectServer/obj/Debug/net7.0/TcpProjectServer.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TcpProjectServer/obj/Debug/net7.0/TcpProjectServer.csproj.AssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TcpProjectServer/obj/Debug/net7.0/TcpProjectServer.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TcpProjectServer/obj/Debug/net7.0/TcpProjectServer.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TcpProjectServer/obj/Debug/net7.0/TcpProjectServer.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TcpProjectServer/obj/Debug/net7.0/TcpProjectServer.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TcpProjectServer/obj/Debug/net7.0/TcpProjectServer.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TcpProjectServer/obj/Debug/net7.0/TcpProjectServer.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TcpProjectServer/obj/Debug/net7.0/TcpProjectServer.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TcpProjectServer/obj/Debug/net7.0/TcpProjectServer.genruntimeconfig.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TcpProjectServer/obj/Debug/net7.0/TcpProjectServer.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TcpProjectServer/obj/Debug/net7.0/TcpProjectServer.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TcpProjectServer/obj/Debug/net7.0/apphost" beforeDir="false" afterPath="$PROJECT_DIR$/TcpProjectServer/obj/Debug/net7.0/apphost" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TcpProjectServer/obj/Debug/net7.0/ref/TcpProjectServer.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TcpProjectServer/obj/Debug/net7.0/ref/TcpProjectServer.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TcpProjectServer/obj/Debug/net7.0/refint/TcpProjectServer.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TcpProjectServer/obj/Debug/net7.0/refint/TcpProjectServer.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TcpProjectServer/obj/TcpProjectServer.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/TcpProjectServer/obj/TcpProjectServer.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TcpProjectServer/obj/TcpProjectServer.csproj.nuget.g.targets" beforeDir="false" afterPath="$PROJECT_DIR$/TcpProjectServer/obj/TcpProjectServer.csproj.nuget.g.targets" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TcpProjectServer/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/TcpProjectServer/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TcpProjectServer/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TcpProjectServer/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TcpProjectServer/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/TcpProjectServer/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TcpProjectServer/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/TcpProjectServer/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TcpProjectServer/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/TcpProjectServer/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,8 +72,13 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/85efc35430712eda7b108a6927c3e8cbe767eff2cc2c19fbba90321783b9a3/Queue.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/aa7c6fbb19b15d579a6f2debd49ddb12d463bff89469140e8c4491757d7f1e/Socket.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f3981d658666ec9cc1e6958fe22f8614bfe02ccb6625b056c3ece3729c9262/JsonConvert.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../Protocol/Enter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Common/LogDB/GetMatchHistory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Common/ServerInfoConfig.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Common/Type/ServerVariable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Protocol/GameEnd.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Protocol/GameStart.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Protocol/SendAnswer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Protocol2/Protocol.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -180,6 +157,7 @@
       <workItem from="1708068354325" duration="20000" />
       <workItem from="1708068382183" duration="34000" />
       <workItem from="1708070817992" duration="1124000" />
+      <workItem from="1708322333315" duration="4211000" />
     </task>
     <servers />
   </component>

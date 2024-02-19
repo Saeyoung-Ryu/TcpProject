@@ -32,6 +32,9 @@
       <Compile Include="..\..\Protocol2\SetRank.cs">
         <Link>Protocol2\SetRank.cs</Link>
       </Compile>
+      <Compile Include="..\..\Protocol\Auth.cs">
+        <Link>Protocol\Auth.cs</Link>
+      </Compile>
       <Compile Include="..\..\Protocol\GameEnd.cs">
         <Link>Protocol\GameEnd.cs</Link>
       </Compile>

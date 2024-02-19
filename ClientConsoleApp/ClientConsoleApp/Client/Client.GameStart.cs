@@ -6,7 +6,7 @@ public partial class Client
 {
     public async Task ProcessAsync(GameStartA gameStartA)
     {
-        myClientNumber = gameStartA.ClientNum;
+        // myClientNumber = gameStartA.ClientNum;
         var loadingTime = gameStartA.LoadingTime;
 
         Console.WriteLine($"You are Client {myClientNumber}");

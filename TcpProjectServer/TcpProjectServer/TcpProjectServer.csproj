@@ -27,9 +27,6 @@
       <Compile Include="..\..\Common\AccountDB\SetPlayer.cs">
         <Link>Common\AccountDB\SetPlayer.cs</Link>
       </Compile>
-      <Compile Include="..\..\Common\Enum\WinLoseType.cs">
-        <Link>Common\Enum\WinLoseType.cs</Link>
-      </Compile>
       <Compile Include="..\..\Common\LogDB\GetMatchHistory.cs">
         <Link>Common\LogDB\GetMatchHistory.cs</Link>
       </Compile>
@@ -69,6 +66,18 @@
       <Compile Include="..\..\Common\Type\ServerVariable.cs">
         <Link>Common\Type\ServerVariable.cs</Link>
       </Compile>
+      <Compile Include="..\..\Enum\WinLoseType.cs">
+        <Link>Enum\WinLoseType.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Protocol2\EditNickname.cs">
+        <Link>Protocol2\EditNickname.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Protocol2\GetMatchHistory.cs">
+        <Link>Protocol2\GetMatchHistory.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Protocol2\GetRank.cs">
+        <Link>Protocol2\GetRank.cs</Link>
+      </Compile>
       <Compile Include="..\..\Protocol2\LoadData.cs">
         <Link>Protocol2\LoadData.cs</Link>
       </Compile>
@@ -77,6 +86,12 @@
       </Compile>
       <Compile Include="..\..\Protocol2\ProtocolReq.cs">
         <Link>Protocol2\ProtocolReq.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Protocol2\SetRank.cs">
+        <Link>Protocol2\SetRank.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Protocol\Auth.cs">
+        <Link>Protocol\Auth.cs</Link>
       </Compile>
       <Compile Include="..\..\Protocol\GameEnd.cs">
         <Link>Protocol\GameEnd.cs</Link>
@@ -93,6 +108,12 @@
       <Compile Include="..\..\Protocol\SendQuestion.cs">
         <Link>Protocol\SendQuestion.cs</Link>
       </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\..\Common\.DS_Store">
+        <Link>Common\.DS_Store</Link>
+      </Content>
     </ItemGroup>
 
 </Project>

@@ -11,5 +11,7 @@ public partial class Client
             Console.WriteLine("You Win!");
         else
             Console.WriteLine("You Lose!");
+
+        gameEnd = true;
     }
 }

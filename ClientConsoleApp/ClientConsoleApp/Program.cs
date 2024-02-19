@@ -1,21 +1,145 @@
-﻿// using System;
-// using System.Globalization;
-// namespace ClientConsoleApp
-// {
-//     internal class Program
-//     {
-//         static async Task Main(string[] args)
-//         {
-//             StartTcp();
-//         }
-//         static void StartTcp()
-//         {
-//             Client client = new Client("127.0.0.1", 3360);
-//         }
-//     }
-// }
+﻿using System;
+using System.Globalization;
+using Enum;
+using MessagePack;
+using Protocol2;
 
-using System;
+namespace ClientConsoleApp
+{
+    public class Program
+    {
+        public static string Nickname;
+        
+        static async Task Main(string[] args)
+        {
+            await PrintLoginAsync();
+
+            while (true)
+            {
+                var selectedMenuNum = PrintMenu();
+            
+                switch (selectedMenuNum)
+                {
+                    case "1":
+                        EnterGame();
+                        break;
+                    case "2":
+                        await PrintRankAsync();
+                        break;
+                    case "3":
+                        await PrintMatchHistoryAsync();
+                        break;
+                    case "4":
+                        await PrintEditNicknameAsync();
+                        break;
+                }
+            }
+            
+        }
+        static void EnterGame()
+        {
+            Client client = new Client("127.0.0.1", 3360);
+        }
+
+        static async Task PrintEditNicknameAsync()
+        {
+            Console.WriteLine("=====================================");
+            Console.Write("Enter New Nickname : ");
+            var newNickname = Console.ReadLine();
+            
+            var editNicknameReq = new EditNicknameReq
+            {
+                ProtocolId = ProtocolId.EditNickname,
+                ChangedNickname = newNickname,
+                OriginalNickname = Nickname
+            };
+            var res = await HttpManager.SendHttpServerRequestAsync(editNicknameReq);
+            var editNicknameRes = (EditNicknameRes) res;
+            
+            if (editNicknameRes.Success)
+            {
+                Nickname = newNickname;
+                Console.WriteLine("Nickname Changed Successfully");
+            }
+            else
+            {
+                Console.WriteLine("Nickname Already Exists");
+            }
+            
+            Console.WriteLine("=====================================");
+        }
+
+        static async Task PrintMatchHistoryAsync()
+        {
+            var getMatchHistoryReq = new GetMatchHistoryReq
+            {
+                ProtocolId = ProtocolId.GetMatchHistory,
+                NickName = Nickname
+            };
+            
+            var res = await HttpManager.SendHttpServerRequestAsync(getMatchHistoryReq);
+            var getMatchHistoryRes = (GetMatchHistoryRes) res;
+            
+            Console.WriteLine("=====================================");
+            if (getMatchHistoryRes.MatchHistoryListDic == null || getMatchHistoryRes.MatchHistoryListDic.Count == 0)
+            {
+                Console.WriteLine("No Match History");
+            }
+            else
+            {
+                foreach (var matchHistory in getMatchHistoryRes.MatchHistoryListDic)
+                {
+                    Console.WriteLine($"Win : {matchHistory[WinLoseType.Win]} / Lose : {matchHistory[WinLoseType.Lose]}");
+                }
+            }
+            Console.WriteLine("=====================================");
+        }
+
+        static async Task PrintRankAsync()
+        {
+            var getRankReq = new GetRankReq
+            {
+                ProtocolId = ProtocolId.GetRank,
+                NickName = Nickname
+            };
+            
+            var res = await HttpManager.SendHttpServerRequestAsync(getRankReq);
+            var getRankRes = (GetRankRes) res;
+
+            string ranking = getRankRes.Ranking == 0 ? "No Rank" : getRankRes.Ranking.ToString();
+            
+            Console.WriteLine("=====================================");
+            Console.WriteLine($"Win : {getRankRes.WinCount} / Lose : {getRankRes.LoseCount} / Point : {getRankRes.Point}");
+            Console.WriteLine($"Ranking : {ranking}");
+            Console.WriteLine("=====================================");
+        }
+
+        static async Task PrintLoginAsync()
+        {
+            Console.Write("Enter Nickname to Login : ");
+            Nickname = Console.ReadLine();
+            
+            var loadDataReq = new LoadDataReq
+            {
+                ProtocolId = ProtocolId.LoadData,
+                NickName = Nickname
+            };
+            
+            var res = await HttpManager.SendHttpServerRequestAsync(loadDataReq);
+            var loadDataRes = (LoadDataRes) res;
+            Console.WriteLine($"Welcome to the game {Nickname}! [Created at UTC : {loadDataRes.CreateTime.ToString("yyyy-MM-dd HH:mm:ss")}]");
+        }
+        
+        static string PrintMenu()
+        {
+            Console.WriteLine("1. Play Game   2. Check Rank   3. Check Match History   4. Edit Nickname");
+            Console.Write("Select Num : ");
+            return Console.ReadLine();
+        }
+    }
+}
+
+/*using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using MessagePack;
@@ -123,4 +247,4 @@ namespace ClientConsoleApp
             }
         }
     }
-}
+}*/
