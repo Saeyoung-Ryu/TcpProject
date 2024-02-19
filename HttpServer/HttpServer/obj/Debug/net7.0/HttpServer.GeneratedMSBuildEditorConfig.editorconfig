@@ -9,63 +9,61 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = HttpServer
 build_property.RootNamespace = HttpServer
-build_property.ProjectDir = /Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/
-build_property.EnableComHosting = 
-build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.ProjectDir = /Users/saeyoungryu/Projects/TcpProject/HttpServer/HttpServer/
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer
+build_property.MSBuildProjectDirectory = /Users/saeyoungryu/Projects/TcpProject/HttpServer/HttpServer
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/App.razor]
+[/Users/saeyoungryu/Projects/TcpProject/HttpServer/HttpServer/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/Pages/Display.razor]
+[/Users/saeyoungryu/Projects/TcpProject/HttpServer/HttpServer/Pages/Display.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRGlzcGxheS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/Pages/Index.razor]
+[/Users/saeyoungryu/Projects/TcpProject/HttpServer/HttpServer/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/Shared/SurveyPrompt.razor]
+[/Users/saeyoungryu/Projects/TcpProject/HttpServer/HttpServer/Shared/SurveyPrompt.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1N1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/_Imports.razor]
+[/Users/saeyoungryu/Projects/TcpProject/HttpServer/HttpServer/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/Pages/MatchHistory.razor]
+[/Users/saeyoungryu/Projects/TcpProject/HttpServer/HttpServer/Pages/MatchHistory.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTWF0Y2hIaXN0b3J5LnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-181x4rzgwb
 
-[/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/Pages/PlayerData.razor]
+[/Users/saeyoungryu/Projects/TcpProject/HttpServer/HttpServer/Pages/PlayerData.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUGxheWVyRGF0YS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-3vu6r0h2ui
 
-[/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/Pages/Rank.razor]
+[/Users/saeyoungryu/Projects/TcpProject/HttpServer/HttpServer/Pages/Rank.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUmFuay5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-yiywaw2hbv
 
-[/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/Pages/ServerVariable.razor]
+[/Users/saeyoungryu/Projects/TcpProject/HttpServer/HttpServer/Pages/ServerVariable.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2VydmVyVmFyaWFibGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-dnmji5l5dz
 
-[/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/Shared/MainLayout.razor]
+[/Users/saeyoungryu/Projects/TcpProject/HttpServer/HttpServer/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL01haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-pmno7m4zkd
 
-[/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/Shared/NavMenu.razor]
+[/Users/saeyoungryu/Projects/TcpProject/HttpServer/HttpServer/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL05hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-adazd4mwk7
 
-[/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/Pages/Error.cshtml]
+[/Users/saeyoungryu/Projects/TcpProject/HttpServer/HttpServer/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/Pages/_Host.cshtml]
+[/Users/saeyoungryu/Projects/TcpProject/HttpServer/HttpServer/Pages/_Host.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX0hvc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

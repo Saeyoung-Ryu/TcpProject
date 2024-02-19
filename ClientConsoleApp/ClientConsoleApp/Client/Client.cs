@@ -31,7 +31,7 @@ public partial class Client
         }
 
         Console.WriteLine("Game End!!!!");
-        return;
+        tcpClient.Dispose();
     }
     
     private void Send<T>(T data)
