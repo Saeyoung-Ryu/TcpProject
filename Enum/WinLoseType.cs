@@ -1,4 +1,4 @@
-namespace Common;
+namespace Enum;
 
 public enum WinLoseType
 {
