@@ -18,24 +18,31 @@ namespace HttpServer
         }
         public async Task InvokeAsync(HttpContext context)
         {
-            // blazor 요청 /Tool/~ 로 들어오는거 예외처리
-            if (context.Request.Path.Value != "/")
+            try
             {
-                await _next(context);
-                return;
-            }
+                // blazor 요청 /Tool/~ 로 들어오는거 예외처리
+                if (context.Request.Path.Value != "/")
+                {
+                    await _next(context);
+                    return;
+                }
             
-            using (MemoryStream ms = new MemoryStream())
-            {
-                await context.Request.Body.CopyToAsync(ms);
-                byte[] requestData = ms.ToArray();
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    await context.Request.Body.CopyToAsync(ms);
+                    byte[] requestData = ms.ToArray();
                     
-                // 추상클래스는 형변환 불가능하므로 ProcotoclReq를 따로 만들어 안에 Protocol을 넣어줌
-                var protocolReq = MessagePackSerializer.Deserialize<ProtocolReq>(requestData);
-                var protocolRes = await Service.Service.ProcessAsync(context, protocolReq.Protocol);
-                byte[] responseData = MessagePackSerializer.Serialize(protocolRes);
+                    // 추상클래스는 형변환 불가능하므로 ProcotoclReq를 따로 만들어 안에 Protocol을 넣어줌
+                    var protocolReq = MessagePackSerializer.Deserialize<ProtocolReq>(requestData);
+                    var protocolRes = await Service.Service.ProcessAsync(context, protocolReq.Protocol);
+                    byte[] responseData = MessagePackSerializer.Serialize(protocolRes);
                 
-                await context.Response.Body.WriteAsync(responseData);
+                    await context.Response.Body.WriteAsync(responseData);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
             }
         }
     }

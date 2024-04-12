@@ -8,6 +8,9 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Compile Include="..\..\Enum\Result.cs">
+        <Link>Enum\Result.cs</Link>
+      </Compile>
       <Compile Include="..\..\Enum\WinLoseType.cs">
         <Link>Enum\WinLoseType.cs</Link>
       </Compile>

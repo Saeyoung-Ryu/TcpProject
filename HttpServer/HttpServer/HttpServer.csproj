@@ -69,6 +69,9 @@
       <Compile Include="..\..\Common\Type\ServerVariable.cs">
         <Link>Common\Type\ServerVariable.cs</Link>
       </Compile>
+      <Compile Include="..\..\Enum\Result.cs">
+        <Link>Enum\Result.cs</Link>
+      </Compile>
       <Compile Include="..\..\Enum\WinLoseType.cs">
         <Link>Enum\WinLoseType.cs</Link>
       </Compile>

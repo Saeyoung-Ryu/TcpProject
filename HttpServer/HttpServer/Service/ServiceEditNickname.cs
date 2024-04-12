@@ -1,4 +1,5 @@
 using Common;
+using Enum;
 using HttpServer;
 using Protocol2;
 
@@ -33,7 +34,7 @@ public class ServiceEditNickname : IService
         catch (Exception e)
         {
             Console.WriteLine(e);
-            throw;
+            res.Result = Result.EditNickNameFailed;
         }
         
         return res;

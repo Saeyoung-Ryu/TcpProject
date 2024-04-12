@@ -1,4 +1,5 @@
 using Common;
+using Enum;
 using HttpServer;
 using Protocol2;
 
@@ -29,7 +30,7 @@ public class ServiceGetMatchHistory : IService
         catch (Exception e)
         {
             Console.WriteLine(e);
-            throw;
+            res.Result = Result.GetMatchHistoryFailed;
         }
         
         return res;

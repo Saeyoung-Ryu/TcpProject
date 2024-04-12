@@ -1,4 +1,5 @@
 using Common;
+using Enum;
 using HttpServer;
 using Protocol2;
 
@@ -27,7 +28,7 @@ public class ServiceSetRank : IService
         catch (Exception e)
         {
             Console.WriteLine(e);
-            throw;
+            res.Result = Result.SetRankFailed;
         }
         
         return res;

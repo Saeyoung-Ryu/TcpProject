@@ -1,3 +1,4 @@
+using Enum;
 using MessagePack;
 
 namespace Protocol2
@@ -35,6 +36,7 @@ namespace Protocol2
 	public abstract class ProtocolRes
 	{
 		[Key(0)] public ProtocolId ProtocolId { get; set; }
+		[Key(1)] public Result Result { get; set; }
 
 		public ProtocolRes() {}
 		public ProtocolRes(ProtocolId protocolId) { ProtocolId = protocolId; }

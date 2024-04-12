@@ -35,12 +35,20 @@ namespace Service
         
         public static async Task<ProtocolRes> ProcessAsync(HttpContext context, Protocol req)
         {
-            if (dicHandler.TryGetValue(req.ProtocolId, out var handler) == false)
+            try
             {
-                if (handler == null)
-                    throw new Exception($"Unknown Protocol : {req.ProtocolId}");
+                if (dicHandler.TryGetValue(req.ProtocolId, out var handler) == false)
+                {
+                    if (handler == null)
+                        throw new Exception($"Unknown Protocol : {req.ProtocolId}");
+                }
+                return await handler.ProcessAsync(context, req);
             }
-            return await handler.ProcessAsync(context, req);
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
     }
 }
