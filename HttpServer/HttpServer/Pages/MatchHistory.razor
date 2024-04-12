@@ -51,7 +51,7 @@ else
 
         if (player != null)
         {
-            matchHistory = await LogDB.GetMatchHistoryAsync(this.player.Seq);
+            matchHistory = await LogDB.GetMatchHistoryAsync(this.player.Suid);
 
             if (matchHistory != null)
                 list = matchHistory.FromData();

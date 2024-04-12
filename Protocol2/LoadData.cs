@@ -11,8 +11,8 @@ namespace Protocol2
     [MessagePackObject]
     public class LoadDataRes : ProtocolRes
     {
-        [Key(1)] public DateTime CreateTime { get; set; }
-        [Key(2)] public string NickName { get; set; }
+        [Key(2)] public DateTime CreateTime { get; set; }
+        [Key(3)] public string NickName { get; set; }
     }
 }
     

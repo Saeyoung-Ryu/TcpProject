@@ -1,3 +1,5 @@
+using Enum;
+
 namespace Common;
 
 public class PlayerManager
@@ -8,12 +10,16 @@ public class PlayerManager
 
         if (player == null && insert)
         {
-            await AccountDB.InsertPlayerAsync(nickname);
             player = new Player()
             {
                 Nickname = nickname,
+                Suid = LoginManager.GenerateUniqueSuid(),
+                AccountId = "",
+                LoginType = LoginType.Guest,
                 CreateTime = DateTime.UtcNow
             };
+            
+            await AccountDB.SetPlayerAsync(player);
         }
 
         return player;

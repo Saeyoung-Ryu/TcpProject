@@ -9,6 +9,7 @@ namespace HttpServer
             ServerInfoConfig.Refresh();
             ServerVariable.Refresh();
             Service.Service.Initialize();
+            await LoginManager.RefreshSeqAsync();
 
             await RankManager.RefreshRankAsync();
 

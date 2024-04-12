@@ -12,7 +12,7 @@ namespace Protocol2
     [MessagePackObject]
     public class GetMatchHistoryRes : ProtocolRes
     {
-        [Key(1)] public List<Dictionary<WinLoseType, string>> MatchHistoryListDic { get; set; }
+        [Key(2)] public List<Dictionary<WinLoseType, string>> MatchHistoryListDic { get; set; }
     }
 }
     

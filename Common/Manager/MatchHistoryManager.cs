@@ -22,13 +22,13 @@ public class MatchHistoryManager
 
     public static async Task<(MatchHistory? MatchHistory, string Nickname)> GetAsync(Player player)
     {
-        var matchHistory = await LogDB.GetMatchHistoryAsync(player.Seq);
+        var matchHistory = await LogDB.GetMatchHistoryAsync(player.Suid);
 
         if (matchHistory == null)
         {
             matchHistory = new MatchHistory()
             {
-                PlayerSeq = player.Seq,
+                Suid = player.Suid,
                 Data = string.Empty
             };
         }

@@ -116,18 +116,68 @@ namespace ClientConsoleApp
 
         static async Task PrintLoginAsync()
         {
-            Console.Write("Enter Nickname to Login : ");
-            Nickname = Console.ReadLine();
-            
-            var loadDataReq = new LoadDataReq
+            Console.WriteLine("1. Login as Guest");
+            Console.WriteLine("2. Login with Google Account");
+            Console.WriteLine("Enter Login Method : ");
+            string loginMethod = Console.ReadLine();
+
+            if (loginMethod == "1")
             {
-                ProtocolId = ProtocolId.LoadData,
-                NickName = Nickname
-            };
+                Console.Write("Enter Nickname to Login : ");
+                Console.WriteLine("=====================================");
+                Nickname = Console.ReadLine();
             
-            var res = await HttpManager.SendHttpServerRequestAsync(loadDataReq);
-            var loadDataRes = (LoadDataRes) res;
-            Console.WriteLine($"Welcome to the game {Nickname}! [Created at UTC : {loadDataRes.CreateTime.ToString("yyyy-MM-dd HH:mm:ss")}]");
+                var loadDataReq = new LoadDataReq
+                {
+                    ProtocolId = ProtocolId.LoadData,
+                    NickName = Nickname
+                };
+
+                try
+                {
+                    var res = await HttpManager.SendHttpServerRequestAsync(loadDataReq);
+                    var loadDataRes = (LoadDataRes) res;
+                    
+                    if (loadDataRes.Result != Result.None)
+                        throw new Exception();
+                    
+                    Console.WriteLine($"Welcome to the game {Nickname}! [Created at UTC : {loadDataRes.CreateTime.ToString("yyyy-MM-dd HH:mm:ss")}]");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(Result.LoadDataFailed);
+                    await PrintLoginAsync();
+                }
+            }
+            else if (loginMethod == "2")
+            {
+                var loginReq = new LoginReq
+                {
+                    ProtocolId = ProtocolId.Login,
+                    LoginType = LoginType.Google
+                };
+
+                try
+                {
+                    var res = await HttpManager.SendHttpServerRequestAsync(loginReq);
+                    var loginRes = (LoginRes) res;
+
+                    if (loginRes.Result != Result.None)
+                        throw new Exception();
+                
+                    Console.WriteLine($"Welcome to the game {Nickname}! [Created at UTC : {loginRes.CreateTime.ToString("yyyy-MM-dd HH:mm:ss")}]");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(Result.LoginFailed);
+                    await PrintLoginAsync();
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid Input");
+                return;
+            }
         }
         
         static string PrintMenu()

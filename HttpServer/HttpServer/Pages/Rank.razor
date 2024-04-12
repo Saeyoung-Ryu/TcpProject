@@ -27,7 +27,7 @@
     
     <br><br>
     
-    <h3>Player Ranking = @RankManager.GetMyRank(playerRank.PlayerSeq)</h3>
+    <h3>Player Ranking = @RankManager.GetMyRank(playerRank.Suid)</h3>
 }
 else
 {
@@ -50,10 +50,10 @@ else
 
         if (player != null)
         {
-            playerRank = await RankDB.GetRankAsync(player.Seq);
+            playerRank = await RankDB.GetRankAsync(player.Suid);
 
             if (playerRank != null)
-                playerRanking = RankManager.GetMyRank(player.Seq);
+                playerRanking = RankManager.GetMyRank(player.Suid);
         }
     }
 }

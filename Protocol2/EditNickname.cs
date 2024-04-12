@@ -12,7 +12,7 @@ namespace Protocol2
     [MessagePackObject]
     public class EditNicknameRes : ProtocolRes
     {
-        [Key(1)] public bool Success { get; set; }
+        [Key(2)] public bool Success { get; set; }
     }
 }
     

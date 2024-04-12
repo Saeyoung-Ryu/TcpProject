@@ -8,5 +8,6 @@ public enum Result
     GetRankFailed = 3,
     LoadDataFailed = 4,
     SetRankFailed = 5,
+    LoginFailed = 6,
     End
 }

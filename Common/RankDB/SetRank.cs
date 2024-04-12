@@ -17,7 +17,7 @@ namespace Common
         private static async Task SpSetRankAsync(MySqlConnection conn, MySqlTransaction trxn, Rank rank)
         {
             var parameters = new DynamicParameters();
-            parameters.Add("_playerSeq", rank.PlayerSeq);
+            parameters.Add("_suid", rank.Suid);
             parameters.Add("_winCount", rank.WinCount);
             parameters.Add("_loseCount", rank.LoseCount);
             parameters.Add("_point", rank.Point);

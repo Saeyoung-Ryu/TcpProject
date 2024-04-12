@@ -1,0 +1,67 @@
+using Common;
+using Enum;
+using Google.Apis.Auth.OAuth2;
+using Google.Apis.Oauth2.v2;
+using Google.Apis.Oauth2.v2.Data;
+using Google.Apis.Services;
+using HttpServer;
+using Protocol2;
+
+namespace Service;
+
+[ProtocolHandler]
+public class ServiceLogin : IService
+{
+    public ProtocolId ProtocolId { get; set; } = ProtocolId.Login;
+
+    public async Task<ProtocolRes> ProcessAsync(HttpContext context, Protocol request)
+    {
+        var req = (LoginReq)request;
+        var res = new LoginRes();
+
+        try
+        {
+            if (req.LoginType == LoginType.Google)
+            {
+                UserCredential credential = await LoginManager.GetUserCredentialForGoogleAsync();
+
+                // OAuth2 API 클라이언트를 생성합니다.
+                var oauth2Service = new Oauth2Service(new BaseClientService.Initializer()
+                {
+                    HttpClientInitializer = credential
+                });
+
+                // 사용자의 정보를 가져옵니다.
+                Userinfo userInfo = await oauth2Service.Userinfo.Get().ExecuteAsync();
+                
+                var accountId = userInfo.Id;
+
+                var player = await AccountDB.GetPlayerWithAccountIdAsync(accountId, req.LoginType);
+
+                if (player == null)
+                {
+                    player = new Player()
+                    {
+                        Suid = LoginManager.GenerateUniqueSuid(),
+                        AccountId = accountId,
+                        LoginType = req.LoginType,
+                        Nickname = userInfo.Email.Split('@')[0],
+                        CreateTime = DateTime.UtcNow
+                    };
+
+                    await AccountDB.SetPlayerAsync(player);
+                }
+                
+                res.CreateTime = player.CreateTime;
+                res.NickName = player.Nickname;
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            res.Result = Result.LoginFailed;
+        }
+        
+        return res;
+    }
+}

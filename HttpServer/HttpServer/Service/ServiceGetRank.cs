@@ -22,7 +22,7 @@ public class ServiceGetRank : IService
             if (player == null)
                 return res;
 
-            (var PlayerRank, int Ranking) = RankManager.GetRank(player.Seq);
+            (var PlayerRank, int Ranking) = RankManager.GetRank(player.Suid);
 
             res.WinCount = PlayerRank.WinCount;
             res.LoseCount = PlayerRank.LoseCount;

@@ -5,7 +5,7 @@ namespace Common;
 
 public class MatchHistory
 {
-    public long PlayerSeq { get; set; }
+    public long Suid { get; set; }
     public string Data { get; set; } // {{"1":"amy","2":"samy"},{"1":"amy2","2":"samy"},{"1":"amy4","2":"samy"}}
     public string ToData(List<Dictionary<WinLoseType, string>> dictionary)
     {

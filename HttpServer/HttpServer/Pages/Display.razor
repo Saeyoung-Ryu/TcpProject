@@ -13,9 +13,9 @@
             <td><button type="submit" class="btn btn-outline-secondary" @onclick="SearchWithNickNameBtnAsync">Search</button></td>
         </tr>
         <tr>
-            <td>Seq</td>
-            <td><input type="text" size="20" @bind="@Seq"></td>
-            <td><button type="submit" class="btn btn-outline-secondary" @onclick="SearchWithSeqBtnAsync">Search</button></td>
+            <td>Suid</td>
+            <td><input type="text" size="20" @bind="@Suid"></td>
+            <td><button type="submit" class="btn btn-outline-secondary" @onclick="SearchWithSuidBtnAsync">Search</button></td>
         </tr>
         </tbody>
     </table>
@@ -25,7 +25,7 @@
 
 @code {
     public string Nickname { get; set; }
-    public string Seq { get; set; }
+    public string Suid { get; set; }
     SearchInfo searchInfo = new SearchInfo();
 
     [Parameter]
@@ -40,13 +40,13 @@
         {
             try
             {
-                ProtectedBrowserStorageResult<string> storageSeq = await storage.GetAsync<string>("seq");
-                if (storageSeq.Success)
+                ProtectedBrowserStorageResult<string> storageSuid = await storage.GetAsync<string>("suid");
+                if (storageSuid.Success)
                 {
-                    Seq = storageSeq.Value;
-                    if (Int64.TryParse(Seq, out var seq))
+                    Suid = storageSuid.Value;
+                    if (Int64.TryParse(Suid, out var suid))
                     {
-                        var player = await AccountDB.GetPlayerWithSeqAsync(seq);
+                        var player = await AccountDB.GetPlayerWithSuidAsync(suid);
                         if (player != null)
                         {
                             Nickname = player.Nickname;
@@ -55,18 +55,18 @@
                         }
                         else
                         {
-                            await storage.DeleteAsync("seq");
+                            await storage.DeleteAsync("suid");
                         }
                     }
                 }
                 else
                 {
-                    await storage.DeleteAsync("seq");
+                    await storage.DeleteAsync("suid");
                 }
             }
             catch
             {
-                await storage.DeleteAsync("seq");
+                await storage.DeleteAsync("suid");
             }
         }
     }
@@ -76,12 +76,12 @@
         if (player != null)
         {
             Nickname = player.Nickname;
-            Seq = player.Seq.ToString();
+            Suid = player.Suid.ToString();
             
             searchInfo.Nickname = Nickname;
-            searchInfo.Seq = Seq;
+            searchInfo.Suid = Suid;
         
-            await storage.SetAsync("seq", Seq);
+            await storage.SetAsync("suid", Suid);
         }
         else
         {
@@ -94,7 +94,7 @@
     private void Reset()
     {
         Nickname = "";
-        Seq = "";
+        Suid = "";
         searchInfo = new();
     }
 
@@ -104,20 +104,20 @@
 
         if (player != null)
         {
-            Seq = player.Seq.ToString();
+            Suid = player.Suid.ToString();
             Nickname = player.Nickname;
 
             await RefreshAsync(player);
         }
     }
 
-    private async Task SearchWithSeqBtnAsync()
+    private async Task SearchWithSuidBtnAsync()
     {
-        var player = await AccountDB.GetPlayerWithSeqAsync(long.Parse(Seq));
+        var player = await AccountDB.GetPlayerWithSuidAsync(long.Parse(Suid));
 
         if (player != null)
         {
-            Seq = player.Seq.ToString();
+            Suid = player.Suid.ToString();
             Nickname = player.Nickname;
 
             await RefreshAsync(player);
@@ -130,6 +130,6 @@
     public class SearchInfo
     {
         public string Nickname { get; set; }
-        public string Seq { get; set; }    
+        public string Suid { get; set; }    
     }
 }

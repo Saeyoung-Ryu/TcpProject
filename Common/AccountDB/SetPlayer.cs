@@ -17,7 +17,9 @@ namespace Common
         private static async Task SpSetPlayerAsync(MySqlConnection conn, MySqlTransaction trxn, Player player)
         {
             var parameters = new DynamicParameters();
-            parameters.Add("_seq", player.Seq);
+            parameters.Add("_suid", player.Suid);
+            parameters.Add("_accountId", player.AccountId);
+            parameters.Add("_loginType", player.LoginType);
             parameters.Add("_nickname", player.Nickname);
             parameters.Add("_createTime", player.CreateTime);
 

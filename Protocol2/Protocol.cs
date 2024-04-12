@@ -11,6 +11,8 @@ namespace Protocol2
 		SetRank = 3,
 		EditNickname = 4,
 		GetMatchHistory = 5,
+		Login = 6,
+		End
 	}
 	
 	[MessagePackObject]
@@ -19,6 +21,7 @@ namespace Protocol2
 	[Union(2, typeof(SetRankReq))]
 	[Union(3, typeof(EditNicknameReq))]
 	[Union(4, typeof(GetMatchHistoryReq))]
+	[Union(5, typeof(LoginReq))]
 	public abstract class Protocol
 	{
 		[Key(0)] public ProtocolId ProtocolId { get; set; }
@@ -33,6 +36,7 @@ namespace Protocol2
 	[Union(2, typeof(SetRankRes))]
 	[Union(3, typeof(EditNicknameRes))]
 	[Union(4, typeof(GetMatchHistoryRes))]
+	[Union(5, typeof(LoginRes))]
 	public abstract class ProtocolRes
 	{
 		[Key(0)] public ProtocolId ProtocolId { get; set; }

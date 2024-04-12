@@ -17,7 +17,7 @@ namespace Common
         private static async Task SpSetMatchHistoryAsync(MySqlConnection conn, MySqlTransaction trxn, MatchHistory matchHistory)
         {
             var parameters = new DynamicParameters();
-            parameters.Add("_playerSeq", matchHistory.PlayerSeq);
+            parameters.Add("_suid", matchHistory.Suid);
             parameters.Add("_data", matchHistory.Data);
 
             await conn.ExecuteAsync("spSetMatchHistory", parameters, trxn, commandType: CommandType.StoredProcedure);

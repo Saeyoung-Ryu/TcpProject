@@ -9,17 +9,25 @@
 
     <ItemGroup>
       <PackageReference Include="Dapper" Version="2.1.28" />
+      <PackageReference Include="Google.Apis.Auth" Version="1.67.0" />
+      <PackageReference Include="Google.Apis.Oauth2.v2" Version="1.67.0.1869" />
       <PackageReference Include="MessagePack" Version="2.5.140" />
       <PackageReference Include="MySqlConnector" Version="2.3.5" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     </ItemGroup>
 
     <ItemGroup>
+      <Compile Include="..\..\Common\AccountDB\GetPlayerWithAccountId.cs">
+        <Link>Common\AccountDB\GetPlayerWithAccountId.cs</Link>
+      </Compile>
       <Compile Include="..\..\Common\AccountDB\GetPlayerWithNickname.cs">
         <Link>Common\AccountDB\GetPlayerWithNickname.cs</Link>
       </Compile>
       <Compile Include="..\..\Common\AccountDB\GetPlayerWithSeq.cs">
         <Link>Common\AccountDB\GetPlayerWithSeq.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\AccountDB\GetPlayerWithSuid.cs">
+        <Link>Common\AccountDB\GetPlayerWithSuid.cs</Link>
       </Compile>
       <Compile Include="..\..\Common\AccountDB\InsertPlayer.cs">
         <Link>Common\AccountDB\InsertPlayer.cs</Link>
@@ -32,6 +40,9 @@
       </Compile>
       <Compile Include="..\..\Common\LogDB\SetMatchHistory.cs">
         <Link>Common\LogDB\SetMatchHistory.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\Manager\LoginManager.cs">
+        <Link>Common\Manager\LoginManager.cs</Link>
       </Compile>
       <Compile Include="..\..\Common\Manager\MatchHistoryManager.cs">
         <Link>Common\Manager\MatchHistoryManager.cs</Link>
@@ -66,6 +77,12 @@
       <Compile Include="..\..\Common\Type\ServerVariable.cs">
         <Link>Common\Type\ServerVariable.cs</Link>
       </Compile>
+      <Compile Include="..\..\Enum\LoginType.cs">
+        <Link>Enum\LoginType.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Enum\Result.cs">
+        <Link>Enum\Result.cs</Link>
+      </Compile>
       <Compile Include="..\..\Enum\WinLoseType.cs">
         <Link>Enum\WinLoseType.cs</Link>
       </Compile>
@@ -80,6 +97,9 @@
       </Compile>
       <Compile Include="..\..\Protocol2\LoadData.cs">
         <Link>Protocol2\LoadData.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Protocol2\Login.cs">
+        <Link>Protocol2\Login.cs</Link>
       </Compile>
       <Compile Include="..\..\Protocol2\Protocol.cs">
         <Link>Protocol2\Protocol.cs</Link>

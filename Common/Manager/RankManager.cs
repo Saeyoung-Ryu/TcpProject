@@ -13,14 +13,14 @@ public class RankManager
         Console.WriteLine("Rank Refresh Success");
     }
     
-    public static int GetMyRank(long playerSeq)
+    public static int GetMyRank(long suid)
     {
         var myRank = new Rank();
 
         int ranking = 1;
         foreach (var playerRank in playerRankList)
         {
-            if (playerRank.PlayerSeq == playerSeq)
+            if (playerRank.Suid == suid)
                 break;
 
             ranking++;
@@ -31,8 +31,8 @@ public class RankManager
     
     public static async Task SetPlayerWinLoseAsync(Player winnerPlayer, Player loserPlayer)
     {
-        var winnerPlayerRank = GetRank(winnerPlayer.Seq).Rank;
-        var loserPlayerRank = GetRank(loserPlayer.Seq).Rank;
+        var winnerPlayerRank = GetRank(winnerPlayer.Suid).Rank;
+        var loserPlayerRank = GetRank(loserPlayer.Suid).Rank;
         
         winnerPlayerRank.WinCount++;
         winnerPlayerRank.Point = CalculatePoint(winnerPlayerRank.WinCount, winnerPlayerRank.LoseCount);
@@ -52,15 +52,15 @@ public class RankManager
         await MatchHistoryManager.SetMatchHistoryAsync(winnerPlayer, loserPlayer);
     }
     
-    public static (Rank Rank, int Ranking) GetRank(long playerSeq)
+    public static (Rank Rank, int Ranking) GetRank(long suid)
     {
-        var rank = FindRankFromList(playerSeq);
+        var rank = FindRankFromList(suid);
 
         if (rank.Rank == null)
         {
             return (new Rank()
             {
-                PlayerSeq = playerSeq,
+                Suid = suid,
                 WinCount = 0,
                 LoseCount = 0,
                 Point = 100, // default 100
@@ -70,7 +70,7 @@ public class RankManager
         return (rank.Rank, rank.Ranking);
     }
 
-    private static (Rank? Rank, int Ranking) FindRankFromList(long playerSeq)
+    private static (Rank? Rank, int Ranking) FindRankFromList(long suid)
     {
         int ranking = 0;
         
@@ -78,7 +78,7 @@ public class RankManager
         {
             ranking++;
             
-            if (playerRank.PlayerSeq == playerSeq)
+            if (playerRank.Suid == suid)
                 return (playerRank, ranking);
         }
 
@@ -102,7 +102,7 @@ public class RankManager
         
         foreach (var item in playerRankList)
         {
-            if (item.PlayerSeq == playerRank.PlayerSeq)
+            if (item.Suid == playerRank.Suid)
             {
                 item.WinCount = playerRank.WinCount;
                 item.LoseCount = playerRank.LoseCount;

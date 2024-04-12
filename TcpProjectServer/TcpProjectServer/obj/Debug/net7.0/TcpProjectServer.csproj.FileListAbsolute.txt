@@ -52,3 +52,10 @@
 /Users/saeyoungryu/Projects/TcpProject/TcpProjectServer/TcpProjectServer/bin/Debug/net7.0/Dapper.dll
 /Users/saeyoungryu/Projects/TcpProject/TcpProjectServer/TcpProjectServer/bin/Debug/net7.0/Microsoft.Extensions.Logging.Abstractions.dll
 /Users/saeyoungryu/Projects/TcpProject/TcpProjectServer/TcpProjectServer/bin/Debug/net7.0/MySqlConnector.dll
+/Users/saeyoungryu/Project/TcpSocketExample/TcpProjectServer/TcpProjectServer/bin/Debug/net7.0/Google.Apis.dll
+/Users/saeyoungryu/Project/TcpSocketExample/TcpProjectServer/TcpProjectServer/bin/Debug/net7.0/Google.Apis.Auth.dll
+/Users/saeyoungryu/Project/TcpSocketExample/TcpProjectServer/TcpProjectServer/bin/Debug/net7.0/Google.Apis.Core.dll
+/Users/saeyoungryu/Project/TcpSocketExample/TcpProjectServer/TcpProjectServer/bin/Debug/net7.0/Google.Apis.Oauth2.v2.dll
+/Users/saeyoungryu/Project/TcpSocketExample/TcpProjectServer/TcpProjectServer/bin/Debug/net7.0/System.CodeDom.dll
+/Users/saeyoungryu/Project/TcpSocketExample/TcpProjectServer/TcpProjectServer/bin/Debug/net7.0/System.Management.dll
+/Users/saeyoungryu/Project/TcpSocketExample/TcpProjectServer/TcpProjectServer/bin/Debug/net7.0/runtimes/win/lib/net7.0/System.Management.dll
