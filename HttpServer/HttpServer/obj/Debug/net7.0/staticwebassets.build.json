@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "60IBdKsz3+MG5QVkNUc9l3zHciRoq/u9yMqb5VHshYE=",
+  "Hash": "THV+tgPLaEH52QDjk9iNMmEGbf1TJ8PZpSfb65RPwLk=",
   "Source": "HttpServer",
   "BasePath": "_content/HttpServer",
   "Mode": "Default",
@@ -10,7 +10,7 @@
     {
       "Name": "HttpServer/wwwroot",
       "Source": "HttpServer",
-      "ContentRoot": "/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/wwwroot/",
+      "ContentRoot": "/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/wwwroot/",
       "BasePath": "_content/HttpServer",
       "Pattern": "**"
     }
@@ -55,10 +55,10 @@
       "OriginalItemSpec": "/Users/saeyoungryu/.nuget/packages/matblazor/2.10.0/staticwebassets/dist/matBlazor.js"
     },
     {
-      "Identity": "/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/obj/Debug/net7.0/scopedcss/bundle/HttpServer.styles.css",
+      "Identity": "/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/obj/Debug/net7.0/scopedcss/bundle/HttpServer.styles.css",
       "SourceId": "HttpServer",
       "SourceType": "Computed",
-      "ContentRoot": "/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/obj/Debug/net7.0/scopedcss/bundle/",
+      "ContentRoot": "/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/obj/Debug/net7.0/scopedcss/bundle/",
       "BasePath": "_content/HttpServer",
       "RelativePath": "HttpServer.styles.css",
       "AssetKind": "All",
@@ -71,13 +71,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/obj/Debug/net7.0/scopedcss/bundle/HttpServer.styles.css"
+      "OriginalItemSpec": "/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/obj/Debug/net7.0/scopedcss/bundle/HttpServer.styles.css"
     },
     {
-      "Identity": "/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/obj/Debug/net7.0/scopedcss/projectbundle/HttpServer.bundle.scp.css",
+      "Identity": "/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/obj/Debug/net7.0/scopedcss/projectbundle/HttpServer.bundle.scp.css",
       "SourceId": "HttpServer",
       "SourceType": "Computed",
-      "ContentRoot": "/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/obj/Debug/net7.0/scopedcss/projectbundle/",
+      "ContentRoot": "/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/obj/Debug/net7.0/scopedcss/projectbundle/",
       "BasePath": "_content/HttpServer",
       "RelativePath": "HttpServer.bundle.scp.css",
       "AssetKind": "All",
@@ -90,13 +90,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/obj/Debug/net7.0/scopedcss/projectbundle/HttpServer.bundle.scp.css"
+      "OriginalItemSpec": "/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/obj/Debug/net7.0/scopedcss/projectbundle/HttpServer.bundle.scp.css"
     },
     {
-      "Identity": "/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/wwwroot/css/bootstrap/bootstrap.min.css",
+      "Identity": "/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/wwwroot/css/bootstrap/bootstrap.min.css",
       "SourceId": "HttpServer",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/wwwroot/",
+      "ContentRoot": "/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/wwwroot/",
       "BasePath": "_content/HttpServer",
       "RelativePath": "css/bootstrap/bootstrap.min.css",
       "AssetKind": "All",
@@ -112,10 +112,10 @@
       "OriginalItemSpec": "wwwroot/css/bootstrap/bootstrap.min.css"
     },
     {
-      "Identity": "/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/wwwroot/css/bootstrap/bootstrap.min.css.map",
+      "Identity": "/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/wwwroot/css/bootstrap/bootstrap.min.css.map",
       "SourceId": "HttpServer",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/wwwroot/",
+      "ContentRoot": "/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/wwwroot/",
       "BasePath": "_content/HttpServer",
       "RelativePath": "css/bootstrap/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -131,10 +131,10 @@
       "OriginalItemSpec": "wwwroot/css/bootstrap/bootstrap.min.css.map"
     },
     {
-      "Identity": "/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/wwwroot/css/open-iconic/FONT-LICENSE",
+      "Identity": "/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/wwwroot/css/open-iconic/FONT-LICENSE",
       "SourceId": "HttpServer",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/wwwroot/",
+      "ContentRoot": "/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/wwwroot/",
       "BasePath": "_content/HttpServer",
       "RelativePath": "css/open-iconic/FONT-LICENSE",
       "AssetKind": "All",
@@ -150,10 +150,10 @@
       "OriginalItemSpec": "wwwroot/css/open-iconic/FONT-LICENSE"
     },
     {
-      "Identity": "/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/wwwroot/css/open-iconic/font/css/open-iconic-bootstrap.min.css",
+      "Identity": "/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/wwwroot/css/open-iconic/font/css/open-iconic-bootstrap.min.css",
       "SourceId": "HttpServer",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/wwwroot/",
+      "ContentRoot": "/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/wwwroot/",
       "BasePath": "_content/HttpServer",
       "RelativePath": "css/open-iconic/font/css/open-iconic-bootstrap.min.css",
       "AssetKind": "All",
@@ -169,10 +169,10 @@
       "OriginalItemSpec": "wwwroot/css/open-iconic/font/css/open-iconic-bootstrap.min.css"
     },
     {
-      "Identity": "/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/wwwroot/css/open-iconic/font/fonts/open-iconic.eot",
+      "Identity": "/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/wwwroot/css/open-iconic/font/fonts/open-iconic.eot",
       "SourceId": "HttpServer",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/wwwroot/",
+      "ContentRoot": "/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/wwwroot/",
       "BasePath": "_content/HttpServer",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.eot",
       "AssetKind": "All",
@@ -188,10 +188,10 @@
       "OriginalItemSpec": "wwwroot/css/open-iconic/font/fonts/open-iconic.eot"
     },
     {
-      "Identity": "/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/wwwroot/css/open-iconic/font/fonts/open-iconic.otf",
+      "Identity": "/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/wwwroot/css/open-iconic/font/fonts/open-iconic.otf",
       "SourceId": "HttpServer",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/wwwroot/",
+      "ContentRoot": "/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/wwwroot/",
       "BasePath": "_content/HttpServer",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.otf",
       "AssetKind": "All",
@@ -207,10 +207,10 @@
       "OriginalItemSpec": "wwwroot/css/open-iconic/font/fonts/open-iconic.otf"
     },
     {
-      "Identity": "/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/wwwroot/css/open-iconic/font/fonts/open-iconic.svg",
+      "Identity": "/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/wwwroot/css/open-iconic/font/fonts/open-iconic.svg",
       "SourceId": "HttpServer",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/wwwroot/",
+      "ContentRoot": "/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/wwwroot/",
       "BasePath": "_content/HttpServer",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.svg",
       "AssetKind": "All",
@@ -226,10 +226,10 @@
       "OriginalItemSpec": "wwwroot/css/open-iconic/font/fonts/open-iconic.svg"
     },
     {
-      "Identity": "/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/wwwroot/css/open-iconic/font/fonts/open-iconic.ttf",
+      "Identity": "/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/wwwroot/css/open-iconic/font/fonts/open-iconic.ttf",
       "SourceId": "HttpServer",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/wwwroot/",
+      "ContentRoot": "/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/wwwroot/",
       "BasePath": "_content/HttpServer",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.ttf",
       "AssetKind": "All",
@@ -245,10 +245,10 @@
       "OriginalItemSpec": "wwwroot/css/open-iconic/font/fonts/open-iconic.ttf"
     },
     {
-      "Identity": "/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/wwwroot/css/open-iconic/font/fonts/open-iconic.woff",
+      "Identity": "/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/wwwroot/css/open-iconic/font/fonts/open-iconic.woff",
       "SourceId": "HttpServer",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/wwwroot/",
+      "ContentRoot": "/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/wwwroot/",
       "BasePath": "_content/HttpServer",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.woff",
       "AssetKind": "All",
@@ -264,10 +264,10 @@
       "OriginalItemSpec": "wwwroot/css/open-iconic/font/fonts/open-iconic.woff"
     },
     {
-      "Identity": "/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/wwwroot/css/open-iconic/ICON-LICENSE",
+      "Identity": "/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/wwwroot/css/open-iconic/ICON-LICENSE",
       "SourceId": "HttpServer",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/wwwroot/",
+      "ContentRoot": "/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/wwwroot/",
       "BasePath": "_content/HttpServer",
       "RelativePath": "css/open-iconic/ICON-LICENSE",
       "AssetKind": "All",
@@ -283,10 +283,10 @@
       "OriginalItemSpec": "wwwroot/css/open-iconic/ICON-LICENSE"
     },
     {
-      "Identity": "/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/wwwroot/css/open-iconic/README.md",
+      "Identity": "/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/wwwroot/css/open-iconic/README.md",
       "SourceId": "HttpServer",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/wwwroot/",
+      "ContentRoot": "/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/wwwroot/",
       "BasePath": "_content/HttpServer",
       "RelativePath": "css/open-iconic/README.md",
       "AssetKind": "All",
@@ -302,10 +302,10 @@
       "OriginalItemSpec": "wwwroot/css/open-iconic/README.md"
     },
     {
-      "Identity": "/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/wwwroot/css/site.css",
+      "Identity": "/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/wwwroot/css/site.css",
       "SourceId": "HttpServer",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/wwwroot/",
+      "ContentRoot": "/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/wwwroot/",
       "BasePath": "_content/HttpServer",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -321,10 +321,10 @@
       "OriginalItemSpec": "wwwroot/css/site.css"
     },
     {
-      "Identity": "/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/wwwroot/favicon.png",
+      "Identity": "/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/wwwroot/favicon.png",
       "SourceId": "HttpServer",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/saeyoungryu/Project/TcpSocketExample/HttpServer/HttpServer/wwwroot/",
+      "ContentRoot": "/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/wwwroot/",
       "BasePath": "_content/HttpServer",
       "RelativePath": "favicon.png",
       "AssetKind": "All",

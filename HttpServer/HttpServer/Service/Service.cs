@@ -29,6 +29,8 @@ namespace Service
                 {
                     var instance = (IService)Activator.CreateInstance(t);
                     dicHandler.Add(instance.ProtocolId, instance);
+                    
+                    Console.WriteLine($"Service {instance.ProtocolId} initialized");
                 }
             }
         }
