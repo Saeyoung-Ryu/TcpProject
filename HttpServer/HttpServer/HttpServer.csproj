@@ -20,6 +20,7 @@
       <PackageReference Include="MySqlConnector" Version="2.3.5" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
       <PackageReference Include="Renci.SshNet.Async" Version="1.4.0" />
+      <PackageReference Include="StackExchange.Redis" Version="2.7.33" />
     </ItemGroup>
 
     <ItemGroup>
@@ -73,6 +74,9 @@
       </Compile>
       <Compile Include="..\..\Common\RankDB\SetRank.cs">
         <Link>Common\RankDB\SetRank.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\Redis\RedisService.cs">
+        <Link>Common\Redis\RedisService.cs</Link>
       </Compile>
       <Compile Include="..\..\Common\RefreshableAttribute.cs">
         <Link>Common\RefreshableAttribute.cs</Link>

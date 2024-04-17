@@ -11,6 +11,8 @@ public class ServerVariable
     public static string MinSumValue { get; set; }
     public static string MaxSumValue { get; set; }
     public static string RankServerURL { get; set; }
+    
+    public static string RedisServerURL { get; set; }
 
     public static void Refresh()
     {

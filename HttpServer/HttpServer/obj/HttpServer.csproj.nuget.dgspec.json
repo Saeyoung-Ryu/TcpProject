@@ -90,6 +90,10 @@
             "Renci.SshNet.Async": {
               "target": "Package",
               "version": "[1.4.0, )"
+            },
+            "StackExchange.Redis": {
+              "target": "Package",
+              "version": "[2.7.33, )"
             }
           },
           "imports": [

@@ -3,7 +3,14 @@
 
 <div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">HttpServer</a>
+        @if (!NavManager.Uri.Contains("Home"))
+        {
+            <a class="navbar-brand" href="Home">Go Back Home</a>
+        }
+        else
+        {
+            <a class="navbar-brand" href="Home">Home</a>
+        }
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -86,6 +93,7 @@ else if (NavManager.Uri.Contains("Home"))
 }
 
 
+
 @code {
     private bool collapseNavMenu = true;
 
@@ -99,5 +107,11 @@ else if (NavManager.Uri.Contains("Home"))
     private List<string> GetProjectNames()
     {
         return ServerInfo.Instance.ConnectionStrings.Keys.ToList();
+    }
+
+    // Method to navigate back
+    private void GoBack()
+    {
+        NavManager.NavigateTo("/Home"); // Navigate to the home page
     }
 }

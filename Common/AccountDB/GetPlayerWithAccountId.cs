@@ -1,4 +1,5 @@
 using System.Data;
+using Common.Redis;
 using Dapper;
 using Enum;
 using MySqlConnector;
@@ -11,7 +12,12 @@ namespace Common
         {
             await using (var conn = new MySqlConnection(ServerInfoConfig.Instance.ConnectionString))
             {
-                return await SpGetPlayerWithAccountIdAsync(conn, null, accountId, loginType);
+                var player = await SpGetPlayerWithAccountIdAsync(conn, null, accountId, loginType);
+                
+                if (!await RedisService.KeyExists(player.Suid.ToString()))
+                    await RedisService.SetKeyValueAsync(player.Suid.ToString(), player);
+
+                return player;
             }
         }
 

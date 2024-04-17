@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/saeyoungryu/Project/TcpSocketExample/ClientConsoleApp/ClientConsoleApp/ClientConsoleApp.csproj": {}
+    "/Users/saeyoungryu/Project/TcpProject/ClientConsoleApp/ClientConsoleApp/ClientConsoleApp.csproj": {}
   },
   "projects": {
-    "/Users/saeyoungryu/Project/TcpSocketExample/ClientConsoleApp/ClientConsoleApp/ClientConsoleApp.csproj": {
+    "/Users/saeyoungryu/Project/TcpProject/ClientConsoleApp/ClientConsoleApp/ClientConsoleApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/saeyoungryu/Project/TcpSocketExample/ClientConsoleApp/ClientConsoleApp/ClientConsoleApp.csproj",
+        "projectUniqueName": "/Users/saeyoungryu/Project/TcpProject/ClientConsoleApp/ClientConsoleApp/ClientConsoleApp.csproj",
         "projectName": "ClientConsoleApp",
-        "projectPath": "/Users/saeyoungryu/Project/TcpSocketExample/ClientConsoleApp/ClientConsoleApp/ClientConsoleApp.csproj",
+        "projectPath": "/Users/saeyoungryu/Project/TcpProject/ClientConsoleApp/ClientConsoleApp/ClientConsoleApp.csproj",
         "packagesPath": "/Users/saeyoungryu/.nuget/packages/",
-        "outputPath": "/Users/saeyoungryu/Project/TcpSocketExample/ClientConsoleApp/ClientConsoleApp/obj/",
+        "outputPath": "/Users/saeyoungryu/Project/TcpProject/ClientConsoleApp/ClientConsoleApp/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/saeyoungryu/.nuget/NuGet/NuGet.Config"

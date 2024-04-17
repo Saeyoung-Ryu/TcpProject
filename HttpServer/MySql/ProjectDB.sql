@@ -117,6 +117,7 @@ INSERT INTO `tblServerVariable` VALUES (1, 'Life', '5');
 INSERT INTO `tblServerVariable` VALUES (2, 'MinSumValue', '10');
 INSERT INTO `tblServerVariable` VALUES (3, 'MaxSumValue', '30');
 INSERT INTO `tblServerVariable` VALUES (4, 'RankServerURL', 'http://localhost:8000');
+INSERT INTO `tblServerVariable` VALUES (4, 'RedisServerURL', '');
 COMMIT;
 
 -- ----------------------------

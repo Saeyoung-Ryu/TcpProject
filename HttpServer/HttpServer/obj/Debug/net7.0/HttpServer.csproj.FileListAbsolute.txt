@@ -264,7 +264,6 @@
 /Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/obj/Debug/net7.0/scopedcss/Pages/DatabaseControlTool/PlayerData.razor.rz.scp.css
 /Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/obj/Debug/net7.0/scopedcss/Pages/DatabaseControlTool/Rank.razor.rz.scp.css
 /Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/obj/Debug/net7.0/scopedcss/Pages/DatabaseControlTool/ServerVariable.razor.rz.scp.css
-/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/bin/Debug/net7.0/DumpInfo.config
 /Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/bin/Debug/net7.0/Google.Protobuf.dll
 /Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/bin/Debug/net7.0/K4os.Compression.LZ4.dll
 /Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/bin/Debug/net7.0/K4os.Compression.LZ4.Streams.dll
@@ -294,3 +293,7 @@
 /Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/bin/Debug/net7.0/runtimes/win/lib/netcoreapp3.0/System.Windows.Extensions.dll
 /Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/bin/Debug/net7.0/Shared/DumpInfo.config
 /Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/bin/Debug/net7.0/Shared/ServerInfo.config
+/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/bin/Debug/net7.0/Pipelines.Sockets.Unofficial.dll
+/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/bin/Debug/net7.0/StackExchange.Redis.dll
+/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/obj/Debug/net7.0/scopedcss/Pages/RedisGUITool/RedisGUITool.razor.rz.scp.css
+/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/bin/Debug/net7.0/client_secret.json

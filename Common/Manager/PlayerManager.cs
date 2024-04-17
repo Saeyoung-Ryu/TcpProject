@@ -1,12 +1,13 @@
+using Common.Redis;
 using Enum;
 
 namespace Common;
 
 public class PlayerManager
 {
-    public static async Task<Player?> GetPlayerWithNicknameAsync(string nickname, bool insert = false)
+    public static async Task<Player?> GetPlayerWithNicknameAsync(string nickname, bool insert = false, bool needToCache = false)
     {
-        var player = await AccountDB.GetPlayerWithNicknameAsync(nickname);
+        var player = await AccountDB.GetPlayerWithNicknameAsync(nickname, needToCache);
 
         if (player == null && insert)
         {
@@ -20,6 +21,9 @@ public class PlayerManager
             };
             
             await AccountDB.SetPlayerAsync(player);
+            
+            if (needToCache)
+                await RedisService.SetKeyValueAsync(player.Suid.ToString(), player);
         }
 
         return player;

@@ -1,5 +1,7 @@
 using System.Data;
+using Common.Redis;
 using Dapper;
+using HttpServer.Pages.DBCompareTool;
 using MySqlConnector;
 
 namespace Common
@@ -8,9 +10,16 @@ namespace Common
     {
         public static async Task<Player?> GetPlayerWithSuidAsync(long suid)
         {
+            var player = await RedisService.GetValueAsync<Player?>(suid.ToString());
+
+            if (player != null)
+                return player;
+            
             await using (var conn = new MySqlConnection(ServerInfoConfig.Instance.ConnectionString))
             {
-                return await SpGetPlayerWithSuidAsync(conn, null, suid);
+                player =  await SpGetPlayerWithSuidAsync(conn, null, suid);
+                await RedisService.SetKeyValueAsync(suid.ToString(), player);
+                return player;
             }
         }
 

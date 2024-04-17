@@ -1,4 +1,6 @@
 using Common;
+using Common.Redis;
+using Enum;
 using HttpServer.Shared.Common;
 
 namespace HttpServer
@@ -14,6 +16,9 @@ namespace HttpServer
             await RefreshManager.InitializeAsync();
             await RankManager.RefreshRankAsync();
 
+            RedisService.Ping(true);
+            RedisService.Ping(false);
+            
             Console.WriteLine("Http Server Has Started....");
             CreateHttpServerHostBuilder(args).Build().Run();
         }

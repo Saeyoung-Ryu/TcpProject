@@ -58,6 +58,10 @@ build_metadata.AdditionalFiles.CssScope = b-ten8f9778y
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRGF0YWJhc2VDb250cm9sVG9vbC9TZXJ2ZXJWYXJpYWJsZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-5z6pfp20vf
 
+[/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/Pages/RedisGUITool/RedisGUITool.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUmVkaXNHVUlUb29sL1JlZGlzR1VJVG9vbC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-savwz5c1hh
+
 [/Users/saeyoungryu/Project/TcpProject/HttpServer/HttpServer/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL01haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-pmno7m4zkd

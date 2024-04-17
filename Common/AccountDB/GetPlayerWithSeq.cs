@@ -1,4 +1,5 @@
 using System.Data;
+using Common.Redis;
 using Dapper;
 using MySqlConnector;
 
@@ -6,11 +7,16 @@ namespace Common
 {
     public partial class AccountDB
     {
-        public static async Task<Player?> GetPlayerWithSeqAsync(long seq)
+        public static async Task<Player?> GetPlayerWithSeqAsync(long seq, bool needToCache = false)
         {
             await using (var conn = new MySqlConnection(ServerInfoConfig.Instance.ConnectionString))
             {
-                return await SpGetPlayerWithSeqAsync(conn, null, seq);
+                var player = await SpGetPlayerWithSeqAsync(conn, null, seq);
+                
+                if (needToCache && player != null && !await RedisService.KeyExists(player.Suid.ToString()))
+                    await RedisService.SetKeyValueAsync(player.Suid.ToString(), player);
+
+                return player;
             }
         }
 
