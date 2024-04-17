@@ -71,6 +71,14 @@
               "target": "Package",
               "version": "[8.0.0, )"
             },
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[8.0.33, )"
+            },
+            "MySqlBackup.NET": {
+              "target": "Package",
+              "version": "[2.3.8, )"
+            },
             "MySqlConnector": {
               "target": "Package",
               "version": "[2.3.5, )"
@@ -78,6 +86,10 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
+            },
+            "Renci.SshNet.Async": {
+              "target": "Package",
+              "version": "[1.4.0, )"
             }
           },
           "imports": [

@@ -1,7 +1,7 @@
 import pandas as pd
 import mysql.connector
 
-def create_table_schema(excel_file, table_name):
+def create_table_schema(excel_file, table_name, primary_keys=None):
     # Read the first sheet of the Excel file
     df = pd.read_excel(excel_file, sheet_name=table_name)
 
@@ -17,6 +17,10 @@ def create_table_schema(excel_file, table_name):
         else:
             data_type = 'VARCHAR(255)'
         column_info.append(f"{column_name} {data_type}")
+        
+    if primary_keys:
+        primary_keys_str = ", ".join(primary_keys)
+        column_info.append(f"PRIMARY KEY ({primary_keys_str})")
 
     # Connect to MySQL
     connection = mysql.connector.connect(
@@ -36,6 +40,6 @@ def create_table_schema(excel_file, table_name):
     connection.close()
 
 if __name__ == "__main__":
-    create_table_schema("ExcelData.xlsx", "tblAttendanceBasic")
-    create_table_schema("ExcelData.xlsx", "tblAttendanceReward")
+    create_table_schema("ExcelData.xlsx", "tblAttendanceBasic", ["basicId", "days"])
+    create_table_schema("ExcelData.xlsx", "tblAttendanceReward", ["attendanceRewardId"])
     create_table_schema("ExcelData.xlsx", "tblAttendanceEventSchedule")

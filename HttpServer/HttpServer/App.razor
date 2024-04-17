@@ -1,4 +1,6 @@
-﻿<Router AppAssembly="@typeof(App).Assembly">
+﻿@inject NavigationManager NavigationManager
+
+<Router AppAssembly="@typeof(App).Assembly">
     <Found Context="routeData">
         <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)"/>
         <FocusOnNavigate RouteData="@routeData" Selector="h1"/>
@@ -6,7 +8,47 @@
     <NotFound>
         <PageTitle>Not found</PageTitle>
         <LayoutView Layout="@typeof(MainLayout)">
-            <p role="alert">Sorry, there's nothing at this address.</p>
+            @if (NavigationManager.Uri.Contains("DBCompare"))
+            {
+                <h1>Welcome to DBCompare Tool!</h1>
+                <br><br>
+                <h3>설명</h3>
+                
+                <br>
+                <p>두개의 데이터베이스 서버를 선택하여, 테이블 정보를 비교해주는 Tool 입니다.</p>
+                <p>Local서버로 실행할경우, 비교하여 다른 테이블들을 덤프를 뜰 수 있습니다.</p>
+                <p>비교/덤프를 뜰때마다 로그를 남길 테이블을 미리 생성하여 로그를 기록할 수 있습니다.</p>
+                <br><br>
+                
+                <h3>Config 파일 세팅</h3>
+                <br>
+                <p>1. ServerInfo.config 파일에 데이터베이스 연결 관련 정보들을 입력합니다.</p>
+                <p>2. DumpInfo.config 파일 LogSaveServerAddress 에 로그를 남길 데이터베이스 connectionString을 넣습니다.</p>
+                <p>3. DumpInfo.config 파일 DumpFileSavePath 에 덤프뜬 sql파일 저장 경로를 설정해둡니다.</p>
+                <br><br>
+                <h3>How to use?</h3>
+                <br>
+                <p>1. Click the project you want at the Navigation Menu at left part of the page.</p>
+                <p>2. Check the checkbox of two projects you want to compare. (You mush check only two unless it won't move next).</p>
+                <p>3. Select the database you want to compare. You can set the database select list through ServerInfo.Config.</p>
+                <p>4. Enter the table names. It will add "tbl" automatically. If you don't want to compare row data, check off the 'Row data compare' checkbox.</p>
+                <p>5. Select the server which you want to dump the different tables. It won't dump the same tables.</p>
+            }
+            else if (NavigationManager.Uri.Contains("Tool"))
+            {
+                <h1>Welcome to Database Control Tool!</h1>
+                <br><br>
+                <h3>설명</h3>
+                
+                <br>
+                <p>데이터베이스 데이터를 쉽게 Insert/Update/Delete 할수있는 Tool 입니다.</p>
+                <p>모든 컨텐츠에 관련된 테이블을 수정가능하며, QA테스트 용도로 주로 사용됩니다.</p>
+                <br><br>
+            }
+            else if (NavigationManager.Uri.Contains("Home"))
+            {
+                <h1>Welcome to Tool Page!</h1>
+            }
         </LayoutView>
     </NotFound>
 </Router>

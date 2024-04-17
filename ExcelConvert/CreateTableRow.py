@@ -14,16 +14,29 @@ def insert_data_from_excel(excel_file, table_name):
     )
     cursor = connection.cursor()
 
-    # Insert rows into MySQL table
-    for index, row in df.iterrows():
-        values = tuple(row)
-        placeholders = ', '.join(['%s'] * len(row))
-        insert_query = f"INSERT INTO {table_name} VALUES ({placeholders})"
-        cursor.execute(insert_query, values)
+    try:
+        # Begin transaction
+        connection.start_transaction()
 
-    # Commit and close connection
-    connection.commit()
-    connection.close()
+        # Empty the table
+        cursor.execute(f"DELETE FROM {table_name}")
+
+        # Insert rows into MySQL table
+        for index, row in df.iterrows():
+            values = tuple(row)
+            placeholders = ', '.join(['%s'] * len(row))
+            insert_query = f"INSERT INTO {table_name} VALUES ({placeholders})"
+            cursor.execute(insert_query, values)
+
+        # Commit transaction
+        connection.commit()
+    except Exception as e:
+        # Rollback transaction if any error occurs
+        print(f"An error occurred: {e}")
+        connection.rollback()
+    finally:
+        # Close connection
+        connection.close()
 
 if __name__ == "__main__":
     insert_data_from_excel("ExcelData.xlsx", "tblAttendanceBasic")

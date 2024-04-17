@@ -1,4 +1,5 @@
 using Common;
+using HttpServer.Shared.Common;
 
 namespace HttpServer
 {
@@ -14,7 +15,6 @@ namespace HttpServer
             await RankManager.RefreshRankAsync();
 
             Console.WriteLine("Http Server Has Started....");
-            
             CreateHttpServerHostBuilder(args).Build().Run();
         }
 

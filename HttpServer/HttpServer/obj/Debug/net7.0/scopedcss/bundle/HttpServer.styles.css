@@ -1,27 +1,27 @@
-/* _content/HttpServer/Pages/MatchHistory.razor.rz.scp.css */
-#Border-Dotted[b-181x4rzgwb]{border: 2px dotted}
-#Border-Solid[b-181x4rzgwb]{border: 1px solid}
-#Border-Solid3px[b-181x4rzgwb]{border: 3px solid #1a1e21}
-#Text1Style[b-181x4rzgwb]{font-size: 23px;color : #41464b}
-#Text2Style[b-181x4rzgwb]{font-size: 40px;color : #41464b}
-/* _content/HttpServer/Pages/PlayerData.razor.rz.scp.css */
-#Border-Dotted[b-3vu6r0h2ui]{border: 2px dotted}
-#Border-Solid[b-3vu6r0h2ui]{border: 1px solid}
-#Border-Solid3px[b-3vu6r0h2ui]{border: 3px solid #1a1e21}
-#Text1Style[b-3vu6r0h2ui]{font-size: 23px;color : #41464b}
-#Text2Style[b-3vu6r0h2ui]{font-size: 40px;color : #41464b}
-/* _content/HttpServer/Pages/Rank.razor.rz.scp.css */
-#Border-Dotted[b-yiywaw2hbv]{border: 2px dotted}
-#Border-Solid[b-yiywaw2hbv]{border: 1px solid}
-#Border-Solid3px[b-yiywaw2hbv]{border: 3px solid #1a1e21}
-#Text1Style[b-yiywaw2hbv]{font-size: 23px;color : #41464b}
-#Text2Style[b-yiywaw2hbv]{font-size: 40px;color : #41464b}
-/* _content/HttpServer/Pages/ServerVariable.razor.rz.scp.css */
-#Border-Dotted[b-dnmji5l5dz]{border: 2px dotted}
-#Border-Solid[b-dnmji5l5dz]{border: 1px solid}
-#Border-Solid3px[b-dnmji5l5dz]{border: 3px solid #1a1e21}
-#Text1Style[b-dnmji5l5dz]{font-size: 23px;color : #41464b}
-#Text2Style[b-dnmji5l5dz]{font-size: 40px;color : #41464b}
+/* _content/HttpServer/Pages/DatabaseControlTool/MatchHistory.razor.rz.scp.css */
+#Border-Dotted[b-erj4v5myke]{border: 2px dotted}
+#Border-Solid[b-erj4v5myke]{border: 1px solid}
+#Border-Solid3px[b-erj4v5myke]{border: 3px solid #1a1e21}
+#Text1Style[b-erj4v5myke]{font-size: 23px;color : #41464b}
+#Text2Style[b-erj4v5myke]{font-size: 40px;color : #41464b}
+/* _content/HttpServer/Pages/DatabaseControlTool/PlayerData.razor.rz.scp.css */
+#Border-Dotted[b-wgp0wlwhvi]{border: 2px dotted}
+#Border-Solid[b-wgp0wlwhvi]{border: 1px solid}
+#Border-Solid3px[b-wgp0wlwhvi]{border: 3px solid #1a1e21}
+#Text1Style[b-wgp0wlwhvi]{font-size: 23px;color : #41464b}
+#Text2Style[b-wgp0wlwhvi]{font-size: 40px;color : #41464b}
+/* _content/HttpServer/Pages/DatabaseControlTool/Rank.razor.rz.scp.css */
+#Border-Dotted[b-ten8f9778y]{border: 2px dotted}
+#Border-Solid[b-ten8f9778y]{border: 1px solid}
+#Border-Solid3px[b-ten8f9778y]{border: 3px solid #1a1e21}
+#Text1Style[b-ten8f9778y]{font-size: 23px;color : #41464b}
+#Text2Style[b-ten8f9778y]{font-size: 40px;color : #41464b}
+/* _content/HttpServer/Pages/DatabaseControlTool/ServerVariable.razor.rz.scp.css */
+#Border-Dotted[b-5z6pfp20vf]{border: 2px dotted}
+#Border-Solid[b-5z6pfp20vf]{border: 1px solid}
+#Border-Solid3px[b-5z6pfp20vf]{border: 3px solid #1a1e21}
+#Text1Style[b-5z6pfp20vf]{font-size: 23px;color : #41464b}
+#Text2Style[b-5z6pfp20vf]{font-size: 40px;color : #41464b}
 /* _content/HttpServer/Shared/MainLayout.razor.rz.scp.css */
 .page[b-pmno7m4zkd] {
     position: relative;

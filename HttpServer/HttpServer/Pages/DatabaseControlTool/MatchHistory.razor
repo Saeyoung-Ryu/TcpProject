@@ -1,0 +1,79 @@
+﻿@page "/Tool/MatchHistory"
+@using Enum
+
+<h1>MatchHistory</h1>
+<PageTitle>MatchHistory</PageTitle>
+<Display Player="player" PlayerChanged="OnPlayerChanged"></Display>
+
+@if (matchHistory != null)
+{
+    <br>
+    <table id="Border-Solid" class="table table-border table-hover w-auto">
+        <thead>
+        <tr class="table-primary">
+            <th>승패</th>
+            <th>Data</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        @for (int i = 0; i < list.Count; i++)
+        {
+            int index = i;
+            <tr>
+                <td>@(i + 1)</td>
+                <td>Winner : @list[i][WinLoseType.Win] / Loser : @list[i][WinLoseType.Lose]</td>
+                <td><button type="submit" class="btn btn-warning" @onclick="() => DeleteMatchHistoryDataAsync(index)">Delete</button></td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Player not found</p>
+}
+
+@code {
+#pragma warning disable 1998
+#pragma warning disable 0169
+#pragma warning disable 0414
+
+    protected Player player = null;
+    Common.MatchHistory matchHistory = new Common.MatchHistory();
+    List<Dictionary<WinLoseType, string>> list = new List<Dictionary<WinLoseType, string>>();
+    
+    WinLoseType[] winLoseTypes = ((WinLoseType[])Enum.GetValues(typeof(WinLoseType))).Where(e => e != WinLoseType.None).ToArray();
+    
+    public async Task OnPlayerChanged(Player player)
+    {
+        this.player = player;
+
+        if (player != null)
+        {
+            matchHistory = await LogDB.GetMatchHistoryAsync(this.player.Suid);
+
+            if (matchHistory != null)
+                list = matchHistory.FromData();
+        }
+    }
+}
+
+@code
+{
+    public async Task DeleteMatchHistoryDataAsync(int index)
+    {
+        list.RemoveAt(index);
+
+        var dataStringFormat = matchHistory.ToData(list);
+        matchHistory.Data = dataStringFormat;
+
+        await LogDB.SetMatchHistoryAsync(matchHistory);
+    }
+}
+
+@code
+{
+
+}
+
