@@ -1,0 +1,73 @@
+﻿@page "/TableRefresher"
+
+<h1>Table Refresher</h1>
+<PageTitle>TableRefresher</PageTitle>
+
+<br>
+    <button type="submit" class="btn btn-primary" @onclick="TableRefreshBtnAsync">Refresh</button>
+<table id="Border-Solid" class="table table-border table-hover w-auto">
+    <thead>
+    <tr class="table-primary">
+        <th><MatCheckbox @bind-Value="@checkAll"></MatCheckbox></th>
+        <th>TableName</th>
+    </tr>
+    </thead>
+    <tbody>
+    @for (int i = 0; i < typesToRefresh.Count; i++)
+    {
+        int index = i;
+        <tr>
+            <td><MatCheckbox @bind-Value="@typesChecked[index]"></MatCheckbox></td>
+            <td>@typesToRefresh[index]</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+@code {
+#pragma warning disable 1998
+#pragma warning disable 0169
+#pragma warning disable 0414
+    
+    List<string> typesToRefresh = new List<string>();
+    List<bool> typesChecked = new List<bool>();
+
+    bool _checkAll = false;
+    bool checkAll
+    {
+        get { return _checkAll; }
+        set
+        {
+            _checkAll = value; // Update the backing field
+        
+    // Set all elements in typesChecked to the value of _checkAll
+            for (int i = 0; i < typesChecked.Count; i++)
+            {
+                typesChecked[i] = _checkAll;
+            }
+        }
+    }
+
+    protected override Task OnInitializedAsync()
+    {
+        typesToRefresh = RefreshManager.GetAllRefreshables();
+
+        foreach (var type in typesToRefresh)
+        {
+            typesChecked.Add(false);
+        }
+        
+        return base.OnInitializedAsync();
+    }
+
+    private async Task TableRefreshBtnAsync()
+    {
+         var checkedTypes = typesToRefresh.Where((t, i) => typesChecked[i]).ToList();
+
+        foreach (var type in checkedTypes)
+        {
+            await RefreshManager.RefreshSingleAsync(type, true);
+        }
+    }
+}
+

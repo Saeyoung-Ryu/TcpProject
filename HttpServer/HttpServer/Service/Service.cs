@@ -3,6 +3,7 @@ using Protocol2;
 using System.Threading.Tasks;
 using HttpServer;
 using Microsoft.AspNetCore.Http;
+using MyUtil;
 
 namespace Service
 {
@@ -30,7 +31,7 @@ namespace Service
                     var instance = (IService)Activator.CreateInstance(t);
                     dicHandler.Add(instance.ProtocolId, instance);
                     
-                    Console.WriteLine($"Service {instance.ProtocolId} initialized");
+                    MyLogger.WriteLineInfo($"Service {instance.ProtocolId} initialized");
                 }
             }
         }

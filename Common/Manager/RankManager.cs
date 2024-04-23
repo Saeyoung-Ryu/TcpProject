@@ -1,3 +1,5 @@
+using MyUtil;
+
 namespace Common;
 
 public class RankManager
@@ -10,7 +12,7 @@ public class RankManager
 
         playerRankList = rankList.OrderByDescending(e => e.Point).ToList();
 
-        Console.WriteLine("Rank Refresh Success");
+        MyLogger.WriteLineInfo("Rank Refresh Success");
     }
     
     public static int GetMyRank(long suid)

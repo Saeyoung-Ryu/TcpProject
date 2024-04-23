@@ -45,6 +45,12 @@
       <Compile Include="..\..\Common\ConstDB\Type\tblAttendanceBasic.cs">
         <Link>Common\ConstDB\Type\tblAttendanceBasic.cs</Link>
       </Compile>
+      <Compile Include="..\..\Common\ConstDB\Type\tblAttendanceEventSchedule.cs">
+        <Link>Common\ConstDB\Type\tblAttendanceEventSchedule.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\ConstDB\Type\tblAttendanceReward.cs">
+        <Link>Common\ConstDB\Type\tblAttendanceReward.cs</Link>
+      </Compile>
       <Compile Include="..\..\Common\LogDB\GetMatchHistory.cs">
         <Link>Common\LogDB\GetMatchHistory.cs</Link>
       </Compile>
@@ -139,6 +145,10 @@
 
     <ItemGroup>
       <Folder Include="Pages\QueryExtractTool\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\MyUtil\MyUtil.csproj" />
     </ItemGroup>
 
 </Project>

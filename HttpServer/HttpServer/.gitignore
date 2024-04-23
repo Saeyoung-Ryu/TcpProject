@@ -1,2 +1,4 @@
 bin/
 obj/
+clien_secret.json/
+client_secret.json/

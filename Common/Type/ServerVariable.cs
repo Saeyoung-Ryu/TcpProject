@@ -2,6 +2,7 @@ using System;
 using System.Reflection;
 using Common;
 using MySqlConnector;
+using MyUtil;
 
 namespace Common;
 
@@ -39,7 +40,7 @@ public class ServerVariable
                 }
             }
 
-            Console.WriteLine("ServerVariable Refresh Success");
+            MyLogger.WriteLineInfo("ServerVariable Refresh Success");
         }
     }
 }

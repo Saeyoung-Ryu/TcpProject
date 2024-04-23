@@ -7,6 +7,7 @@ using Dapper;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Util.Store;
 using MySqlConnector;
+using MyUtil;
 
 namespace Common
 {
@@ -26,7 +27,7 @@ namespace Common
                     seq = lastRowSeq + 1;
             }
             
-            Console.WriteLine($"seq: {seq} has been refreshed.");
+            MyLogger.WriteLineInfo($"seq: {seq} has been refreshed.");
         }
 
         public static long GenerateUniqueSuid()

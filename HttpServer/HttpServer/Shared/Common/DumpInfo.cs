@@ -1,4 +1,5 @@
 using Common;
+using MyUtil;
 
 namespace HttpServer.Shared.Common;
 
@@ -15,7 +16,7 @@ public class DumpInfo
         string jsonString = await File.ReadAllTextAsync(configurationPath);
         var dumpInfo = System.Text.Json.JsonSerializer.Deserialize<DumpInfo>(jsonString);
 
-        Console.WriteLine($"DumpInfo Refreshed");
+        MyLogger.WriteLineInfo($"DumpInfo Refreshed");
 
         Instance = dumpInfo;
     }

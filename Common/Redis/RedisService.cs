@@ -1,5 +1,6 @@
 using StackExchange.Redis;
 using System.Text.Json;
+using MyUtil;
 
 namespace Common.Redis;
 
@@ -15,7 +16,7 @@ public class RedisService
         _redis = ConnectionMultiplexer.Connect(ServerVariable.RedisServerURL);
         
         if (_redis.IsConnected)
-            Console.WriteLine("Redis connected");
+            MyLogger.WriteLineInfo("Redis connected");
         else
             throw new Exception("Redis connection failed");
     }
@@ -71,6 +72,6 @@ public class RedisService
     public static void Ping(bool debug)
     {
         var elapsedTime = _redis.GetDatabase().Ping();
-        if (debug) Console.WriteLine("Ping for Redis : {0}ms", elapsedTime.Milliseconds);
+        if (debug) MyLogger.WriteLineInfo("Ping for Redis : {0}ms");
     }
 }

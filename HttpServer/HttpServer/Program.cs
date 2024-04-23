@@ -2,6 +2,7 @@ using Common;
 using Common.Redis;
 using Enum;
 using HttpServer.Shared.Common;
+using MyUtil;
 
 namespace HttpServer
 {
@@ -19,7 +20,7 @@ namespace HttpServer
             RedisService.Ping(true);
             RedisService.Ping(false);
             
-            Console.WriteLine("Http Server Has Started....");
+            MyLogger.WriteLineInfo("Http Server Has Started....");
             CreateHttpServerHostBuilder(args).Build().Run();
         }
 

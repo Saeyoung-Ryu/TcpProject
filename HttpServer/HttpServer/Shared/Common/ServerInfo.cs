@@ -1,4 +1,5 @@
 using Common;
+using MyUtil;
 using Renci.SshNet;
 
 namespace HttpServer.Shared.Common;
@@ -41,7 +42,7 @@ public class ServerInfo
         string jsonString = await File.ReadAllTextAsync(configurationPath);
         var serverInfo = JsonSerializer.Deserialize<ServerInfo>(jsonString);
 
-        Console.WriteLine($"ServerInfo Refreshed");
+        MyLogger.WriteLineInfo($"ServerInfo Refreshed");
 
         Instance = serverInfo;
     }

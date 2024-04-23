@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using MyUtil;
 
 namespace Common;
 
@@ -26,11 +27,11 @@ public class ServerInfoConfig
             ServerInfoConfig serverInfoConfig = JsonConvert.DeserializeObject<ServerInfoConfig>(File.ReadAllText(configurationPath));
 
             _instance = serverInfoConfig;
-            Console.WriteLine($"Config Refresh Success");
+            MyLogger.WriteLineInfo($"Config Refresh Success");
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
+            MyLogger.WriteLineError(e.Message.ToString());
             throw;
         }
     }

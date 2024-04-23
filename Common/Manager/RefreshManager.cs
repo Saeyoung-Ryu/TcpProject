@@ -24,7 +24,7 @@ public class RefreshManager
         }
     }
     
-    private static void AppendAllRefreshables(List<string> typesToRefresh)
+    public static void AppendAllRefreshables(List<string> typesToRefresh)
     {
         var types = Assembly.GetEntryAssembly().GetTypes();
         foreach (var t in types)
@@ -38,13 +38,18 @@ public class RefreshManager
         }
     }
     
+    public static List<string> GetAllRefreshables()
+    {
+        return typesToRefresh;
+    }
+    
     private static async Task RefreshAllAsync(bool enforced)
     {
         foreach (var i in typesToRefresh)
             await RefreshSingleAsync(i, enforced);
     }
     
-    private static async Task RefreshSingleAsync(string typeName, bool enforced)
+    public static async Task RefreshSingleAsync(string typeName, bool enforced)
     {
         try
         {

@@ -69,6 +69,10 @@ else if (NavManager.Uri.Contains("Tool"))
         </nav>
     </div>
 }
+else if (NavManager.Uri.Contains("TableRefresher"))
+{
+    
+}
 else if (NavManager.Uri.Contains("Home"))
 {
     <div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
@@ -81,6 +85,11 @@ else if (NavManager.Uri.Contains("Home"))
             <div class="nav-item px-3">
                 <NavLink class="nav-link" href="DBCompare">
                     DB Compare Tool
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="TableRefresher">
+                    Table Refresher
                 </NavLink>
             </div>
             <div class="nav-item px-3">
