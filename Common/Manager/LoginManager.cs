@@ -1,11 +1,15 @@
 using System;
 using System.Data;
 using System.IO;
+using System.Net;
+using System.Net.Mail;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Dapper;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Util.Store;
+using HttpServer.Shared.Common;
 using MySqlConnector;
 using MyUtil;
 
@@ -13,6 +17,9 @@ namespace Common
 {
     public class LoginManager
     {
+        private const string Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        private static readonly Random random = new Random();
+        
         private static readonly object seqLock = new object();
         private static long lastTimestamp = -1;
         private static long seq = 0;
@@ -94,6 +101,52 @@ namespace Common
             }
 
             return credential;
+        }
+
+        public static async Task<bool> SendAuthTokenMailAsync(string email)
+        {
+            StringBuilder bodyStringBuilder = new StringBuilder();
+
+            string token = GenerateToken(10);
+            bodyStringBuilder.AppendLine($"안녕하세요! 이메일 인증 메일입니다. 인증코드는 다음과 같습니다 : {token}");
+    
+            SmtpClient client = new SmtpClient(SMTPInfo.SmtpServer)
+            {
+                Port = SMTPInfo.Port,
+                Credentials = new NetworkCredential(SMTPInfo.FromAddress, SMTPInfo.FromPassword),
+                EnableSsl = SMTPInfo.EnableSSL
+            };
+
+            MailMessage mailMessage = new MailMessage(SMTPInfo.FromAddress, email)
+            {
+                Subject = "인증 메일",
+                Body = bodyStringBuilder.ToString()
+            };
+    
+            try
+            {
+                client.Send(mailMessage);
+                Console.WriteLine("이메일이 성공적으로 전송되었습니다.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                Console.WriteLine($"이메일 전송 중 오류가 발생했습니다: {ex.Message}");
+                return false;
+            }
+
+            return true;
+        }
+        
+        private static string GenerateToken(int length)
+        {
+            var tokenBuilder = new StringBuilder();
+            for (int i = 0; i < length; i++)
+            {
+                char randomChar = Alphabet[random.Next(Alphabet.Length)];
+                tokenBuilder.Append(randomChar);
+            }
+            return tokenBuilder.ToString();
         }
     }
 }

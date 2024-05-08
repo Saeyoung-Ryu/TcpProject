@@ -11,7 +11,7 @@ public class TblAttendanceEventSchedule
     public int AttendanceBasicId { get; private set; }
     public string StartDate { get; private set; }
     public string EndDate { get; private set; }
-    public string Enable { get; private set; }
+    public bool Enable { get; private set; }
     
     public static Dictionary<int, TblAttendanceEventSchedule> Dictionary = new Dictionary<int, TblAttendanceEventSchedule>();
     public static List<TblAttendanceEventSchedule> ListAll = new List<TblAttendanceEventSchedule>();

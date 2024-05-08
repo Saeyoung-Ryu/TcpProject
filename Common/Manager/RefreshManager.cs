@@ -1,4 +1,5 @@
 using System.Reflection;
+using MyUtil;
 
 namespace Common;
 
@@ -68,8 +69,7 @@ public class RefreshManager
         }
         catch (Exception ex)
         {
-            Console.WriteLine();
+            MyLogger.WriteLineError(ex.Message);
         }
     }
-
 }
