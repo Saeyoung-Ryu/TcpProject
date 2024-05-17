@@ -8,12 +8,11 @@ namespace Common;
 
 public class ServerVariable
 {
-    public static string Life { get; set; }
-    public static string MinSumValue { get; set; }
-    public static string MaxSumValue { get; set; }
-    public static string RankServerURL { get; set; }
-    
-    public static string RedisServerURL { get; set; }
+    public static string Life { get; private set; }
+    public static string MinSumValue { get; private set; }
+    public static string MaxSumValue { get; private set; }
+    public static string RankServerURL { get; private set; }
+    public static string RedisServerURL { get; private set; }
 
     public static void Refresh()
     {

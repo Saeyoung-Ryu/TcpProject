@@ -10,9 +10,6 @@ public class RedisService
 
     static RedisService()
     {
-        if (ServerVariable.RedisServerURL == String.Empty || ServerVariable.RedisServerURL == null)
-            ServerVariable.RedisServerURL = "localhost";
-        
         _redis = ConnectionMultiplexer.Connect(ServerVariable.RedisServerURL);
         
         if (_redis.IsConnected)
@@ -72,6 +69,6 @@ public class RedisService
     public static void Ping(bool debug)
     {
         var elapsedTime = _redis.GetDatabase().Ping();
-        if (debug) MyLogger.WriteLineInfo("Ping for Redis : {0}ms");
+        if (debug) MyLogger.WriteLineInfo($"Ping for Redis : {elapsedTime}ms");
     }
 }
