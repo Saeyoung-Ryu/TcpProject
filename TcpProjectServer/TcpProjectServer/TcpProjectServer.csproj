@@ -11,7 +11,7 @@
       <PackageReference Include="Dapper" Version="2.1.28" />
       <PackageReference Include="Google.Apis.Auth" Version="1.67.0" />
       <PackageReference Include="Google.Apis.Oauth2.v2" Version="1.67.0.1869" />
-      <PackageReference Include="MessagePack" Version="2.5.140" />
+      <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
       <PackageReference Include="MySqlConnector" Version="2.3.5" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     </ItemGroup>
@@ -35,6 +35,15 @@
       <Compile Include="..\..\Common\AccountDB\SetPlayer.cs">
         <Link>Common\AccountDB\SetPlayer.cs</Link>
       </Compile>
+      <Compile Include="..\..\Common\ConstDB\Type\tblAttendanceBasic.cs">
+        <Link>Common\ConstDB\Type\tblAttendanceBasic.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\ConstDB\Type\tblAttendanceEventSchedule.cs">
+        <Link>Common\ConstDB\Type\tblAttendanceEventSchedule.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\ConstDB\Type\tblAttendanceReward.cs">
+        <Link>Common\ConstDB\Type\tblAttendanceReward.cs</Link>
+      </Compile>
       <Compile Include="..\..\Common\LogDB\GetMatchHistory.cs">
         <Link>Common\LogDB\GetMatchHistory.cs</Link>
       </Compile>
@@ -53,6 +62,9 @@
       <Compile Include="..\..\Common\Manager\RankManager.cs">
         <Link>Common\Manager\RankManager.cs</Link>
       </Compile>
+      <Compile Include="..\..\Common\Manager\RefreshManager.cs">
+        <Link>Common\Manager\RefreshManager.cs</Link>
+      </Compile>
       <Compile Include="..\..\Common\RankDB\GetRank.cs">
         <Link>Common\RankDB\GetRank.cs</Link>
       </Compile>
@@ -61,6 +73,12 @@
       </Compile>
       <Compile Include="..\..\Common\RankDB\SetRank.cs">
         <Link>Common\RankDB\SetRank.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\Redis\RedisService.cs">
+        <Link>Common\Redis\RedisService.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\RefreshableAttribute.cs">
+        <Link>Common\RefreshableAttribute.cs</Link>
       </Compile>
       <Compile Include="..\..\Common\ServerInfoConfig.cs">
         <Link>Common\ServerInfoConfig.cs</Link>
@@ -134,6 +152,11 @@
       <Content Include="..\..\Common\.DS_Store">
         <Link>Common\.DS_Store</Link>
       </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\MyUtil\MyUtil.csproj" />
+      <ProjectReference Include="..\..\HttpServer\HttpServer\HttpServer.csproj" />
     </ItemGroup>
 
 </Project>

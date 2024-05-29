@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpProjectServer", "TcpProjectServer\TcpProjectServer.csproj", "{70EC01AA-09AE-4C7C-B490-BABAD08D4E90}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyUtil", "..\..\MyUtil\MyUtil.csproj", "{45AAFB3A-8688-4BB1-80D2-8FC45532E8E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpServer", "..\HttpServer\HttpServer\HttpServer.csproj", "{7EAC3467-0ADE-4660-813F-60368261238A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{70EC01AA-09AE-4C7C-B490-BABAD08D4E90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70EC01AA-09AE-4C7C-B490-BABAD08D4E90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70EC01AA-09AE-4C7C-B490-BABAD08D4E90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45AAFB3A-8688-4BB1-80D2-8FC45532E8E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45AAFB3A-8688-4BB1-80D2-8FC45532E8E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45AAFB3A-8688-4BB1-80D2-8FC45532E8E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45AAFB3A-8688-4BB1-80D2-8FC45532E8E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EAC3467-0ADE-4660-813F-60368261238A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EAC3467-0ADE-4660-813F-60368261238A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EAC3467-0ADE-4660-813F-60368261238A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EAC3467-0ADE-4660-813F-60368261238A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
