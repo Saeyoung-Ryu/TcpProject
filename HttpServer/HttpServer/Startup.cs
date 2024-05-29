@@ -13,6 +13,15 @@ namespace HttpServer
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddMatBlazor();
+            services.AddMatToaster(config =>
+            {
+                config.Position = MatToastPosition.TopCenter;
+                config.PreventDuplicates = true;
+                config.NewestOnTop = true;
+                config.ShowCloseButton = true;
+                config.MaximumOpacity = 95;
+                config.VisibleStateDuration = 3000;
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

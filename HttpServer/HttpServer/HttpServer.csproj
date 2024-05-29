@@ -135,6 +135,9 @@
       <Compile Include="..\..\Protocol2\SetRank.cs">
         <Link>Protocol2\SetRank.cs</Link>
       </Compile>
+      <Compile Update="Pages\DatabaseControlTool\PageTemplate.cs">
+        <DependentUpon>PageTemplate.razor</DependentUpon>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>

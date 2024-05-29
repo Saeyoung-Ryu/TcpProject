@@ -1,0 +1,182 @@
+@page "/Tool/PageTemplate"
+
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
+@using Microsoft.AspNetCore.Http
+
+@inject NavigationManager NavManager
+@inject ProtectedLocalStorage storage
+@inject IHttpContextAccessor httpContextAccessor
+
+<PageTitle>PageTemplate</PageTitle>
+<Display Player="player" PlayerChanged="OnPlayerChanged"></Display>
+
+<h1>PageTemplate</h1>
+
+@*@if (user != null)
+{
+    /*Table With Name/Value Columns with Update Btn*/
+    <br>
+    <td><button type="submit" class="btn btn-warning" @onclick="">Update</button></td>
+    <br>
+    <table id="Border-Solid" class="table table-border table-hover w-auto">
+        <thead>
+        <tr class="table-primary">
+            <th>Name</th>
+            <th>Value</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Name1</td>
+            <td><input type="text" @bind=""></td>
+        </tr>
+        <tr>
+            <td>Name2</td>
+            <td><input type="text" @bind=""></td>
+        </tr>
+        </tbody>
+    </table>
+    
+    /*Table With Several Columns(Input, Select, CheckBox) with Update Btn*/
+    <br>
+    <td><button type="submit" class="btn btn-warning" @onclick="">Update</button></td>
+    <br>
+    <table id="Border-Solid" class="table table-border table-hover w-auto">
+        <thead>
+        <tr class="table-primary">
+            <th>itemColumn</th>
+            <th>dateTime Column</th>
+            <th>selectColumn</th>
+            <th>checkBoxColumn</th>
+        </tr>
+        </thead>
+        <tbody>
+        
+        @foreach (var item in list)
+        {
+            <tr>
+                <td>
+                    <input type="text" @bind="@item.TestColumn">
+                </td>
+                <td>
+                    <input type="text" @bind="@item.TestDateTime" @bind:format="yyyy-MM-dd HH:mm:ss">
+                </td>
+                <td>
+                    <MatSelectItem @bind-Value="@item.TestSelect" Items="@grades">
+                    </MatSelectItem>
+                </td>
+                <td>
+                    <MatCheckbox @bind-Value="@item.TestBool"></MatCheckbox>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    
+    /*Three Tabs Example*/
+    <br>
+    <MatTabGroup @bind-ActiceIndex="@tabIndex" Style="width: 500px; color: #198754">
+        <MatTab Label="Tab1">
+                    
+        </MatTab>
+        
+        <MatTab Label="Tab2">
+                    
+        </MatTab>
+        
+        <MatTab Label="Tab3">
+            
+        </MatTab>
+    </MatTabGroup>
+    
+    /*PopUp Example*/
+    <br>
+    <MatAccordion>
+        <MatButton OnClick="@OpenDialog" Raised="true">Chapter 추가 ⊕</MatButton>
+        <MatDialog @bind-IsOpen="@dialogIsOpen">
+            <MatDialogContent>
+                <br>
+                <MatSlideToggle TValue="bool" Label="전체 추가" ValueChanged="@(e => Toggle(e))"></MatSlideToggle>
+                
+                $1$테이블 추가하기#1#
+            </MatDialogContent>
+            <MatDialogActions>
+                <MatButton OnClick="@CloseDialog">닫기</MatButton>
+                <MatButton OnClick="">추가하기</MatButton>
+            </MatDialogActions>
+        </MatDialog>
+    </MatAccordion>
+}*@
+
+@code
+{
+    public class ExampleClass
+    {
+        public int TestColumn { get; set; }
+        public DateTime TestDateTime { get; set; }
+        public bool TestBool { get; set; }
+    }
+}
+
+@inject IMatToaster Toaster
+
+@code{
+#pragma warning disable 1998
+#pragma warning disable 0169
+#pragma warning disable 0414       
+    
+    private long firstDummyClubSeq = 0;
+    private long lastDummyClubSeq = 0;
+    
+    private string title = "";
+    private string message = "";
+    private bool showProgressBar;
+    private bool showCloseButton;
+    private bool actionOnClick;
+    private string maximumOpacity;
+
+    private string showTransitionDuration;
+    private string visibleStateDuration;
+    private string hideTransitionDuration;
+
+    private bool requireInteraction;
+
+    protected override void OnInitialized()
+    {
+        showProgressBar = Toaster.Configuration.ShowProgressBar;
+        showCloseButton = Toaster.Configuration.ShowCloseButton;
+        maximumOpacity = Toaster.Configuration.MaximumOpacity.ToString();
+
+        showTransitionDuration = Toaster.Configuration.ShowTransitionDuration.ToString();
+        visibleStateDuration = Toaster.Configuration.VisibleStateDuration.ToString();
+        hideTransitionDuration = Toaster.Configuration.HideTransitionDuration.ToString();
+
+        requireInteraction = Toaster.Configuration.RequireInteraction;
+    }
+
+    public void Show(MatToastType type, string icon, string message)
+    {
+        Toaster.Add(message, type, title, icon, config =>
+        {
+            config.ShowCloseButton = showCloseButton;
+            config.ShowProgressBar = showProgressBar;
+            config.MaximumOpacity = Convert.ToInt32(maximumOpacity);
+
+            config.ShowTransitionDuration = Convert.ToInt32(showTransitionDuration);
+            config.VisibleStateDuration = Convert.ToInt32(visibleStateDuration);
+            config.HideTransitionDuration = Convert.ToInt32(hideTransitionDuration);
+
+            config.RequireInteraction = requireInteraction;
+        });
+    }
+
+    private void ShowUpdateSuccess()
+    {
+        Show(MatToastType.Info, "check_circle", $"Updated Successfully");
+    }
+    
+    private void ShowError(Exception e)
+    {
+        Show(MatToastType.Warning, "error", $"{e.ToString()}");
+    }
+}
