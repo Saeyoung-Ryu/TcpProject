@@ -118,19 +118,24 @@ namespace ClientConsoleApp
         {
             Console.WriteLine("1. Login as Guest");
             Console.WriteLine("2. Login with Google Account");
+            Console.WriteLine("3. Sign Up as Guest");
+            Console.WriteLine("4. Sign Up with Google Account");
             Console.WriteLine("Enter Login Method : ");
             string loginMethod = Console.ReadLine();
 
             if (loginMethod == "1")
             {
-                Console.Write("Enter Nickname to Login : ");
+                Console.Write("Enter Email to Login : ");
+                string email = Console.ReadLine();
+                Console.Write("Enter password : ");
+                string password = Console.ReadLine();
                 Console.WriteLine("=====================================");
-                Nickname = Console.ReadLine();
             
                 var loadDataReq = new LoadDataReq
                 {
                     ProtocolId = ProtocolId.LoadData,
-                    NickName = Nickname
+                    Email = email,
+                    Password = password
                 };
 
                 try
@@ -172,6 +177,66 @@ namespace ClientConsoleApp
                     Console.WriteLine(Result.LoginFailed);
                     await PrintLoginAsync();
                 }
+            }
+            else if (loginMethod == "3")
+            {
+                Console.Write("Enter Email to Sign Up : ");
+                string email = Console.ReadLine();
+                
+                var signInEmailAuthSendStepReq = new SignInEmailAuthSendStepReq()
+                {
+                    ProtocolId = ProtocolId.SignInEmailAuthSendStep,
+                    Email = email,
+                    LoginType = LoginType.Guest
+                };
+                
+                var res = await HttpManager.SendHttpServerRequestAsync(signInEmailAuthSendStepReq);
+                var signInEmailAuthSendStepRes = (SignInEmailAuthSendStepRes) res;
+                
+                if (signInEmailAuthSendStepRes.Result != Result.None)
+                {
+                    Console.WriteLine(signInEmailAuthSendStepRes.Result);
+                    await PrintLoginAsync();
+                }
+                else
+                {
+                    Console.WriteLine("Verification Email Sent!");
+                    Console.WriteLine("Enter Verification Code : ");
+                    string verificationCode = Console.ReadLine();
+                    
+                    var signInEmailAuthVerifyStepReq = new SignInEmailAuthVerifyStepReq()
+                    {
+                        ProtocolId = ProtocolId.SignInEmailAuthVerifyStep,
+                        Email = email,
+                        Code = verificationCode
+                    };
+                
+                    var response = await HttpManager.SendHttpServerRequestAsync(signInEmailAuthVerifyStepReq);
+                    var signInEmailAuthVerifyStepRes = (SignInEmailAuthVerifyStepRes) response;
+
+                    if (signInEmailAuthVerifyStepRes.VerifyResult = true)
+                    {
+                        Console.WriteLine("Enter Password : ");
+                        string password = Console.ReadLine();
+                        Console.WriteLine("Enter Nickname : ");
+                        string nickName = Console.ReadLine();
+                        
+                        var signInEmailAuthFinalStepReq = new SignInEmailAuthFinalStepReq()
+                        {
+                            ProtocolId = ProtocolId.SignInEmailAuthFinalStep,
+                            Password = password,
+                            NickName = nickName,
+                            Email = email
+                        };
+                        
+                        var finalResponse = await HttpManager.SendHttpServerRequestAsync(signInEmailAuthFinalStepReq);
+                        var signInEmailAuthFinalStepRes = (SignInEmailAuthFinalStepRes) finalResponse;
+                    }
+                }
+            }
+            else if (loginMethod == "4")
+            {
+                
             }
             else
             {

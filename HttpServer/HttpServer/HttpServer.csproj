@@ -3,6 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
         <Nullable>enable</Nullable>
+        <NoWarn>CS8618;CS8625;CS8600;CS0105;CS8603;CS8601;CS8602;CS8604;CS8619;CS0472;CS0618;CS1998;</NoWarn>
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
@@ -25,6 +26,9 @@
     <ItemGroup>
       <Compile Include="..\..\Common\AccountDB\GetPlayerWithAccountId.cs">
         <Link>Common\AccountDB\GetPlayerWithAccountId.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\AccountDB\GetPlayerWithEmail.cs">
+        <Link>Common\AccountDB\GetPlayerWithEmail.cs</Link>
       </Compile>
       <Compile Include="..\..\Common\AccountDB\GetPlayerWithNickname.cs">
         <Link>Common\AccountDB\GetPlayerWithNickname.cs</Link>
@@ -136,6 +140,15 @@
       </Compile>
       <Compile Update="Pages\DatabaseControlTool\PageTemplate.cs">
         <DependentUpon>PageTemplate.razor</DependentUpon>
+      </Compile>
+      <Compile Include="..\..\Protocol2\SignInEmailAuthFinalStep.cs">
+        <Link>Protocol2\SignInEmailAuthFinalStep.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Protocol2\SignInEmailAuthSendStep.cs">
+        <Link>Protocol2\SignInEmailAuthSendStep.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Protocol2\SignInEmailAuthVerifyStep.cs">
+        <Link>Protocol2\SignInEmailAuthVerifyStep.cs</Link>
       </Compile>
     </ItemGroup>
 

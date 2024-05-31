@@ -5,6 +5,8 @@ using Google.Apis.Oauth2.v2;
 using Google.Apis.Oauth2.v2.Data;
 using Google.Apis.Services;
 using HttpServer;
+using Microsoft.AspNetCore.Identity;
+using MyUtil;
 using Protocol2;
 
 namespace Service;
@@ -18,9 +20,24 @@ public class ServiceLogin : IService
     {
         var req = (LoginReq)request;
         var res = new LoginRes();
-
+        
         try
         {
+            if (req.LoginType == LoginType.Guest)
+            {
+                var player = await PlayerManager.GetPlayerWithEmailAsync(req.Email);
+
+                if (player == null)
+                    throw new MyException(Result.NotExistEmail);
+
+                var verifyResult = EncryptManager.VerifyPassword(req.Password, player.Password, player.PasswordSalt);
+
+                if (verifyResult == false)
+                    throw new MyException(Result.WrongPassword);
+                
+                res.CreateTime = player.CreateTime;
+                res.NickName = player.Nickname;
+            }
             if (req.LoginType == LoginType.Google)
             {
                 UserCredential credential = await LoginManager.GetUserCredentialForGoogleAsync();
@@ -39,22 +56,15 @@ public class ServiceLogin : IService
                 var player = await AccountDB.GetPlayerWithAccountIdAsync(accountId, req.LoginType);
 
                 if (player == null)
-                {
-                    player = new Player()
-                    {
-                        Suid = LoginManager.GenerateUniqueSuid(),
-                        AccountId = accountId,
-                        LoginType = req.LoginType,
-                        Nickname = userInfo.Email.Split('@')[0],
-                        CreateTime = DateTime.UtcNow
-                    };
-
-                    await AccountDB.SetPlayerAsync(player);
-                }
+                    throw new MyException(Result.NotExistEmail);
                 
                 res.CreateTime = player.CreateTime;
                 res.NickName = player.Nickname;
             }
+        }
+        catch (MyException e)
+        {
+            res.Result = e.Result;
         }
         catch (Exception e)
         {

@@ -21,6 +21,9 @@ namespace Common
             parameters.Add("_accountId", player.AccountId);
             parameters.Add("_loginType", player.LoginType);
             parameters.Add("_nickname", player.Nickname);
+            parameters.Add("_email", player.Email);
+            parameters.Add("_password", player.Password);
+            parameters.Add("_passwordSalt", player.PasswordSalt);
             parameters.Add("_createTime", player.CreateTime);
 
             await conn.ExecuteAsync("spSetPlayer", parameters, trxn, commandType: CommandType.StoredProcedure);

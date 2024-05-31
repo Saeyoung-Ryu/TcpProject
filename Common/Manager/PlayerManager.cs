@@ -29,4 +29,27 @@ public class PlayerManager
         return player;
     }
 
+    public static async Task<Player?> GetPlayerWithEmailAsync(string email, bool insert = false, bool needToCache = false)
+    {
+        var player = await AccountDB.GetPlayerWithEmailAsync(email, needToCache);
+
+        if (player == null && insert)
+        {
+            player = new Player()
+            {
+                Email = email,
+                Suid = LoginManager.GenerateUniqueSuid(),
+                AccountId = "",
+                LoginType = LoginType.Guest,
+                CreateTime = DateTime.UtcNow
+            };
+            
+            await AccountDB.SetPlayerAsync(player);
+            
+            if (needToCache)
+                await RedisService.SetKeyValueAsync(player.Suid.ToString(), player);
+        }
+
+        return player;
+    }
 }

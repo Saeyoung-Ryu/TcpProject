@@ -17,7 +17,7 @@ public class ServiceLoadData : IService
 
         try
         {
-            var playerInfo = await PlayerManager.GetPlayerWithNicknameAsync(req.NickName, true, true);
+            var playerInfo = await PlayerManager.GetPlayerWithNicknameAsync(req.Email, true, true);
 
             if (playerInfo == null)
                 return res;

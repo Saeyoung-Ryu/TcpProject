@@ -41,6 +41,15 @@
       <Compile Include="..\..\Protocol2\SetRank.cs">
         <Link>Protocol2\SetRank.cs</Link>
       </Compile>
+      <Compile Include="..\..\Protocol2\SignInEmailAuthFinalStep.cs">
+        <Link>Protocol2\SignInEmailAuthFinalStep.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Protocol2\SignInEmailAuthSendStep.cs">
+        <Link>Protocol2\SignInEmailAuthSendStep.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Protocol2\SignInEmailAuthVerifyStep.cs">
+        <Link>Protocol2\SignInEmailAuthVerifyStep.cs</Link>
+      </Compile>
       <Compile Include="..\..\Protocol\Auth.cs">
         <Link>Protocol\Auth.cs</Link>
       </Compile>

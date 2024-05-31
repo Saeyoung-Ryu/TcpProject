@@ -10,12 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="686d62c6-2437-4f52-ae6e-99a880b9ac51" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/../HttpServer/HttpServer/HttpServer.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../HttpServer/HttpServer/HttpServer.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HttpServer/HttpServer/ServerInfo.config" beforeDir="false" afterPath="$PROJECT_DIR$/../HttpServer/HttpServer/ServerInfo.config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TcpProjectServer/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TcpProjectServer/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TcpProjectServer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TcpProjectServer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TcpProjectServer.sln" beforeDir="false" afterPath="$PROJECT_DIR$/TcpProjectServer.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TcpProjectServer/TcpProjectServer.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/TcpProjectServer/TcpProjectServer.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +154,7 @@
       <workItem from="1708070817992" duration="1124000" />
       <workItem from="1708322333315" duration="4211000" />
       <workItem from="1712904154043" duration="633000" />
-      <workItem from="1716974170083" duration="480000" />
+      <workItem from="1716974170083" duration="1101000" />
     </task>
     <servers />
   </component>

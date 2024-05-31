@@ -11,11 +11,57 @@
  Target Server Version : 80033
  File Encoding         : 65001
 
- Date: 12/04/2024 18:53:56
+ Date: 31/05/2024 18:57:21
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for tblAttendanceBasic
+-- ----------------------------
+DROP TABLE IF EXISTS `tblAttendanceBasic`;
+CREATE TABLE `tblAttendanceBasic` (
+  `basicId` int NOT NULL,
+  `days` int NOT NULL,
+  `rewardId` int DEFAULT NULL,
+  PRIMARY KEY (`basicId`,`days`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Table structure for tblAttendanceEventSchedule
+-- ----------------------------
+DROP TABLE IF EXISTS `tblAttendanceEventSchedule`;
+CREATE TABLE `tblAttendanceEventSchedule` (
+  `attendanceBasicId` int DEFAULT NULL,
+  `startDate` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `endDate` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `enable` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Table structure for tblAttendanceReward
+-- ----------------------------
+DROP TABLE IF EXISTS `tblAttendanceReward`;
+CREATE TABLE `tblAttendanceReward` (
+  `attendanceRewardId` int NOT NULL,
+  `itemId` int DEFAULT NULL,
+  `count` int DEFAULT NULL,
+  PRIMARY KEY (`attendanceRewardId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Table structure for tblImportToMySql
+-- ----------------------------
+DROP TABLE IF EXISTS `tblImportToMySql`;
+CREATE TABLE `tblImportToMySql` (
+  `seq` int NOT NULL AUTO_INCREMENT,
+  `ipAddress` varchar(45) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `tableName` text COLLATE utf8mb4_general_ci,
+  `host` varchar(45) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `time` datetime DEFAULT NULL,
+  PRIMARY KEY (`seq`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Table structure for tblMatchHistory
@@ -30,22 +76,6 @@ CREATE TABLE `tblMatchHistory` (
 ) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
--- Records of tblMatchHistory
--- ----------------------------
-BEGIN;
-INSERT INTO `tblMatchHistory` VALUES (6, 1, '[{\"Win\":\"amy\",\"Lose\":\"samy\"},{\"Win\":\"amy2\",\"Lose\":\"samy\"},{\"Win\":\"amy4\",\"Lose\":\"samy\"},{\"Win\":\"NoNo\",\"Lose\":\"Sy1234\"},{\"Win\":\"NoNo\",\"Lose\":\"Sy1234\"},{\"Win\":\"Amy123\",\"Lose\":\"Sy1234\"}]');
-INSERT INTO `tblMatchHistory` VALUES (7, 2, '[{\"Win\":\"NoNo\",\"Lose\":\"Sy1234\"},{\"Win\":\"NoNo\",\"Lose\":\"Sy1234\"}]');
-INSERT INTO `tblMatchHistory` VALUES (11, 5, '[{\"Win\":\"SAMY\",\"Lose\":\"Amy123\"}]');
-INSERT INTO `tblMatchHistory` VALUES (12, 4, '[{\"Win\":\"SAMY\",\"Lose\":\"Amy123\"},{\"Win\":\"Test12\",\"Lose\":\"Amy123\"},{\"Win\":\"Amy123\",\"Lose\":\"Sy1234\"}]');
-INSERT INTO `tblMatchHistory` VALUES (13, 9, '[{\"Win\":\"Test12\",\"Lose\":\"Test\"},{\"Win\":\"Test12\",\"Lose\":\"Amy123\"}]');
-INSERT INTO `tblMatchHistory` VALUES (14, 8, '[{\"Win\":\"Test12\",\"Lose\":\"Test\"}]');
-INSERT INTO `tblMatchHistory` VALUES (17, 11, '[{\"Win\":\"Test1111\",\"Lose\":\"Test2222\"},{\"Win\":\"Test1111\",\"Lose\":\"Test2222\"},{\"Win\":\"Test1111\",\"Lose\":\"Test2222\"},{\"Win\":\"Test1111\",\"Lose\":\"Test2222\"},{\"Win\":\"Test1111\",\"Lose\":\"Test2222\"},{\"Win\":\"Test1111\",\"Lose\":\"Test2222\"}]');
-INSERT INTO `tblMatchHistory` VALUES (18, 12, '[{\"Win\":\"Test1111\",\"Lose\":\"Test2222\"},{\"Win\":\"Test1111\",\"Lose\":\"Test2222\"},{\"Win\":\"Test1111\",\"Lose\":\"Test2222\"},{\"Win\":\"Test1111\",\"Lose\":\"Test2222\"},{\"Win\":\"Test1111\",\"Lose\":\"Test2222\"},{\"Win\":\"Test1111\",\"Lose\":\"Test2222\"}]');
-INSERT INTO `tblMatchHistory` VALUES (31, 7184487515594686481, '[{\"Win\":\"TestUser2\",\"Lose\":\"TestUser1\"}]');
-INSERT INTO `tblMatchHistory` VALUES (32, 7184487329157873680, '[{\"Win\":\"TestUser2\",\"Lose\":\"TestUser1\"}]');
-COMMIT;
-
--- ----------------------------
 -- Table structure for tblPlayer
 -- ----------------------------
 DROP TABLE IF EXISTS `tblPlayer`;
@@ -55,18 +85,22 @@ CREATE TABLE `tblPlayer` (
   `accountId` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `loginType` int NOT NULL,
   `nickName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `email` varchar(60) COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(60) COLLATE utf8mb4_general_ci NOT NULL,
+  `passwordSalt` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
   `createTime` datetime NOT NULL,
   PRIMARY KEY (`seq`),
   UNIQUE KEY `idxSuid` (`suid`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
--- Records of tblPlayer
+-- Table structure for tblPlayerProfile
 -- ----------------------------
-BEGIN;
-INSERT INTO `tblPlayer` VALUES (19, 7184488619447418898, '', 1, 'RRRRR', '2024-04-12 09:52:48');
-INSERT INTO `tblPlayer` VALUES (20, 7184488634827931667, '103886615978569164912', 2, 'usaeyoung9514', '2024-04-12 09:52:52');
-COMMIT;
+DROP TABLE IF EXISTS `tblPlayerProfile`;
+CREATE TABLE `tblPlayerProfile` (
+  `suid` bigint NOT NULL,
+  `cash` bigint NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Table structure for tblRank
@@ -83,22 +117,6 @@ CREATE TABLE `tblRank` (
 ) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
--- Records of tblRank
--- ----------------------------
-BEGIN;
-INSERT INTO `tblRank` VALUES (6, 2, 2, 0, 110);
-INSERT INTO `tblRank` VALUES (7, 1, 4, 3, 108);
-INSERT INTO `tblRank` VALUES (10, 5, 1, 0, 105);
-INSERT INTO `tblRank` VALUES (11, 4, 1, 2, 97);
-INSERT INTO `tblRank` VALUES (12, 9, 2, 0, 110);
-INSERT INTO `tblRank` VALUES (13, 8, 0, 1, 96);
-INSERT INTO `tblRank` VALUES (17, 11, 6, 0, 130);
-INSERT INTO `tblRank` VALUES (18, 12, 0, 6, 76);
-INSERT INTO `tblRank` VALUES (31, 7184487515594686481, 1, 0, 105);
-INSERT INTO `tblRank` VALUES (32, 7184487329157873680, 0, 1, 96);
-COMMIT;
-
--- ----------------------------
 -- Table structure for tblServerVariable
 -- ----------------------------
 DROP TABLE IF EXISTS `tblServerVariable`;
@@ -107,18 +125,7 @@ CREATE TABLE `tblServerVariable` (
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `value` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   PRIMARY KEY (`seq`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- ----------------------------
--- Records of tblServerVariable
--- ----------------------------
-BEGIN;
-INSERT INTO `tblServerVariable` VALUES (1, 'Life', '5');
-INSERT INTO `tblServerVariable` VALUES (2, 'MinSumValue', '10');
-INSERT INTO `tblServerVariable` VALUES (3, 'MaxSumValue', '30');
-INSERT INTO `tblServerVariable` VALUES (4, 'RankServerURL', 'http://localhost:8000');
-INSERT INTO `tblServerVariable` VALUES (4, 'RedisServerURL', '');
-COMMIT;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Procedure structure for spGetMatchHistory
@@ -144,6 +151,20 @@ BEGIN
     SELECT *
     FROM tblPlayer
     WHERE `accountId` = _accountId and `loginType` = _loginType limit 1;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for spGetPlayerWithEmail
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `spGetPlayerWithEmail`;
+delimiter ;;
+CREATE PROCEDURE `spGetPlayerWithEmail`(IN _email varchar(255))
+BEGIN
+    SELECT *
+    FROM tblPlayer
+    WHERE `email` = _email limit 1;
 END
 ;;
 delimiter ;
@@ -251,14 +272,19 @@ delimiter ;
 DROP PROCEDURE IF EXISTS `spSetPlayer`;
 delimiter ;;
 CREATE PROCEDURE `spSetPlayer`(IN _suid bigint, IN _accountId varchar(255), IN _loginType int,
-                                                   IN _nickname varchar(255), IN _createTime datetime)
+                                                   IN _nickname varchar(255), IN _email varchar(60),
+                                                   IN _password varchar(60), IN _passwordSalt varchar(20),
+                                                   IN _createTime datetime)
 BEGIN
-    INSERT INTO tblPlayer (suid, accountId, loginType, nickName, createTime)
-    VALUES (_suid, _accountId, _loginType, _nickname, _createTime)
+    INSERT INTO tblPlayer (suid, accountId, loginType, nickName, email, password, passwordSalt, createTime)
+    VALUES (_suid, _accountId, _loginType, _nickname, _email, _password, _passwordSalt, _createTime)
     on duplicate key update
                          `suid` = _suid,
                          `accountId` = _accountId,
                          `loginType` = _loginType,
+                         `email` = _email,
+                         `password` = _password,
+                         `passwordSalt` = _passwordSalt,
                          `nickName` = _nickname,
                          `createTime` = _createTime;
 END

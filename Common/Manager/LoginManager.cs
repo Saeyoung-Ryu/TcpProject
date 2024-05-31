@@ -7,8 +7,10 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Dapper;
+using Enum;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Util.Store;
+using HttpServer;
 using HttpServer.Shared.Common;
 using MySqlConnector;
 using MyUtil;
@@ -103,7 +105,7 @@ namespace Common
             return credential;
         }
 
-        public static async Task<bool> SendAuthTokenMailAsync(string email)
+        public static async Task<string> SendAuthTokenMailAsync(string email)
         {
             StringBuilder bodyStringBuilder = new StringBuilder();
 
@@ -114,7 +116,7 @@ namespace Common
             {
                 Port = SMTPInfo.Port,
                 Credentials = new NetworkCredential(SMTPInfo.FromAddress, SMTPInfo.FromPassword),
-                EnableSsl = SMTPInfo.EnableSSL
+                EnableSsl = SMTPInfo.EnableSsL
             };
 
             MailMessage mailMessage = new MailMessage(SMTPInfo.FromAddress, email)
@@ -128,14 +130,12 @@ namespace Common
                 client.Send(mailMessage);
                 Console.WriteLine("이메일이 성공적으로 전송되었습니다.");
             }
-            catch (Exception ex)
+            catch (MyException ex)
             {
-                Console.WriteLine(ex);
-                Console.WriteLine($"이메일 전송 중 오류가 발생했습니다: {ex.Message}");
-                return false;
+                throw new MyException(Result.FailedToSendVerificationCode);
             }
 
-            return true;
+            return token;
         }
         
         private static string GenerateToken(int length)

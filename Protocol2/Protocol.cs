@@ -12,6 +12,9 @@ namespace Protocol2
 		EditNickname = 4,
 		GetMatchHistory = 5,
 		Login = 6,
+		SignInEmailAuthSendStep = 7,
+		SignInEmailAuthVerifyStep = 8,
+		SignInEmailAuthFinalStep = 9,
 		End
 	}
 	
@@ -22,6 +25,9 @@ namespace Protocol2
 	[Union(3, typeof(EditNicknameReq))]
 	[Union(4, typeof(GetMatchHistoryReq))]
 	[Union(5, typeof(LoginReq))]
+	[Union(6, typeof(SignInEmailAuthSendStepReq))]
+	[Union(7, typeof(SignInEmailAuthVerifyStepReq))]
+	[Union(8, typeof(SignInEmailAuthFinalStepReq))]
 	public abstract class Protocol
 	{
 		[Key(0)] public ProtocolId ProtocolId { get; set; }
@@ -37,6 +43,9 @@ namespace Protocol2
 	[Union(3, typeof(EditNicknameRes))]
 	[Union(4, typeof(GetMatchHistoryRes))]
 	[Union(5, typeof(LoginRes))]
+	[Union(6, typeof(SignInEmailAuthSendStepRes))]
+	[Union(7, typeof(SignInEmailAuthVerifyStepRes))]
+	[Union(8, typeof(SignInEmailAuthFinalStepRes))]
 	public abstract class ProtocolRes
 	{
 		[Key(0)] public ProtocolId ProtocolId { get; set; }
