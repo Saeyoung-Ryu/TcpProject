@@ -1,4 +1,4 @@
-using Common;
+/*using Common;
 using Enum;
 using HttpServer;
 using Protocol2;
@@ -17,13 +17,17 @@ public class ServiceLoadData : IService
 
         try
         {
-            var playerInfo = await PlayerManager.GetPlayerWithNicknameAsync(req.Email, true, true);
+            var playerInfo = await PlayerManager.GetPlayerWithEmailAsync(req.Email, true, true, req.Password);
 
             if (playerInfo == null)
                 return res;
             
             res.NickName = playerInfo.Nickname;
             res.CreateTime = playerInfo.CreateTime;
+        }
+        catch (MyException e)
+        {
+            res.Result = e.Result;
         }
         catch (Exception e)
         {
@@ -33,4 +37,4 @@ public class ServiceLoadData : IService
         
         return res;
     }
-}
+}*/

@@ -1,5 +1,6 @@
 using Common.Redis;
 using Enum;
+using HttpServer;
 
 namespace Common;
 
@@ -29,10 +30,22 @@ public class PlayerManager
         return player;
     }
 
-    public static async Task<Player?> GetPlayerWithEmailAsync(string email, bool insert = false, bool needToCache = false)
+    public static async Task<Player?> GetPlayerWithEmailAsync(string email, bool insert = false, bool needToCache = false, string password = "")
     {
         var player = await AccountDB.GetPlayerWithEmailAsync(email, needToCache);
 
+        // password check
+        if (password != "")
+        {
+            if (player == null)
+                return null;
+            
+            var checkPassword = MyUtil.EncryptManager.VerifyPassword(password, player.Password, player.PasswordSalt);
+
+            if (checkPassword == false)
+                throw new MyException(Result.WrongPassword);
+        }
+        
         if (player == null && insert)
         {
             player = new Player()

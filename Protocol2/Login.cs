@@ -7,7 +7,7 @@ namespace Protocol2
     public class LoginReq : Protocol
     {
         [Key(1)] public string Email { get; set; }
-        [Key(1)] public string Password { get; set; }
+        [Key(2)] public string Password { get; set; }
         [Key(3)] public LoginType LoginType { get; set; }
     }
 
