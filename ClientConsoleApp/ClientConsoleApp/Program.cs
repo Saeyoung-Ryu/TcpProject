@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using Common;
 using Enum;
 using MessagePack;
 using Protocol2;
@@ -8,11 +9,27 @@ namespace ClientConsoleApp
 {
     public class Program
     {
+        public static Player Player { get; set; }
         public static string Nickname;
         
         static async Task Main(string[] args)
         {
             await PrintLoginAsync();
+            
+            var loadDataReq = new LoadDataReq()
+            {
+                ProtocolId = ProtocolId.LoadData,
+                Player = Player
+            };
+            
+            var res = await HttpManager.SendHttpServerRequestAsync(loadDataReq);
+            var loadDataRes = (LoadDataRes) res;
+                    
+            if (loadDataRes.Result != Result.None)
+                throw new MyException(loadDataRes.Result);
+
+            Console.WriteLine("=====================================");
+            Console.WriteLine($"Attendance Day : {loadDataRes.PlayerAttendance.Day}");
 
             while (true)
             {
@@ -146,6 +163,8 @@ namespace ClientConsoleApp
                     
                     if (logInRes.Result != Result.None)
                         throw new MyException(logInRes.Result);
+
+                    Player = logInRes.Player;
                     
                     Console.WriteLine($"Welcome to the game {Nickname}! [Created at UTC : {logInRes.CreateTime.ToString("yyyy-MM-dd HH:mm:ss")}]");
                 }
@@ -170,6 +189,8 @@ namespace ClientConsoleApp
 
                     if (loginRes.Result != Result.None)
                         throw new Exception();
+                    
+                    Player = loginRes.Player;
                 
                     Console.WriteLine($"Welcome to the game {Nickname}! [Created at UTC : {loginRes.CreateTime.ToString("yyyy-MM-dd HH:mm:ss")}]");
                 }
@@ -232,6 +253,14 @@ namespace ClientConsoleApp
                         
                         var finalResponse = await HttpManager.SendHttpServerRequestAsync(signInEmailAuthFinalStepReq);
                         var signInEmailAuthFinalStepRes = (SignInEmailAuthFinalStepRes) finalResponse;
+                        
+                        if (signInEmailAuthSendStepRes.Result != Result.None)
+                        {
+                            Console.WriteLine(signInEmailAuthSendStepRes.Result);
+                            await PrintLoginAsync();
+                        }
+                        else
+                            Player = signInEmailAuthFinalStepRes.Player;
                     }
                 }
             }

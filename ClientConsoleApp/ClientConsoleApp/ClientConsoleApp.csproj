@@ -8,6 +8,18 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Compile Include="..\..\Common\Type\MatchHistory.cs">
+        <Link>Type\MatchHistory.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\Type\Player.cs">
+        <Link>Type\Player.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\Type\PlayerAttendance.cs">
+        <Link>Type\PlayerAttendance.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\Type\Rank.cs">
+        <Link>Type\Rank.cs</Link>
+      </Compile>
       <Compile Include="..\..\Enum\LoginType.cs">
         <Link>Enum\LoginType.cs</Link>
       </Compile>

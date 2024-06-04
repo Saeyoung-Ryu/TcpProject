@@ -25,7 +25,7 @@ def importLog(tables, host = ""):
             host="localhost",
             port=3306,
             user="root",
-            password="",
+            password="Love^3536",
             database="ProjectDB"
         )
         cursor = log_db.cursor()

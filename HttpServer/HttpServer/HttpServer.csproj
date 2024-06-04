@@ -45,6 +45,9 @@
       <Compile Include="..\..\Common\AccountDB\SetPlayer.cs">
         <Link>Common\AccountDB\SetPlayer.cs</Link>
       </Compile>
+      <Compile Include="..\..\Common\ConstDB\Type\ServerVariable.cs">
+        <Link>Common\ConstDB\Type\ServerVariable.cs</Link>
+      </Compile>
       <Compile Include="..\..\Common\ConstDB\Type\tblAttendanceBasic.cs">
         <Link>Common\ConstDB\Type\tblAttendanceBasic.cs</Link>
       </Compile>
@@ -54,11 +57,20 @@
       <Compile Include="..\..\Common\ConstDB\Type\tblAttendanceReward.cs">
         <Link>Common\ConstDB\Type\tblAttendanceReward.cs</Link>
       </Compile>
+      <Compile Include="..\..\Common\GameDB\GetPlayerAttendance.cs">
+        <Link>Common\GameDB\GetPlayerAttendance.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\GameDB\SetPlayerAttendance.cs">
+        <Link>Common\GameDB\SetPlayerAttendance.cs</Link>
+      </Compile>
       <Compile Include="..\..\Common\LogDB\GetMatchHistory.cs">
         <Link>Common\LogDB\GetMatchHistory.cs</Link>
       </Compile>
       <Compile Include="..\..\Common\LogDB\SetMatchHistory.cs">
         <Link>Common\LogDB\SetMatchHistory.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\Manager\AttendanceManager.cs">
+        <Link>Common\Manager\AttendanceManager.cs</Link>
       </Compile>
       <Compile Include="..\..\Common\Manager\LoginManager.cs">
         <Link>Common\Manager\LoginManager.cs</Link>
@@ -99,11 +111,11 @@
       <Compile Include="..\..\Common\Type\Player.cs">
         <Link>Common\Type\Player.cs</Link>
       </Compile>
+      <Compile Include="..\..\Common\Type\PlayerAttendance.cs">
+        <Link>Common\Type\PlayerAttendance.cs</Link>
+      </Compile>
       <Compile Include="..\..\Common\Type\Rank.cs">
         <Link>Common\Type\Rank.cs</Link>
-      </Compile>
-      <Compile Include="..\..\Common\Type\ServerVariable.cs">
-        <Link>Common\Type\ServerVariable.cs</Link>
       </Compile>
       <Compile Include="..\..\Enum\LoginType.cs">
         <Link>Enum\LoginType.cs</Link>

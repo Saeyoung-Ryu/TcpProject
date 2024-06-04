@@ -1,3 +1,4 @@
+using Common;
 using Enum;
 using MessagePack;
 
@@ -15,6 +16,7 @@ namespace Protocol2
     public class SignInEmailAuthFinalStepRes : ProtocolRes
     {
         [Key(2)] public bool FinalResult { get; set; }
+        [Key(3)] public Player Player { get; set; }
     }
 }
     

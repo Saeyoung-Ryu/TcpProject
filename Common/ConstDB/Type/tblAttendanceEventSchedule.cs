@@ -9,9 +9,9 @@ namespace Common.ConstDB.Type;
 public class TblAttendanceEventSchedule
 {
     public int AttendanceBasicId { get; private set; }
-    public string StartDate { get; private set; }
-    public string EndDate { get; private set; }
-    public bool Enable { get; private set; }
+    public DateTime StartDate { get; private set; }
+    public DateTime EndDate { get; private set; }
+    public sbyte Enable { get; private set; }
     
     public static Dictionary<int, TblAttendanceEventSchedule> Dictionary = new Dictionary<int, TblAttendanceEventSchedule>();
     public static List<TblAttendanceEventSchedule> ListAll = new List<TblAttendanceEventSchedule>();
@@ -43,5 +43,10 @@ public class TblAttendanceEventSchedule
             MyLogger.WriteLineError("TblAttendanceEventSchedule Refresh Error");
         }
         
+    }
+    
+    public static TblAttendanceEventSchedule? GetCurrentEventSchedule(DateTime now)
+    {
+        return ListAll.FirstOrDefault(x => x.StartDate.CompareTo(now) <= 0 && x.EndDate.CompareTo(now) >= 0);
     }
 }

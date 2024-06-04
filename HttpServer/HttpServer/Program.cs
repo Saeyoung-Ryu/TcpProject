@@ -1,4 +1,5 @@
 using Common;
+using Common.ConstDB.Type;
 using Common.Redis;
 using Enum;
 using HttpServer.Shared.Common;
@@ -11,7 +12,6 @@ namespace HttpServer
         public static async Task Main(string[] args)
         {
             ServerInfoConfig.Refresh();
-            ServerVariable.Refresh();
             Service.Service.Initialize();
             await LoginManager.RefreshSeqAsync();
             await RefreshManager.InitializeAsync();

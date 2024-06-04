@@ -9,8 +9,8 @@ namespace Common.ConstDB.Type;
 public class TblAttendanceEventSchedule
 {
     public int AttendanceBasicId { get; private set; }
-    public string StartDate { get; private set; }
-    public string EndDate { get; private set; }
+    public datetime StartDate { get; private set; }
+    public datetime EndDate { get; private set; }
     public string Enable { get; private set; }
     
     public static Dictionary<int, TblAttendanceEventSchedule> Dictionary = new Dictionary<int, TblAttendanceEventSchedule>();

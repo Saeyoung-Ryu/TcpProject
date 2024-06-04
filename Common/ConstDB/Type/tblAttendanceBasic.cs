@@ -5,14 +5,14 @@ using MyUtil;
 namespace Common.ConstDB.Type;
 
 [Refreshable]
-public class tblAttendanceBasic
+public class TblAttendanceBasic
 {
     public int BasicId { get; private set; }
-    public int Day { get; private set; }
+    public int Days { get; private set; }
     public int RewardId { get; private set; }
 
-    public static Dictionary<int, tblAttendanceBasic> Dictionary = new Dictionary<int, tblAttendanceBasic>();
-    public static List<tblAttendanceBasic> ListAll = new List<tblAttendanceBasic>();
+    public static Dictionary<int, TblAttendanceBasic> Dictionary = new Dictionary<int, TblAttendanceBasic>();
+    public static List<TblAttendanceBasic> ListAll = new List<TblAttendanceBasic>();
     
     public static async Task RefreshAsync()
     {
@@ -25,7 +25,7 @@ public class tblAttendanceBasic
                 
                 string sql = "select * from tblAttendanceBasic";
 
-                var list = await connection.QueryAsync<tblAttendanceBasic>(sql);
+                var list = await connection.QueryAsync<TblAttendanceBasic>(sql);
 
                 foreach (var item in list)
                 {
@@ -40,6 +40,10 @@ public class tblAttendanceBasic
         {
             MyLogger.WriteLineError("tblAttendanceBasic Refresh Error");
         }
-        
+    }
+    
+    public static TblAttendanceBasic? Find(int basicId)
+    {
+        return Dictionary.TryGetValue(basicId, out var value) ? value : null;
     }
 }

@@ -12,6 +12,8 @@ def create_table_schema(excel_file, table_name, primary_keys=None):
             data_type = 'INT'
         elif dtype == 'float64':
             data_type = 'FLOAT'
+        elif pd.api.types.is_datetime64_any_dtype(dtype):
+            data_type = 'DATETIME'
         elif dtype == 'object':
             data_type = 'VARCHAR(255)'
         else:

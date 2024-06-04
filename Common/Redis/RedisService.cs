@@ -1,5 +1,6 @@
 using StackExchange.Redis;
 using System.Text.Json;
+using Common.ConstDB.Type;
 using MyUtil;
 
 namespace Common.Redis;

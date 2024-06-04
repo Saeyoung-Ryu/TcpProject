@@ -13,6 +13,9 @@ public class TblPlayer
     public string AccountId { get; private set; }
     public int LoginType { get; private set; }
     public string NickName { get; private set; }
+    public varchar(60) Email { get; private set; }
+    public varchar(60) Password { get; private set; }
+    public varchar(20) PasswordSalt { get; private set; }
     public datetime CreateTime { get; private set; }
     
     public static Dictionary<int, TblPlayer> Dictionary = new Dictionary<int, TblPlayer>();

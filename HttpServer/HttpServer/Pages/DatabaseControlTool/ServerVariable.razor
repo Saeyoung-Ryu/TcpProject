@@ -69,7 +69,7 @@ else
         {
             await conn.ExecuteAsync(sql.ToString());
         }
-        
-        Common.ServerVariable.Refresh();
+
+        await Common.ConstDB.Type.ServerVariable.RefreshAsync();
     }
 }

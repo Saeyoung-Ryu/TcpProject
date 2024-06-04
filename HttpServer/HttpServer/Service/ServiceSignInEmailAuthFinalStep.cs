@@ -45,7 +45,9 @@ public class ServiceSignInEmailAuthFinalStep : IService
             };
 
             await AccountDB.SetPlayerAsync(player);
+            
             res.FinalResult = true;
+            res.Player = player;
         }
         catch (MyException e)
         {

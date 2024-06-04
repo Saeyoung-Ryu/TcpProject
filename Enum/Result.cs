@@ -15,5 +15,6 @@ public enum Result
     FailedToSendVerificationCode = 10,
     WrongVerificationCode = 11,
     VerificationCodeExpired = 12,
+    GetPlayerAttendanceFailed = 13,
     End
 }

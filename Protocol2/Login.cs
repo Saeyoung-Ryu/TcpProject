@@ -1,3 +1,4 @@
+using Common;
 using Enum;
 using MessagePack;
 
@@ -15,7 +16,7 @@ namespace Protocol2
     public class LoginRes : ProtocolRes
     {
         [Key(2)] public DateTime CreateTime { get; set; }
-        [Key(3)] public string NickName { get; set; }
+        [Key(3)] public Player Player { get; set; }
     }
 }
     

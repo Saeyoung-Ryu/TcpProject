@@ -36,7 +36,7 @@ public class ServiceLogin : IService
                     throw new MyException(Result.WrongPassword);
                 
                 res.CreateTime = player.CreateTime;
-                res.NickName = player.Nickname;
+                res.Player = player;
             }
             if (req.LoginType == LoginType.Google)
             {
@@ -59,7 +59,7 @@ public class ServiceLogin : IService
                     throw new MyException(Result.NotExistEmail);
                 
                 res.CreateTime = player.CreateTime;
-                res.NickName = player.Nickname;
+                res.Player = player;
             }
         }
         catch (MyException e)

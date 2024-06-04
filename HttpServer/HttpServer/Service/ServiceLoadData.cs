@@ -1,4 +1,4 @@
-/*using Common;
+using Common;
 using Enum;
 using HttpServer;
 using Protocol2;
@@ -17,13 +17,12 @@ public class ServiceLoadData : IService
 
         try
         {
-            var playerInfo = await PlayerManager.GetPlayerWithEmailAsync(req.Email, true, true, req.Password);
-
-            if (playerInfo == null)
-                return res;
+            var player = await AccountDB.GetPlayerWithSuidAsync(req.Player.Suid);
             
-            res.NickName = playerInfo.Nickname;
-            res.CreateTime = playerInfo.CreateTime;
+            if (player == null)
+                throw new MyException(Result.LoadDataFailed);
+
+            res.PlayerAttendance = await AttendanceManager.GetPlayerAttendanceAsync(player);
         }
         catch (MyException e)
         {
@@ -37,4 +36,4 @@ public class ServiceLoadData : IService
         
         return res;
     }
-}*/
+}
