@@ -35,6 +35,7 @@ public class ServiceLogin : IService
                 if (verifyResult == false)
                     throw new MyException(Result.WrongPassword);
                 
+                res.ManagingDashBoardNames = await DashBoardsManager.GetManagingDashBoardNamesAsync(player.Suid);
                 res.CreateTime = player.CreateTime;
                 res.Player = player;
             }
@@ -57,7 +58,8 @@ public class ServiceLogin : IService
 
                 if (player == null)
                     throw new MyException(Result.NotExistEmail);
-                
+
+                res.ManagingDashBoardNames = await DashBoardsManager.GetManagingDashBoardNamesAsync(player.Suid);
                 res.CreateTime = player.CreateTime;
                 res.Player = player;
             }

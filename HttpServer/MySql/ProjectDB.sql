@@ -11,7 +11,7 @@
  Target Server Version : 80033
  File Encoding         : 65001
 
- Date: 31/05/2024 18:57:21
+ Date: 28/06/2024 17:26:29
 */
 
 SET NAMES utf8mb4;
@@ -34,8 +34,8 @@ CREATE TABLE `tblAttendanceBasic` (
 DROP TABLE IF EXISTS `tblAttendanceEventSchedule`;
 CREATE TABLE `tblAttendanceEventSchedule` (
   `attendanceBasicId` int DEFAULT NULL,
-  `startDate` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `endDate` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `startDate` datetime DEFAULT NULL,
+  `endDate` datetime DEFAULT NULL,
   `enable` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -51,6 +51,57 @@ CREATE TABLE `tblAttendanceReward` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
+-- Table structure for tblDashBoard
+-- ----------------------------
+DROP TABLE IF EXISTS `tblDashBoard`;
+CREATE TABLE `tblDashBoard` (
+  `dashBoardSeq` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
+  `createTime` datetime NOT NULL,
+  PRIMARY KEY (`dashBoardSeq`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Table structure for tblDashBoardManager
+-- ----------------------------
+DROP TABLE IF EXISTS `tblDashBoardManager`;
+CREATE TABLE `tblDashBoardManager` (
+  `seq` int NOT NULL AUTO_INCREMENT,
+  `suid` bigint NOT NULL,
+  `dashBoardSeq` int NOT NULL,
+  `position` int NOT NULL,
+  `enable` tinyint(1) NOT NULL,
+  PRIMARY KEY (`seq`),
+  UNIQUE KEY `idxSuidDashBoardSeq` (`suid`,`dashBoardSeq`),
+  KEY `idxSuid` (`suid`),
+  KEY `idxDashBoardSeq` (`dashBoardSeq`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Table structure for tblDashBoardMember
+-- ----------------------------
+DROP TABLE IF EXISTS `tblDashBoardMember`;
+CREATE TABLE `tblDashBoardMember` (
+  `seq` int NOT NULL AUTO_INCREMENT,
+  `dashBoardSeq` int NOT NULL,
+  `puuid` varchar(60) COLLATE utf8mb4_general_ci NOT NULL,
+  `name` varchar(12) COLLATE utf8mb4_general_ci NOT NULL,
+  `enable` tinyint(1) NOT NULL,
+  `supWinCount` int NOT NULL,
+  `supLoseCount` int NOT NULL,
+  `adcWinCount` int NOT NULL,
+  `adcLoseCount` int NOT NULL,
+  `midWinCount` int NOT NULL,
+  `midLoseCount` int NOT NULL,
+  `jgWinCount` int NOT NULL,
+  `jgLoseCount` int NOT NULL,
+  `topWinCount` int NOT NULL,
+  `topLoseCount` int NOT NULL,
+  PRIMARY KEY (`seq`),
+  UNIQUE KEY `idxDashBoardSeqPuuid` (`dashBoardSeq`,`puuid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
 -- Table structure for tblImportToMySql
 -- ----------------------------
 DROP TABLE IF EXISTS `tblImportToMySql`;
@@ -61,7 +112,7 @@ CREATE TABLE `tblImportToMySql` (
   `host` varchar(45) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `time` datetime DEFAULT NULL,
   PRIMARY KEY (`seq`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Table structure for tblMatchHistory
@@ -92,6 +143,20 @@ CREATE TABLE `tblPlayer` (
   PRIMARY KEY (`seq`),
   UNIQUE KEY `idxSuid` (`suid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Table structure for tblPlayerAttendance
+-- ----------------------------
+DROP TABLE IF EXISTS `tblPlayerAttendance`;
+CREATE TABLE `tblPlayerAttendance` (
+  `seq` bigint NOT NULL AUTO_INCREMENT,
+  `suid` bigint NOT NULL,
+  `attendanceBasicId` int NOT NULL,
+  `day` int NOT NULL,
+  `updateTime` datetime NOT NULL,
+  PRIMARY KEY (`seq`),
+  UNIQUE KEY `IdxSuid` (`suid`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Table structure for tblPlayerProfile
@@ -128,6 +193,70 @@ CREATE TABLE `tblServerVariable` (
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
+-- Procedure structure for spGetDashBoardManagerWithDashBoardSeq
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `spGetDashBoardManagerWithDashBoardSeq`;
+delimiter ;;
+CREATE PROCEDURE `spGetDashBoardManagerWithDashBoardSeq`(IN _dashBoardSeq int)
+BEGIN
+    select * from tblDashBoardManager where dashBoardSeq = _dashBoardSeq;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for spGetDashBoardManagerWithSuid
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `spGetDashBoardManagerWithSuid`;
+delimiter ;;
+CREATE PROCEDURE `spGetDashBoardManagerWithSuid`(IN _suid bigint)
+BEGIN
+    select * from tblDashBoardManager where suid = _suid;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for spGetDashBoardMembers
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `spGetDashBoardMembers`;
+delimiter ;;
+CREATE PROCEDURE `spGetDashBoardMembers`(IN _dashBoardSeq int)
+BEGIN
+    select * from tblDashBoardMember where dashBoardSeq = _dashBoardSeq;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for spGetDashBoardWithName
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `spGetDashBoardWithName`;
+delimiter ;;
+CREATE PROCEDURE `spGetDashBoardWithName`(IN _name varchar(32))
+BEGIN
+    SELECT *
+    FROM tblDashBoard
+    WHERE name = _name limit 1;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for spGetDashBoardWithSeq
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `spGetDashBoardWithSeq`;
+delimiter ;;
+CREATE PROCEDURE `spGetDashBoardWithSeq`(IN _seq int)
+BEGIN
+    SELECT *
+    FROM tblDashBoard
+    WHERE dashBoardSeq = _seq limit 1;
+END
+;;
+delimiter ;
+
+-- ----------------------------
 -- Procedure structure for spGetMatchHistory
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `spGetMatchHistory`;
@@ -136,6 +265,20 @@ CREATE PROCEDURE `spGetMatchHistory`(IN _suid bigint)
 BEGIN
     SELECT *
     FROM tblMatchHistory
+    WHERE suid = _suid limit 1;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for spGetPlayerAttendance
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `spGetPlayerAttendance`;
+delimiter ;;
+CREATE PROCEDURE `spGetPlayerAttendance`(IN _suid bigint)
+BEGIN
+    SELECT *
+    FROM tblPlayerAttendance
     WHERE suid = _suid limit 1;
 END
 ;;
@@ -252,6 +395,70 @@ END
 delimiter ;
 
 -- ----------------------------
+-- Procedure structure for spSetDashBoard
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `spSetDashBoard`;
+delimiter ;;
+CREATE PROCEDURE `spSetDashBoard`(IN _name varchar(32))
+BEGIN
+    INSERT INTO tblDashBoard (name, createTime)
+    VALUES (_name, now())
+    on duplicate key update
+                         `name` = _name;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for spSetDashBoardManager
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `spSetDashBoardManager`;
+delimiter ;;
+CREATE PROCEDURE `spSetDashBoardManager`(IN _suid bigint, IN _dashBoardSeq int, IN _position int,
+                                                             IN _enable tinyint(1))
+BEGIN
+    INSERT INTO tblDashBoardManager (suid, dashBoardSeq, position, enable)
+    VALUES (_suid, _dashBoardSeq, _position, _enable)
+    on duplicate key update
+                         `position` = _position,
+                         `enable` = _enable;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for spSetDashBoardMember
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `spSetDashBoardMember`;
+delimiter ;;
+CREATE PROCEDURE `spSetDashBoardMember`(IN _dashBoardSeq int, IN _puuid varchar(60),
+                                                            IN _name varchar(12), IN _enable tinyint(1),
+                                                            IN _supWinCount int, IN _supLoseCount int,
+                                                            IN _adcWinCount int, IN _adcLoseCount int,
+                                                            IN _midWinCount int, IN _midLoseCount int,
+                                                            IN _jgWinCount int, IN _jgLoseCount int,
+                                                            IN _topWinCount int, IN _topLoseCount int)
+BEGIN
+    INSERT INTO tblDashBoardMember (dashBoardSeq, puuid, name, enable, supWinCount, supLoseCount, adcWinCount, adcLoseCount, midWinCount, midLoseCount, jgWinCount, jgLoseCount, topWinCount, topLoseCount)
+    VALUES (_dashBoardSeq, _puuid, _name, _enable, _supWinCount, _supLoseCount, _adcWinCount, _adcLoseCount, _midWinCount, _midLoseCount, _jgWinCount, _jgLoseCount, _topWinCount, _topLoseCount)
+    on duplicate key update
+        `name` = _name,
+        `enable` = _enable,
+        `supWinCount` = _supWinCount,
+        `supLoseCount` = _supLoseCount,
+        `adcWinCount` = _adcWinCount,
+        `adcLoseCount` = _adcLoseCount,
+        `midWinCount` = _midWinCount,
+        `midLoseCount` = _midLoseCount,
+        `jgWinCount` = _jgWinCount,
+        `jgLoseCount` = _jgLoseCount,
+        `topWinCount` = _topWinCount,
+        `topLoseCount` = _topLoseCount;
+END
+;;
+delimiter ;
+
+-- ----------------------------
 -- Procedure structure for spSetMatchHistory
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `spSetMatchHistory`;
@@ -287,6 +494,23 @@ BEGIN
                          `passwordSalt` = _passwordSalt,
                          `nickName` = _nickname,
                          `createTime` = _createTime;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for spSetPlayerAttendance
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `spSetPlayerAttendance`;
+delimiter ;;
+CREATE PROCEDURE `spSetPlayerAttendance`(IN _suid bigint, IN _attendanceBasicId int, IN _day int, IN _updateTime datetime)
+BEGIN
+    INSERT INTO tblPlayerAttendance (suid, attendanceBasicId, day, updateTime)
+    VALUES (_suid, _attendanceBasicId, _day, _updateTime)
+    on duplicate key update
+        `attendanceBasicId` = _attendanceBasicId,
+        `day` = _day,
+        `updateTime` = _updateTime;
 END
 ;;
 delimiter ;

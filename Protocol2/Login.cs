@@ -17,6 +17,7 @@ namespace Protocol2
     {
         [Key(2)] public DateTime CreateTime { get; set; }
         [Key(3)] public Player Player { get; set; }
+        [Key(4)] public List<string> ManagingDashBoardNames { get; set; }
     }
 }
     

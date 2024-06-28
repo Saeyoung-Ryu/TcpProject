@@ -1,5 +1,5 @@
 using System.Data;
-using Common.Redis;
+using HttpServer.Cache;
 using Dapper;
 using Enum;
 using MySqlConnector;

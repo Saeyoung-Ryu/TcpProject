@@ -20,6 +20,8 @@
       <PackageReference Include="MySqlConnector" Version="2.3.5" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
       <PackageReference Include="Renci.SshNet.Async" Version="1.4.0" />
+      <PackageReference Include="RiotSharp" Version="4.0.0" />
+      <PackageReference Include="RiotSharpExtensions" Version="1.1.5" />
       <PackageReference Include="StackExchange.Redis" Version="2.7.33" />
     </ItemGroup>
 
@@ -45,6 +47,9 @@
       <Compile Include="..\..\Common\AccountDB\SetPlayer.cs">
         <Link>Common\AccountDB\SetPlayer.cs</Link>
       </Compile>
+      <Compile Include="..\..\Common\Cache\RiotCache.cs">
+        <Link>Common\Cache\RiotCache.cs</Link>
+      </Compile>
       <Compile Include="..\..\Common\ConstDB\Type\ServerVariable.cs">
         <Link>Common\ConstDB\Type\ServerVariable.cs</Link>
       </Compile>
@@ -57,8 +62,32 @@
       <Compile Include="..\..\Common\ConstDB\Type\tblAttendanceReward.cs">
         <Link>Common\ConstDB\Type\tblAttendanceReward.cs</Link>
       </Compile>
+      <Compile Include="..\..\Common\GameDB\GetDashBoardManagerWithDashBoardSeq.cs">
+        <Link>Common/GameDB/GetDashBoardManagerWithDashBoardSeq.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\GameDB\GetDashBoardManagerWithSuid.cs">
+        <Link>Common\GameDB\GetDashBoardManagerWithSuid.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\GameDB\GetDashBoardMembers.cs">
+        <Link>Common\GameDB\GetDashBoardMembers.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\GameDB\GetDashBoardWithName.cs">
+        <Link>Common\GameDB\GetDashBoardWithName.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\GameDB\GetDashBoardWithSeq.cs">
+        <Link>Common\GameDB\GetDashBoardWithSeq.cs</Link>
+      </Compile>
       <Compile Include="..\..\Common\GameDB\GetPlayerAttendance.cs">
         <Link>Common\GameDB\GetPlayerAttendance.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\GameDB\SetDashBoard.cs">
+        <Link>Common\GameDB\SetDashBoard.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\GameDB\SetDashBoardManager.cs">
+        <Link>Common\GameDB\SetDashBoardManager.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\GameDB\SetDashBoardMember.cs">
+        <Link>Common\GameDB\SetDashBoardMember.cs</Link>
       </Compile>
       <Compile Include="..\..\Common\GameDB\SetPlayerAttendance.cs">
         <Link>Common\GameDB\SetPlayerAttendance.cs</Link>
@@ -71,6 +100,9 @@
       </Compile>
       <Compile Include="..\..\Common\Manager\AttendanceManager.cs">
         <Link>Common\Manager\AttendanceManager.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Common\Manager\DashBoardsManager.cs">
+        <Link>Common/Manager/DashBoardsManager.cs</Link>
       </Compile>
       <Compile Include="..\..\Common\Manager\LoginManager.cs">
         <Link>Common\Manager\LoginManager.cs</Link>
@@ -87,6 +119,9 @@
       <Compile Include="..\..\Common\Manager\RefreshManager.cs">
         <Link>Common\Manager\RefreshManager.cs</Link>
       </Compile>
+      <Compile Include="..\..\Common\Manager\RiotApiManager.cs">
+        <Link>Common\Manager\RiotApiManager.cs</Link>
+      </Compile>
       <Compile Include="..\..\Common\RankDB\GetRank.cs">
         <Link>Common\RankDB\GetRank.cs</Link>
       </Compile>
@@ -96,7 +131,7 @@
       <Compile Include="..\..\Common\RankDB\SetRank.cs">
         <Link>Common\RankDB\SetRank.cs</Link>
       </Compile>
-      <Compile Include="..\..\Common\Redis\RedisService.cs">
+      <Compile Include="..\..\Common\Cache\RedisService.cs">
         <Link>Common\Redis\RedisService.cs</Link>
       </Compile>
       <Compile Include="..\..\Common\RefreshableAttribute.cs">
@@ -117,6 +152,9 @@
       <Compile Include="..\..\Common\Type\Rank.cs">
         <Link>Common\Type\Rank.cs</Link>
       </Compile>
+      <Compile Include="..\..\Enum\DashBoardPosition.cs">
+        <Link>Enum\DashBoardPosition.cs</Link>
+      </Compile>
       <Compile Include="..\..\Enum\LoginType.cs">
         <Link>Enum\LoginType.cs</Link>
       </Compile>
@@ -126,8 +164,14 @@
       <Compile Include="..\..\Enum\WinLoseType.cs">
         <Link>Enum\WinLoseType.cs</Link>
       </Compile>
+      <Compile Include="..\..\Protocol2\CreateDashBoard.cs">
+        <Link>Protocol2\CreateDashBoard.cs</Link>
+      </Compile>
       <Compile Include="..\..\Protocol2\EditNickname.cs">
         <Link>Protocol2\EditNickname.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Protocol2\FindDashBoard.cs">
+        <Link>Protocol2\FindDashBoard.cs</Link>
       </Compile>
       <Compile Include="..\..\Protocol2\GetMatchHistory.cs">
         <Link>Protocol2\GetMatchHistory.cs</Link>
@@ -161,6 +205,9 @@
       </Compile>
       <Compile Include="..\..\Protocol2\SignInEmailAuthVerifyStep.cs">
         <Link>Protocol2\SignInEmailAuthVerifyStep.cs</Link>
+      </Compile>
+      <Compile Include="..\..\Protocol2\Type\DashBoardInfo.cs">
+        <Link>Protocol2\Type\DashBoardInfo.cs</Link>
       </Compile>
     </ItemGroup>
 

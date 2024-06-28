@@ -16,5 +16,8 @@ public enum Result
     WrongVerificationCode = 11,
     VerificationCodeExpired = 12,
     GetPlayerAttendanceFailed = 13,
+    CreateDashBoardFailed = 14,
+    DashBoardNameAlreadyExists = 15,
+    DashBoardNotFound = 16,
     End
 }

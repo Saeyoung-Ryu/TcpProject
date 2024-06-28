@@ -21,16 +21,13 @@ public class AttendanceManager
         
         var playerAttendance = await GameDB.GetPlayerAttendanceAsync(player.Suid);
 
-        if (playerAttendance == null)
+        playerAttendance ??= new PlayerAttendance
         {
-            playerAttendance = new PlayerAttendance
-            {
-                Suid = player.Suid,
-                AttendanceBasicId = currentAttendanceEventSchedule.AttendanceBasicId,
-                Day = 1,
-                UpdateTime = DateTime.UtcNow
-            };
-        }
+            Suid = player.Suid,
+            AttendanceBasicId = currentAttendanceEventSchedule.AttendanceBasicId,
+            Day = 1,
+            UpdateTime = DateTime.UtcNow
+        };
 
         if (playerAttendance.UpdateTime.Date != now.Date && playerAttendance.Day < tblAttendanceBasic.Days)
         {

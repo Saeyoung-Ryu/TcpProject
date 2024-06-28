@@ -15,6 +15,8 @@ namespace Protocol2
 		SignInEmailAuthSendStep = 7,
 		SignInEmailAuthVerifyStep = 8,
 		SignInEmailAuthFinalStep = 9,
+		CreateDashBoard = 10,
+		FindDashBoard = 11,
 		End
 	}
 	
@@ -28,6 +30,7 @@ namespace Protocol2
 	[Union(6, typeof(SignInEmailAuthSendStepReq))]
 	[Union(7, typeof(SignInEmailAuthVerifyStepReq))]
 	[Union(8, typeof(SignInEmailAuthFinalStepReq))]
+	[Union(9, typeof(CreateDashBoardReq))]
 	public abstract class Protocol
 	{
 		[Key(0)] public ProtocolId ProtocolId { get; set; }
@@ -46,6 +49,7 @@ namespace Protocol2
 	[Union(6, typeof(SignInEmailAuthSendStepRes))]
 	[Union(7, typeof(SignInEmailAuthVerifyStepRes))]
 	[Union(8, typeof(SignInEmailAuthFinalStepRes))]
+	[Union(9, typeof(CreateDashBoardRes))]
 	public abstract class ProtocolRes
 	{
 		[Key(0)] public ProtocolId ProtocolId { get; set; }

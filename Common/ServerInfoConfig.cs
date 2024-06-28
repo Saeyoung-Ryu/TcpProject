@@ -7,6 +7,7 @@ public class ServerInfoConfig : Singleton<ServerInfoConfig>
 {
     public string ConnectionString { get; set; }
     public string ServerUrl { get; set; }
+    public string RiotApiKey { get; set; }
     
     public static void Refresh()
     {
